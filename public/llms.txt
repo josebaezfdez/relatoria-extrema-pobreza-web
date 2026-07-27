@@ -2,6 +2,6 @@
 
 > Sitio independiente que reúne información sobre el mandato actual, informes y actividades. No está gestionado por OHCHR y no recibe denuncias.
 
-- [Español](https://josebaezfdez.github.io/es/)
-- [English](https://josebaezfdez.github.io/en/)
+- [Español](https://srextremepovertyhr.org/es/)
+- [English](https://srextremepovertyhr.org/en/)
 - [Mandato oficial de OHCHR](https://www.ohchr.org/es/special-procedures/sr-poverty)

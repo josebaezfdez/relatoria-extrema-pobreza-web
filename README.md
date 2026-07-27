@@ -16,4 +16,4 @@ pnpm test
 pnpm build
 ```
 
-Los pushes a `main` se publican automáticamente mediante GitHub Actions en GitHub Pages.
+El despliegue se configura de forma independiente según el entorno de publicación elegido.
