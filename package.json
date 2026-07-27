@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build && pagefind --site dist",
+    "deploy": "wrangler deploy",
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run",
@@ -22,7 +23,8 @@
     "@playwright/test": "^1.55.0",
     "pagefind": "^1.4.0",
     "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "wrangler": "4.114.0"
   },
   "packageManager": "pnpm@11.9.0"
 }

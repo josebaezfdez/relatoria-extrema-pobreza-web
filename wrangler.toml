@@ -1,6 +1,9 @@
 name = "relatoria-extrema-pobreza"
 compatibility_date = "2026-07-27"
-pages_build_output_dir = "dist"
+
+[assets]
+directory = "./dist"
+html_handling = "force-trailing-slash"
 
 [vars]
 PUBLIC_SITE_URL = "https://srextremepovertyhr.org"
