@@ -1,0 +1,183 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import EditorialListing from "@/components/EditorialListing.astro";
+import Picture from "@/components/Picture.astro";
+import SearchBox from "@/components/SearchBox.astro";
+import VideoConsent from "@/components/VideoConsent.astro";
+import { editorialItems, itemsFor, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
+import { getEditorialItems } from "@/lib/cms";
+import { SITE_URL, type Locale } from "@/data/site";
+
+type RouteProps =
+  | { kind: "static"; locale: Locale; page: StaticPage }
+  | { kind: "item"; locale: Locale; item: EditorialItem }
+  | { kind: "search"; locale: Locale; path: string; alternatePath: string };
+
+export async function getStaticPaths() {
+  const staticRoutes = staticPages.map((page) => ({
+    params: {
+      lang: page.locale,
+      slug: page.path.replace(`/${page.locale}/`, "").replace(/\/$/, ""),
+    },
+    props: { kind: "static" as const, locale: page.locale, page },
+  }));
+  const remoteCollections = await Promise.all([getEditorialItems("es"), getEditorialItems("en")]);
+  const cmsItems = remoteCollections.flatMap((collection) => collection.items);
+  const routedItems = cmsItems.length ? cmsItems : editorialItems;
+  const itemRoutes = routedItems.map((item) => ({
+    params: {
+      lang: item.locale,
+      slug: item.path.replace(`/${item.locale}/`, "").replace(/\/$/, ""),
+    },
+    props: { kind: "item" as const, locale: item.locale, item },
+  }));
+  const searchRoutes = [
+    { params: { lang: "es", slug: "buscar" }, props: { kind: "search" as const, locale: "es" as Locale, path: "/es/buscar/", alternatePath: "/en/search/" } },
+    { params: { lang: "en", slug: "search" }, props: { kind: "search" as const, locale: "en" as Locale, path: "/en/search/", alternatePath: "/es/buscar/" } },
+  ];
+  return [...staticRoutes, ...itemRoutes, ...searchRoutes];
+}
+
+const props = Astro.props as RouteProps;
+const { locale } = props;
+const isEs = locale === "es";
+const isStatic = props.kind === "static";
+const isItem = props.kind === "item";
+const isSearch = props.kind === "search";
+const title = isStatic ? props.page.title : isItem ? props.item.title : isEs ? "Buscar" : "Search";
+const description = isStatic
+  ? props.page.description
+  : isItem
+    ? props.item.summary
+    : isEs
+      ? "Busca informes, visitas, eventos y noticias del mandato."
+      : "Search mandate reports, visits, events and news.";
+const path = isStatic ? props.page.path : isItem ? props.item.path : props.path;
+const alternatePath = isStatic ? props.page.alternatePath : isItem ? props.item.alternatePath : props.alternatePath;
+const listingItems = isStatic && props.page.listing ? itemsFor(locale, props.page.listing) : [];
+const image = isItem && props.item.image ? `/media/${props.item.image}/cover.jpg` : undefined;
+const schemaType = isItem
+  ? props.item.type === "event"
+    ? "Event"
+    : props.item.type === "report"
+      ? "Report"
+      : props.item.type === "press_release"
+        ? "NewsArticle"
+        : "Article"
+  : null;
+const schema = isItem
+  ? {
+      "@context": "https://schema.org",
+      "@type": schemaType,
+      name: props.item.title,
+      headline: props.item.title,
+      description: props.item.summary,
+      datePublished: props.item.date,
+      startDate: props.item.type === "event" ? props.item.date : undefined,
+      location: props.item.location ? { "@type": "Place", name: props.item.location } : undefined,
+      image: image ? new URL(image, SITE_URL).toString() : undefined,
+      url: new URL(path, SITE_URL).toString(),
+      inLanguage: locale,
+      author: { "@type": "Person", name: "Elena Carolina Díaz Galán" },
+    }
+  : undefined;
+---
+
+<BaseLayout
+  {locale}
+  {title}
+  {description}
+  {path}
+  {alternatePath}
+  {image}
+  type={isItem ? "article" : "website"}
+  published={isItem ? props.item.date : undefined}
+  {schema}
+>
+  <Breadcrumbs {locale} current={title} />
+
+  {isStatic && (
+    <>
+      <header class="page-header">
+        <div class="page-header__inner container">
+          <div>
+            {props.page.eyebrow && <p class="eyebrow">{props.page.eyebrow}</p>}
+            <h1 data-pagefind-meta="title">{props.page.title}</h1>
+          </div>
+          <p class="page-header__description">{props.page.description}</p>
+        </div>
+      </header>
+      {props.page.body && <article class="prose" data-pagefind-body set:html={props.page.body} />}
+      {props.page.listing && (
+        <section class="section listing-section" aria-label={props.page.title} data-pagefind-ignore>
+          <div class="container">
+            <EditorialListing items={listingItems} context="archive" headingLevel={2} />
+          </div>
+        </section>
+      )}
+    </>
+  )}
+
+  {isItem && (
+    <>
+      <article data-pagefind-body>
+        <header class="article-header">
+          <div class="article-header__grid container">
+            <div>
+              <p class="eyebrow">{props.item.eyebrow}</p>
+              <h1 data-pagefind-meta="title">{props.item.title}</h1>
+              <p class="article-header__summary">{props.item.summary}</p>
+              <ul class="article-header__meta">
+                <li><time datetime={props.item.date}>{props.item.displayDate}</time></li>
+                {props.item.location && <li>{props.item.location}</li>}
+              </ul>
+            </div>
+            {props.item.image && (
+              <figure class="article-header__image">
+                <Picture
+                  slug={props.item.image}
+                  alt={props.item.imageAlt || ""}
+                  width={props.item.imageWidth}
+                  height={props.item.imageHeight}
+                  eager
+                />
+              </figure>
+            )}
+          </div>
+        </header>
+        <div class="prose" set:html={props.item.body} />
+        {(props.item.download || props.item.audio || props.item.links?.length) && (
+          <section class="prose prose--resources" aria-labelledby="resources-title">
+            <h2 id="resources-title">{isEs ? "Recursos y fuentes" : "Resources and sources"}</h2>
+            <ul class="resource-list">
+              {props.item.download && <li><a href={props.item.download.href}>{props.item.download.label}<span aria-hidden="true">↓</span></a></li>}
+              {props.item.audio && <li><a href={props.item.audio.href}>{props.item.audio.label}<span aria-hidden="true">↗</span></a></li>}
+              {props.item.links?.map((link) => <li><a href={link.href}>{link.label}<span aria-hidden="true">↗</span></a></li>)}
+            </ul>
+          </section>
+        )}
+        {props.item.video && (
+          <div class="container section">
+            <VideoConsent locale={locale} videoId={props.item.video.id} title={props.item.video.title} />
+          </div>
+        )}
+      </article>
+    </>
+  )}
+
+  {isSearch && (
+    <>
+      <header class="page-header">
+        <div class="page-header__inner container">
+          <div>
+            <p class="eyebrow">{isEs ? "Archivo del mandato" : "Mandate archive"}</p>
+            <h1>{title}</h1>
+          </div>
+          <p class="page-header__description">{description}</p>
+        </div>
+      </header>
+      <SearchBox {locale} />
+    </>
+  )}
+</BaseLayout>

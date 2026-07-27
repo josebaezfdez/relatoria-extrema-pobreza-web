@@ -1,0 +1,48 @@
+---
+import type { EditorialItem } from "@/data/content";
+import Picture from "./Picture.astro";
+
+interface Props {
+  item: EditorialItem;
+  variant?: "feature" | "standard" | "compact" | "horizontal";
+  position?: number;
+  headingLevel?: 2 | 3;
+}
+
+const { item, variant = "standard", position, headingLevel = 3 } = Astro.props;
+const actionLabel = item.locale === "es" ? "Ver contenido" : "View item";
+const Heading = headingLevel === 2 ? "h2" : "h3";
+const headingId = `card-title-${item.id}`;
+---
+
+<article
+  class:list={["editorial-card", `editorial-card--${variant}`]}
+  data-pagefind-filter={`type:${item.type}`}
+>
+  <a class="editorial-card__link" href={item.path} aria-labelledby={headingId}>
+    {item.image && (
+      <figure class="editorial-card__media">
+        <Picture
+          slug={item.image}
+          alt=""
+          width={item.imageWidth}
+          height={item.imageHeight}
+        />
+        <span class="editorial-card__media-action" aria-hidden="true">↗</span>
+      </figure>
+    )}
+    <div class="editorial-card__body">
+      <div class="editorial-card__meta">
+        <time datetime={item.date}>{item.displayDate}</time>
+        {position && <span aria-hidden="true">{String(position).padStart(2, "0")}</span>}
+      </div>
+      <p class="eyebrow editorial-card__eyebrow">{item.eyebrow}</p>
+      <Heading id={headingId}>{item.title}</Heading>
+      <p>{item.summary}</p>
+      <span class="editorial-card__action">
+        {actionLabel}
+        <span aria-hidden="true">→</span>
+      </span>
+    </div>
+  </a>
+</article>

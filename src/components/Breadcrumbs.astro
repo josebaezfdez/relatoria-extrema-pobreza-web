@@ -1,0 +1,17 @@
+---
+import type { Locale } from "@/data/site";
+
+interface Props {
+  locale: Locale;
+  current: string;
+}
+
+const { locale, current } = Astro.props;
+---
+
+<nav class="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumb"}>
+  <ol class="breadcrumbs__list container">
+    <li><a href={`/${locale}/`}>{locale === "es" ? "Inicio" : "Home"}</a></li>
+    <li aria-current="page">{current}</li>
+  </ol>
+</nav>

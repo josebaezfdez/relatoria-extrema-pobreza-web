@@ -1,0 +1,44 @@
+---
+interface Props {
+  slug: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  eager?: boolean;
+  responsive?: boolean;
+  sizes?: string;
+  class?: string;
+}
+
+const {
+  slug,
+  alt,
+  width = 1600,
+  height = 1067,
+  eager = false,
+  responsive = false,
+  sizes = "(max-width: 46rem) 100vw, 56vw",
+  class: className,
+} = Astro.props;
+const base = `/media/${slug}`;
+const widths = [480, 768, 1280, 1920].filter((value) => value <= width);
+const finalWidths = widths.length ? widths : [width];
+const srcset = (extension: string) =>
+  finalWidths.map((value) => `${base}/${slug}-${value}.${extension} ${value}w`).join(", ");
+---
+
+<picture class={className}>
+  {responsive && <source type="image/avif" srcset={srcset("avif")} {sizes} />}
+  {responsive && <source type="image/webp" srcset={srcset("webp")} {sizes} />}
+  {!responsive && <source type="image/avif" src={`${base}/cover.avif`} />}
+  {!responsive && <source type="image/webp" src={`${base}/cover.webp`} />}
+  <img
+    src={`${base}/cover.jpg`}
+    {alt}
+    {width}
+    {height}
+    loading={eager ? "eager" : "lazy"}
+    decoding={eager ? "sync" : "async"}
+    fetchpriority={eager ? "high" : "auto"}
+  />
+</picture>

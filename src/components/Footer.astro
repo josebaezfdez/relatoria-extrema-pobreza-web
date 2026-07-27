@@ -1,0 +1,52 @@
+---
+import { footerNavigation, localeConfig, type Locale } from "@/data/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const strings = localeConfig[locale];
+---
+
+<section class="complaint-section container" aria-labelledby="complaint-title">
+  <div class="complaint-cta">
+    <div>
+      <p class="eyebrow">{locale === "es" ? "Canal oficial" : "Official channel"}</p>
+      <h2 id="complaint-title">{strings.complaint}</h2>
+      <p>{strings.complaintNote}</p>
+    </div>
+    <a class="button" href="https://spsubmission.ohchr.org/">
+      <span>{locale === "es" ? "Ir al mecanismo oficial" : "Go to the official mechanism"}</span>
+      <span class="button__icon" aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <section class="site-footer__brand">
+        <p class="site-footer__mandate">{locale === "es" ? "Mandato 2026–2029" : "Mandate 2026–2029"}</p>
+        <h2>{locale === "es" ? "Pobreza, dignidad y derechos." : "Poverty, dignity and rights."}</h2>
+        <p>{strings.disclaimer}</p>
+      </section>
+      <nav aria-label={locale === "es" ? "Información legal" : "Legal information"}>
+        <h3>{locale === "es" ? "Información" : "Information"}</h3>
+        <ul>
+          {footerNavigation[locale].map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+      <section>
+        <h3>{locale === "es" ? "Contacto oficial" : "Official contact"}</h3>
+        <address>
+          <p><a href="mailto:hrc-sr-extremepoverty-diazgalan@un.org">hrc-sr-extremepoverty-diazgalan@un.org</a></p>
+          <p><a href="https://www.ohchr.org/es/special-procedures/sr-poverty">OHCHR ↗</a></p>
+        </address>
+      </section>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© {new Date().getFullYear()} Elena Carolina Díaz Galán</span>
+      <span>{locale === "es" ? "Con la colaboración del CEIB–URJC" : "With the collaboration of CEIB–URJC"}</span>
+    </div>
+  </div>
+</footer>

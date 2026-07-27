@@ -1,0 +1,57 @@
+---
+import "@/styles/global.css";
+
+const cmsBase = import.meta.env.CMS_API_URL || "https://cms.srextremepovertyhr.org/wp-json/relatoria/v1";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Vista previa editorial</title>
+  </head>
+  <body>
+    <main id="main">
+      <header class="page-header">
+        <div class="page-header__inner container">
+          <div>
+            <p class="eyebrow">Vista previa privada</p>
+            <h1 data-preview-title>Cargando contenido…</h1>
+          </div>
+          <p class="page-header__description">Este enlace caduca y no se indexa.</p>
+        </div>
+      </header>
+      <article class="prose" data-preview-body aria-live="polite"></article>
+    </main>
+    <script is:inline define:vars={{ cmsBase }}>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const expires = params.get("expires");
+      const token = params.get("token");
+      const title = document.querySelector("[data-preview-title]");
+      const body = document.querySelector("[data-preview-body]");
+      if (!id || !expires || !token) {
+        title.textContent = "Enlace de vista previa incompleto";
+      } else {
+        const url = `${cmsBase}/preview/${encodeURIComponent(id)}?expires=${encodeURIComponent(expires)}&token=${encodeURIComponent(token)}`;
+        fetch(url, { credentials: "omit", referrerPolicy: "no-referrer" })
+          .then((response) => {
+            if (!response.ok) throw new Error("Preview unavailable");
+            return response.json();
+          })
+          .then((content) => {
+            document.documentElement.lang = content.locale || "es";
+            title.textContent = content.title;
+            body.innerHTML = content.body;
+          })
+          .catch(() => {
+            title.textContent = "La vista previa ha caducado o no está disponible";
+            body.textContent = "Solicita un nuevo enlace desde WordPress.";
+          });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+---
+import { SITE_URL, socialImage, type Locale } from "@/data/site";
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  path: string;
+  alternatePath: string;
+  image?: string;
+  type?: "website" | "article";
+  published?: string;
+  schema?: Record<string, unknown>;
+  noindex?: boolean;
+}
+
+const {
+  locale,
+  title,
+  description,
+  path,
+  alternatePath,
+  image = socialImage,
+  type = "website",
+  published,
+  schema,
+  noindex = false,
+} = Astro.props;
+const canonical = new URL(path, SITE_URL).toString();
+const alternate = new URL(alternatePath, SITE_URL).toString();
+const imageUrl = new URL(image, SITE_URL).toString();
+const fullTitle = title.includes("Relator") ? title : `${title} | ${locale === "es" ? "Relatoría sobre extrema pobreza" : "Special Rapporteur on extreme poverty"}`;
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: canonical,
+  inLanguage: locale,
+  isPartOf: {
+    "@type": "WebSite",
+    name: locale === "es" ? "Relatora Especial sobre extrema pobreza y derechos humanos" : "Special Rapporteur on extreme poverty and human rights",
+    url: SITE_URL,
+  },
+};
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang={locale} href={canonical} />
+<link rel="alternate" hreflang={locale === "es" ? "en" : "es"} href={alternate} />
+<link rel="alternate" hreflang="x-default" href={locale === "es" ? canonical : alternate} />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={locale === "es" ? "Relatoría sobre extrema pobreza" : "Special Rapporteur on extreme poverty"} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:locale" content={locale === "es" ? "es_ES" : "en_US"} />
+{published && <meta property="article:published_time" content={published} />}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema || defaultSchema)} />

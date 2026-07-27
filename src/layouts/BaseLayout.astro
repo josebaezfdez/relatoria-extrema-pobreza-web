@@ -1,0 +1,42 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import SEOHead from "@/components/SEOHead.astro";
+import type { Locale } from "@/data/site";
+import "@/styles/global.css";
+import "@/styles/redesign.css";
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  path: string;
+  alternatePath: string;
+  image?: string;
+  type?: "website" | "article";
+  published?: string;
+  schema?: Record<string, unknown>;
+  noindex?: boolean;
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang={props.locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#082c4c" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <SEOHead {...props} />
+  </head>
+  <body>
+    <Header locale={props.locale} currentPath={props.path} alternatePath={props.alternatePath} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer locale={props.locale} />
+  </body>
+</html>

@@ -1,0 +1,87 @@
+---
+import { localeConfig, navigation, type Locale } from "@/data/site";
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+  alternatePath: string;
+}
+
+const { locale, currentPath, alternatePath } = Astro.props;
+const strings = localeConfig[locale];
+const isHome = currentPath === `/${locale}/`;
+---
+
+<a class="skip-link" href="#main">{strings.skip}</a>
+<header class:list={["site-header", { "site-header--hero": isHome }]}>
+  <div class="site-header__utility">
+    <div class="site-header__utility-inner container">
+      <span class="site-header__status">
+        <span class="site-header__status-mark" aria-hidden="true"></span>
+        {locale === "es" ? "Sitio independiente del mandato actual" : "Independent website for the current mandate"}
+      </span>
+      <nav class="language-switcher" aria-label={locale === "es" ? "Selector de idioma" : "Language selector"}>
+        <a href={locale === "es" ? currentPath : alternatePath} lang="es" hreflang="es" aria-current={locale === "es" ? "true" : undefined}>ES</a>
+        <span aria-hidden="true">·</span>
+        <a href={locale === "en" ? currentPath : alternatePath} lang="en" hreflang="en" aria-current={locale === "en" ? "true" : undefined}>EN</a>
+      </nav>
+    </div>
+  </div>
+  <div class="site-header__main container">
+    <a
+      class="wordmark"
+      href={strings.home}
+      aria-label={locale === "es" ? "Elena Carolina Díaz Galán — Inicio" : "Elena Carolina Díaz Galán — Home"}
+    >
+      <span class="wordmark__primary">Elena Carolina Díaz Galán</span>
+      <span class="wordmark__secondary">
+        {locale === "es"
+          ? "Relatora Especial sobre extrema pobreza y derechos humanos"
+          : "Special Rapporteur on extreme poverty and human rights"}
+      </span>
+    </a>
+    <div class="site-header__navigation">
+      <nav class="site-nav" aria-label={locale === "es" ? "Navegación principal" : "Primary navigation"}>
+        <ul class="site-nav__list">
+          {navigation[locale].map((item) => (
+            <li><a href={item.href} aria-current={currentPath.startsWith(item.href) ? "page" : undefined}>{item.label}</a></li>
+          ))}
+          <li>
+            <a
+              class="site-nav__search"
+              href={`/${locale}/${locale === "es" ? "buscar" : "search"}/`}
+              aria-current={currentPath.includes(locale === "es" ? "/buscar/" : "/search/") ? "page" : undefined}
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+                <circle cx="11" cy="11" r="6.5"></circle>
+                <path d="m16 16 4 4"></path>
+              </svg>
+              <span>{strings.search}</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <details class="mobile-nav">
+        <summary>
+          <span class="mobile-nav__label">{strings.menu}</span>
+          <span class="mobile-nav__icon" aria-hidden="true"></span>
+        </summary>
+        <nav aria-label={locale === "es" ? "Navegación móvil" : "Mobile navigation"}>
+          <ul class="site-nav__list">
+            {navigation[locale].map((item) => (
+              <li><a href={item.href} aria-current={currentPath.startsWith(item.href) ? "page" : undefined}>{item.label}</a></li>
+            ))}
+            <li>
+              <a
+                href={`/${locale}/${locale === "es" ? "buscar" : "search"}/`}
+                aria-current={currentPath.includes(locale === "es" ? "/buscar/" : "/search/") ? "page" : undefined}
+              >
+                {strings.search}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

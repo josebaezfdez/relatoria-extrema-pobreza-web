@@ -1,0 +1,43 @@
+---
+import ContentCard from "./ContentCard.astro";
+import type { EditorialItem } from "@/data/content";
+
+interface Props {
+  items: EditorialItem[];
+  context?: "home" | "archive";
+  headingLevel?: 2 | 3;
+}
+
+const { items, context = "archive", headingLevel = 2 } = Astro.props;
+const layout = items.length === 1 ? "single" : items.length === 2 ? "pair" : "grid";
+
+const variantFor = (index: number) => {
+  if (layout === "single") return "horizontal" as const;
+  if (layout === "pair") return "feature" as const;
+  if (context === "home" && index < 2) return "feature" as const;
+  if (context === "archive" && index === 0 && items.length > 6) return "feature" as const;
+  return "standard" as const;
+};
+---
+
+<ol class:list={["editorial-list", `editorial-list--${layout}`, `editorial-list--${context}`]}>
+  {items.map((item, index) => {
+    const variant = variantFor(index);
+    return (
+      <li
+        class:list={[
+          "editorial-list__item",
+          `editorial-list__item--${variant}`,
+          context === "home" && index === 0 && "editorial-list__item--lead",
+        ]}
+      >
+        <ContentCard
+          {item}
+          {variant}
+          position={index + 1}
+          {headingLevel}
+        />
+      </li>
+    );
+  })}
+</ol>
