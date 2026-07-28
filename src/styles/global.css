@@ -797,6 +797,35 @@
     font-size: var(--step--1);
   }
 
+  .site-footer__legal,
+  .site-footer__credit,
+  .site-footer__creator {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-footer__legal {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.55rem;
+  }
+
+  .site-footer__credit {
+    gap: 0.45rem;
+  }
+
+  .site-footer__creator {
+    flex: 0 0 auto;
+  }
+
+  .site-footer__creator-logo {
+    width: auto;
+    height: 1.15rem;
+  }
+
+  .site-footer__separator {
+    color: rgb(255 255 255 / 32%);
+  }
+
   .empty-state {
     padding: var(--space-l);
     border: 1px solid var(--line);

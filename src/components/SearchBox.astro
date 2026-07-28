@@ -6,15 +6,20 @@ interface Props {
 }
 
 const { locale } = Astro.props;
+const copy = {
+  es: { label: "Buscar en el sitio", placeholder: "Informe, evento, ciudad…" },
+  en: { label: "Search the website", placeholder: "Report, event, city…" },
+  fr: { label: "Rechercher sur le site", placeholder: "Rapport, événement, ville…" },
+}[locale];
 ---
 
 <section class="prose" data-search-root data-locale={locale}>
-  <label for="site-search"><strong>{locale === "es" ? "Buscar en el sitio" : "Search the website"}</strong></label>
+  <label for="site-search"><strong>{copy.label}</strong></label>
   <input
     id="site-search"
     type="search"
     autocomplete="off"
-    placeholder={locale === "es" ? "Informe, evento, ciudad…" : "Report, event, city…"}
+    placeholder={copy.placeholder}
   />
   <p aria-live="polite" data-search-status></p>
   <ol data-search-results></ol>
@@ -56,6 +61,27 @@ const { locale } = Astro.props;
   const status = root?.querySelector<HTMLElement>("[data-search-status]");
   const results = root?.querySelector<HTMLOListElement>("[data-search-results]");
   const locale = root?.dataset.locale || "es";
+  const messages = {
+    es: {
+      minimum: "Escribe al menos dos caracteres.",
+      searching: "Buscando…",
+      results: (count: number) => `${count} resultados`,
+      unavailable: "La búsqueda estará disponible en la versión compilada.",
+    },
+    en: {
+      minimum: "Enter at least two characters.",
+      searching: "Searching…",
+      results: (count: number) => `${count} results`,
+      unavailable: "Search will be available in the compiled version.",
+    },
+    fr: {
+      minimum: "Saisissez au moins deux caractères.",
+      searching: "Recherche…",
+      results: (count: number) => `${count} résultats`,
+      unavailable: "La recherche sera disponible dans la version compilée.",
+    },
+  };
+  const copy = messages[locale as keyof typeof messages] || messages.es;
 
   type PagefindResult = {
     url: string;
@@ -83,11 +109,11 @@ const { locale } = Astro.props;
     const query = input.value.trim();
     if (!status || !results) return;
     if (query.length < 2) {
-      status.textContent = locale === "es" ? "Escribe al menos dos caracteres." : "Enter at least two characters.";
+      status.textContent = copy.minimum;
       results.replaceChildren();
       return;
     }
-    status.textContent = locale === "es" ? "Buscando…" : "Searching…";
+    status.textContent = copy.searching;
     try {
       const api = await ensurePagefind();
       const search = await api.search(query);
@@ -105,13 +131,9 @@ const { locale } = Astro.props;
         }
         return item;
       }));
-      status.textContent = locale === "es"
-        ? `${entries.length} resultados`
-        : `${entries.length} results`;
+      status.textContent = copy.results(entries.length);
     } catch {
-      status.textContent = locale === "es"
-        ? "La búsqueda estará disponible en la versión compilada."
-        : "Search will be available in the compiled version.";
+      status.textContent = copy.unavailable;
     }
   });
 </script>

@@ -8,6 +8,20 @@ interface Props {
 }
 
 const { locale, videoId, title } = Astro.props;
+const copy = {
+  es: {
+    notice: "Al reproducir el vídeo se establecerá una conexión con YouTube. No se carga contenido externo antes de tu elección.",
+    play: "Reproducir vídeo",
+  },
+  en: {
+    notice: "Playing the video will connect to YouTube. No external content loads before you choose to play it.",
+    play: "Play video",
+  },
+  fr: {
+    notice: "La lecture de la vidéo établira une connexion avec YouTube. Aucun contenu externe n’est chargé avant votre choix.",
+    play: "Lire la vidéo",
+  },
+}[locale];
 ---
 
 <section
@@ -19,12 +33,10 @@ const { locale, videoId, title } = Astro.props;
   <div class="video-consent__content">
     <h2>{title}</h2>
     <p>
-      {locale === "es"
-        ? "Al reproducir el vídeo se establecerá una conexión con YouTube. No se carga contenido externo antes de tu elección."
-        : "Playing the video will connect to YouTube. No external content loads before you choose to play it."}
+      {copy.notice}
     </p>
     <button class="button" type="button" data-video-play>
-      {locale === "es" ? "Reproducir vídeo" : "Play video"}
+      {copy.play}
     </button>
   </div>
 </section>

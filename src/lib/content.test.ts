@@ -1,13 +1,27 @@
 import { describe, expect, it } from "vitest";
-import { editorialItems, staticPages } from "../data/content";
+import { editorialItems, localizedPathsFor, staticPages } from "../data/content";
+import { locales } from "../data/site";
 
-describe("bilingual content contract", () => {
-  it("has a reciprocal alternate for every editorial item", () => {
+describe("multilingual content contract", () => {
+  it("has Spanish, English and French versions for every editorial item", () => {
     for (const item of editorialItems) {
-      const alternate = editorialItems.find((candidate) => candidate.path === item.alternatePath);
-      expect(alternate, `Missing alternate for ${item.path}`).toBeTruthy();
-      expect(alternate?.alternatePath).toBe(item.path);
-      expect(alternate?.locale).not.toBe(item.locale);
+      const localizedPaths = localizedPathsFor(item, editorialItems);
+      for (const locale of locales) {
+        const alternate = editorialItems.find((candidate) => candidate.path === localizedPaths[locale]);
+        expect(alternate, `Missing ${locale} translation for ${item.id}`).toBeTruthy();
+        expect(alternate?.locale).toBe(locale);
+      }
+    }
+  });
+
+  it("has Spanish, English and French versions for every static page", () => {
+    for (const page of staticPages) {
+      const localizedPaths = localizedPathsFor(page, staticPages);
+      for (const locale of locales) {
+        const alternate = staticPages.find((candidate) => candidate.path === localizedPaths[locale]);
+        expect(alternate, `Missing ${locale} translation for ${page.id}`).toBeTruthy();
+        expect(alternate?.locale).toBe(locale);
+      }
     }
   });
 
@@ -17,9 +31,10 @@ describe("bilingual content contract", () => {
   });
 
   it("uses locale-prefixed canonical paths", () => {
-    for (const path of [...staticPages, ...editorialItems].map((entry) => entry.path)) {
-      expect(path).toMatch(/^\/(es|en)\//);
-      expect(path).toMatch(/\/$/);
+    for (const entry of [...staticPages, ...editorialItems]) {
+      expect(entry.path).toMatch(new RegExp(`^/${entry.locale}/`));
+      expect(entry.path).toMatch(/^\/(es|en|fr)\//);
+      expect(entry.path).toMatch(/\/$/);
     }
   });
 });

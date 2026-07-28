@@ -10,7 +10,11 @@ interface Props {
 }
 
 const { item, variant = "standard", position, headingLevel = 3 } = Astro.props;
-const actionLabel = item.locale === "es" ? "Ver contenido" : "View item";
+const actionLabel = {
+  es: "Ver contenido",
+  en: "View item",
+  fr: "Voir le contenu",
+}[item.locale];
 const Heading = headingLevel === 2 ? "h2" : "h3";
 const headingId = `card-title-${item.id}`;
 ---

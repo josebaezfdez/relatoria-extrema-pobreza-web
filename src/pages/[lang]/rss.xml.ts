@@ -1,8 +1,8 @@
 import { itemsFor } from "@/data/content";
-import { SITE_URL, type Locale } from "@/data/site";
+import { locales, SITE_URL, type Locale } from "@/data/site";
 
 export function getStaticPaths() {
-  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+  return locales.map((lang) => ({ params: { lang } }));
 }
 
 function escapeXml(value: string): string {
@@ -15,15 +15,28 @@ function escapeXml(value: string): string {
 }
 
 export function GET({ params }: { params: { lang?: string } }) {
-  const locale = (params.lang === "en" ? "en" : "es") as Locale;
+  const locale = (locales.includes(params.lang as Locale) ? params.lang : "es") as Locale;
   const items = itemsFor(locale);
-  const title = locale === "es" ? "Actualidad de la Relatoría" : "Special Rapporteur news";
+  const copy = {
+    es: {
+      title: "Actualidad de la Relatoría",
+      description: "Informes, visitas y actividades del mandato.",
+    },
+    en: {
+      title: "Special Rapporteur news",
+      description: "Reports, visits and mandate activities.",
+    },
+    fr: {
+      title: "Actualités de la Rapporteuse spéciale",
+      description: "Rapports, visites et activités du mandat.",
+    },
+  }[locale];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${escapeXml(title)}</title>
+    <title>${escapeXml(copy.title)}</title>
     <link>${SITE_URL}/${locale}/</link>
-    <description>${escapeXml(locale === "es" ? "Informes, visitas y actividades del mandato." : "Reports, visits and mandate activities.")}</description>
+    <description>${escapeXml(copy.description)}</description>
     <language>${locale}</language>
     ${items.map((item) => `<item>
       <title>${escapeXml(item.title)}</title>

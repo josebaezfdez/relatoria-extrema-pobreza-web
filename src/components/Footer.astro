@@ -7,17 +7,18 @@ interface Props {
 
 const { locale } = Astro.props;
 const strings = localeConfig[locale];
+const ohchrUrl = `https://www.ohchr.org/${locale}/special-procedures/sr-poverty`;
 ---
 
 <section class="complaint-section container" aria-labelledby="complaint-title">
   <div class="complaint-cta">
     <div>
-      <p class="eyebrow">{locale === "es" ? "Canal oficial" : "Official channel"}</p>
+      <p class="eyebrow">{strings.officialChannel}</p>
       <h2 id="complaint-title">{strings.complaint}</h2>
       <p>{strings.complaintNote}</p>
     </div>
     <a class="button" href="https://spsubmission.ohchr.org/">
-      <span>{locale === "es" ? "Ir al mecanismo oficial" : "Go to the official mechanism"}</span>
+      <span>{strings.officialMechanism}</span>
       <span class="button__icon" aria-hidden="true">↗</span>
     </a>
   </div>
@@ -26,27 +27,66 @@ const strings = localeConfig[locale];
   <div class="container">
     <div class="site-footer__grid">
       <section class="site-footer__brand">
-        <p class="site-footer__mandate">{locale === "es" ? "Mandato 2026–2029" : "Mandate 2026–2029"}</p>
-        <h2>{locale === "es" ? "Pobreza, dignidad y derechos." : "Poverty, dignity and rights."}</h2>
+        <p class="site-footer__mandate">{strings.mandatePeriod}</p>
+        <h2>{strings.footerClaim}</h2>
         <p>{strings.disclaimer}</p>
       </section>
-      <nav aria-label={locale === "es" ? "Información legal" : "Legal information"}>
-        <h3>{locale === "es" ? "Información" : "Information"}</h3>
+      <nav aria-label={strings.legalInformation}>
+        <h3>{strings.information}</h3>
         <ul>
           {footerNavigation[locale].map((item) => <li><a href={item.href}>{item.label}</a></li>)}
         </ul>
       </nav>
       <section>
-        <h3>{locale === "es" ? "Contacto oficial" : "Official contact"}</h3>
+        <h3>{strings.officialContact}</h3>
         <address>
           <p><a href="mailto:hrc-sr-extremepoverty-diazgalan@un.org">hrc-sr-extremepoverty-diazgalan@un.org</a></p>
-          <p><a href="https://www.ohchr.org/es/special-procedures/sr-poverty">OHCHR ↗</a></p>
+          <p><a href={ohchrUrl}>OHCHR ↗</a></p>
         </address>
       </section>
     </div>
     <div class="site-footer__bottom">
-      <span>© {new Date().getFullYear()} Elena Carolina Díaz Galán</span>
-      <span>{locale === "es" ? "Con la colaboración del CEIB–URJC" : "With the collaboration of CEIB–URJC"}</span>
+      <small class="site-footer__legal">
+        <span>© 2026 Elena Carolina Díaz Galán</span>
+        <span class="site-footer__separator" aria-hidden="true">|</span>
+        <span>Todos los derechos reservados</span>
+        <span class="site-footer__separator" aria-hidden="true">|</span>
+        <span class="site-footer__credit">
+          Página web diseñada por
+          <a
+            class="site-footer__creator"
+            href="https://creaerte.com/"
+            aria-label="Visitar la página web de creaerte"
+          >
+            <img
+              class="site-footer__creator-logo"
+              src="https://creaerte.com/imagenes/creaerte.svg"
+              alt="creaerte"
+              width="126"
+              height="29"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </span>
+      </small>
+      <a
+        class="site-footer__partner"
+        href="https://www.urjc.es/ceib"
+        aria-label={strings.collaboration}
+      >
+        <picture>
+          <source type="image/webp" srcset="/brand/ceib-logo.webp" />
+          <img
+            src="/brand/ceib-logo.png"
+            alt={strings.collaboration}
+            width="1000"
+            height="206"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </a>
     </div>
   </div>
 </footer>

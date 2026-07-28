@@ -1,9 +1,10 @@
+import os
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
 
-BASE_URL = "http://127.0.0.1:4321"
+BASE_URL = os.getenv("BASE_URL", "http://127.0.0.1:4321")
 OUTPUT = Path(__file__).resolve().parents[1] / "artifacts"
 OUTPUT.mkdir(exist_ok=True)
 
@@ -13,6 +14,9 @@ routes = {
     "reports": "/es/informes/",
     "mandate": "/es/mandato/",
     "article": "/es/actualidad/medios/cadena-ser-oeste/",
+    "mpdl": "/es/actualidad/eventos/desafios-cooperacion-paz/",
+    "pretoria": "/es/actualidad/eventos/dialogo-pobreza-derechos-humanos/",
+    "gallery": "/es/visitas/paris-julio-2026/",
 }
 
 issues: list[str] = []
@@ -68,6 +72,29 @@ with sync_playwright() as playwright:
                     f"{viewport_name}/{route_name}: broken DOM images {broken_images}"
                 )
 
+            if route_name == "home":
+                quote_author = page.locator(".quote-band cite").inner_text()
+                if quote_author.strip().casefold() != "Nelson Mandela".casefold():
+                    issues.append(
+                        f"{viewport_name}/home: unexpected quote attribution {quote_author!r}"
+                    )
+
+            if route_name == "mpdl":
+                if "22 de junio de 2026" not in page.locator("article").inner_text():
+                    issues.append(f"{viewport_name}/mpdl: verified event date is missing")
+
+            if route_name == "pretoria":
+                poster = page.locator(".article-header__image img")
+                if "dialogue-poverty-human-rights-poster" not in (poster.get_attribute("src") or ""):
+                    issues.append(f"{viewport_name}/pretoria: event poster is not the lead image")
+
+            if route_name == "gallery":
+                gallery_images = page.locator(".media-gallery__item").count()
+                if gallery_images != 6:
+                    issues.append(
+                        f"{viewport_name}/gallery: expected 6 images, found {gallery_images}"
+                    )
+
             overflow = page.evaluate(
                 """() => ({
                     documentWidth: document.documentElement.scrollWidth,
@@ -86,7 +113,10 @@ with sync_playwright() as playwright:
                     f"{overflow['offenders']}"
                 )
 
-            if route_name in {"home", "news", "reports", "article"}:
+            if route_name in {"home", "news", "reports", "article"} or (
+                viewport_name in {"desktop", "mobile"}
+                and route_name in {"mpdl", "pretoria", "gallery"}
+            ):
                 page.screenshot(
                     path=OUTPUT / f"{viewport_name}-{route_name}.png",
                     full_page=True,

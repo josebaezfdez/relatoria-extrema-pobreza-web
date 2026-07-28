@@ -1,4 +1,6 @@
-export type Locale = "es" | "en";
+export const locales = ["es", "en", "fr"] as const;
+export type Locale = (typeof locales)[number];
+export type LocalizedPaths = Record<Locale, string>;
 
 export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "https://srextremepovertyhr.org";
 
@@ -12,10 +14,27 @@ export const localeConfig = {
     menu: "Menú",
     close: "Cerrar",
     search: "Buscar",
+    searchPath: "buscar",
     readMore: "Leer la información completa",
     latest: "Actualidad",
     all: "Ver todo",
     external: "Abre en un sitio externo",
+    status: "Sitio independiente del mandato actual",
+    languageSelector: "Selector de idioma",
+    homeLabel: "Inicio",
+    primaryNavigation: "Navegación principal",
+    mobileNavigation: "Navegación móvil",
+    officialChannel: "Canal oficial",
+    officialMechanism: "Ir al mecanismo oficial",
+    mandatePeriod: "Mandato 2026–2029",
+    footerClaim: "Pobreza, dignidad y derechos.",
+    legalInformation: "Información legal",
+    information: "Información",
+    officialContact: "Contacto oficial",
+    collaboration: "Con la colaboración del CEIB–URJC",
+    siteName: "Relatoría sobre extrema pobreza",
+    fullSiteName: "Relatora Especial sobre extrema pobreza y derechos humanos",
+    ogLocale: "es_ES",
     disclaimer:
       "Esta web no está gestionada por la Oficina del Alto Comisionado de las Naciones Unidas para los Derechos Humanos. Su contenido no refleja la postura oficial de las Naciones Unidas.",
     complaint: "Presentar una comunicación ante OHCHR",
@@ -30,14 +49,66 @@ export const localeConfig = {
     menu: "Menu",
     close: "Close",
     search: "Search",
+    searchPath: "search",
     readMore: "Read the full information",
     latest: "Latest",
     all: "View all",
     external: "Opens on an external website",
+    status: "Independent website for the current mandate",
+    languageSelector: "Language selector",
+    homeLabel: "Home",
+    primaryNavigation: "Primary navigation",
+    mobileNavigation: "Mobile navigation",
+    officialChannel: "Official channel",
+    officialMechanism: "Go to the official mechanism",
+    mandatePeriod: "Mandate 2026–2029",
+    footerClaim: "Poverty, dignity and rights.",
+    legalInformation: "Legal information",
+    information: "Information",
+    officialContact: "Official contact",
+    collaboration: "With the collaboration of CEIB–URJC",
+    siteName: "Special Rapporteur on extreme poverty",
+    fullSiteName: "Special Rapporteur on extreme poverty and human rights",
+    ogLocale: "en_US",
     disclaimer:
       "This website is not managed by the Office of the United Nations High Commissioner for Human Rights. Its content does not reflect the official position of the United Nations.",
     complaint: "Submit information to OHCHR",
     complaintNote: "This website does not receive or process complaints.",
+  },
+  fr: {
+    htmlLang: "fr",
+    label: "Français",
+    short: "FR",
+    home: "/fr/",
+    skip: "Aller au contenu",
+    menu: "Menu",
+    close: "Fermer",
+    search: "Rechercher",
+    searchPath: "recherche",
+    readMore: "Lire l’information complète",
+    latest: "Actualités",
+    all: "Tout voir",
+    external: "S’ouvre sur un site externe",
+    status: "Site indépendant consacré au mandat actuel",
+    languageSelector: "Sélecteur de langue",
+    homeLabel: "Accueil",
+    primaryNavigation: "Navigation principale",
+    mobileNavigation: "Navigation mobile",
+    officialChannel: "Canal officiel",
+    officialMechanism: "Accéder au mécanisme officiel",
+    mandatePeriod: "Mandat 2026–2029",
+    footerClaim: "Pauvreté, dignité et droits.",
+    legalInformation: "Informations juridiques",
+    information: "Informations",
+    officialContact: "Contact officiel",
+    collaboration: "Avec la collaboration du CEIB–URJC",
+    siteName: "Rapporteuse spéciale sur l’extrême pauvreté",
+    fullSiteName: "Rapporteuse spéciale sur l’extrême pauvreté et les droits de l’homme",
+    ogLocale: "fr_FR",
+    disclaimer:
+      "Ce site n’est pas géré par le Haut-Commissariat des Nations Unies aux droits de l’homme. Son contenu ne reflète pas la position officielle des Nations Unies.",
+    complaint: "Soumettre des informations au HCDH",
+    complaintNote: "Ce site ne reçoit ni ne traite les plaintes.",
   },
 } satisfies Record<Locale, Record<string, string>>;
 
@@ -58,6 +129,14 @@ export const navigation = {
     { label: "News", href: "/en/news/" },
     { label: "Initiatives", href: "/en/initiatives/" },
   ],
+  fr: [
+    { label: "Mandat", href: "/fr/mandat/" },
+    { label: "Titulaire", href: "/fr/titulaire-actuelle/" },
+    { label: "Rapports", href: "/fr/rapports/" },
+    { label: "Visites", href: "/fr/visites/" },
+    { label: "Actualités", href: "/fr/actualites/" },
+    { label: "Initiatives", href: "/fr/initiatives/" },
+  ],
 } satisfies Record<Locale, { label: string; href: string }[]>;
 
 export const footerNavigation = {
@@ -73,6 +152,24 @@ export const footerNavigation = {
     { label: "Privacy", href: "/en/privacy/" },
     { label: "Accessibility", href: "/en/accessibility/" },
   ],
+  fr: [
+    { label: "Contact", href: "/fr/contact/" },
+    { label: "Mentions légales", href: "/fr/mentions-legales/" },
+    { label: "Confidentialité", href: "/fr/confidentialite/" },
+    { label: "Accessibilité", href: "/fr/accessibilite/" },
+  ],
 } satisfies Record<Locale, { label: string; href: string }[]>;
+
+export const homePaths: LocalizedPaths = {
+  es: "/es/",
+  en: "/en/",
+  fr: "/fr/",
+};
+
+export const searchPaths: LocalizedPaths = {
+  es: "/es/buscar/",
+  en: "/en/search/",
+  fr: "/fr/recherche/",
+};
 
 export const socialImage = "/media/elena-diaz-galan-portrait/cover.jpg";
