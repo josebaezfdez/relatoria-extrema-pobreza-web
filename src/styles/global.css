@@ -819,7 +819,8 @@
 
   .site-footer__creator-logo {
     width: auto;
-    height: 1.15rem;
+    height: 0.8rem;
+    filter: brightness(0) invert(1);
   }
 
   .site-footer__separator {
