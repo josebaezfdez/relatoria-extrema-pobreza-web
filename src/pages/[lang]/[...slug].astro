@@ -147,6 +147,16 @@ const schema = isItem
           </div>
         </header>
         <div class="prose" set:html={props.item.body} />
+        {props.item.video && (
+          <div class="container section">
+            <HostedVideo
+              locale={locale}
+              title={props.item.video.title}
+              src={props.item.video.src}
+              poster={props.item.video.poster}
+            />
+          </div>
+        )}
         {props.item.gallery?.length && (
           <section class="media-gallery section" aria-labelledby="article-gallery-title">
             <div class="container">
@@ -183,16 +193,6 @@ const schema = isItem
               {props.item.links?.map((link) => <li><a href={link.href}>{link.label}<span aria-hidden="true">↗</span></a></li>)}
             </ul>
           </section>
-        )}
-        {props.item.video && (
-          <div class="container section">
-            <HostedVideo
-              locale={locale}
-              title={props.item.video.title}
-              src={props.item.video.src}
-              poster={props.item.video.poster}
-            />
-          </div>
         )}
       </article>
     </>

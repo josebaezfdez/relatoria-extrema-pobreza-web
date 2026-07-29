@@ -845,7 +845,7 @@ export const editorialItems: EditorialItem[] = [
     image: "2026-07-yuste-course-01",
     imageAlt: "Participación de Elena Díaz Galán en el curso UE-ALC de Yuste.",
     gallery: galleryFor("yuste", "es"),
-    body: `<p class="lead">La intervención abordó las relaciones entre la Unión Europea, América Latina y el Caribe en un contexto de transformación internacional.</p><p>La grabación de la intervención está disponible en el reproductor de esta página.</p>`,
+    body: `<p class="lead">La intervención abordó las relaciones entre la Unión Europea, América Latina y el Caribe en un contexto de transformación internacional.</p>`,
     video: {
       title: "Intervención de Elena Díaz Galán en el curso UE-ALC",
       src: `${VIDEO_BASE_URL}/videos/elena-diaz-yuste-2026.mp4`,
@@ -868,7 +868,7 @@ export const editorialItems: EditorialItem[] = [
     image: "2026-07-yuste-course-01",
     imageAlt: "Elena Díaz Galán taking part in the EU-LAC course in Yuste.",
     gallery: galleryFor("yuste", "en"),
-    body: `<p class="lead">The intervention addressed relations between the European Union, Latin America and the Caribbean in a changing international context.</p><p>The recording is available in the player on this page.</p>`,
+    body: `<p class="lead">The intervention addressed relations between the European Union, Latin America and the Caribbean in a changing international context.</p>`,
     video: {
       title: "Elena Díaz Galán’s contribution to the EU-LAC course",
       src: `${VIDEO_BASE_URL}/videos/elena-diaz-yuste-2026.mp4`,
@@ -892,7 +892,6 @@ export const editorialItems: EditorialItem[] = [
       <p class="lead">Elena Carolina Díaz Galán participó en la jornada organizada por Movimiento por la Paz con motivo de la presentación del número 159 de la revista <em>Tiempo de Paz</em>.</p>
       <p>El encuentro, celebrado en la sede del Parlamento Europeo en Madrid, analizó los desafíos de la cooperación internacional en un contexto marcado por el aumento de los conflictos, las desigualdades y la crisis climática.</p>
       <p>La jornada reunió a representantes institucionales y especialistas en cooperación internacional, acción humanitaria y construcción de paz para reflexionar sobre la cooperación como instrumento de protección de derechos y de construcción de sociedades más justas y pacíficas.</p>
-      <p>La grabación de la intervención está disponible en el reproductor de esta página.</p>
     `,
     video: {
       title: "Intervención en la jornada Desafíos de la cooperación y la paz",
@@ -920,7 +919,6 @@ export const editorialItems: EditorialItem[] = [
       <p class="lead">Elena Carolina Díaz Galán took part in the event organised by Movimiento por la Paz to present issue 159 of the journal <em>Tiempo de Paz</em>.</p>
       <p>Held at the European Parliament’s office in Madrid, the event examined the challenges facing international cooperation amid rising conflict, inequality and the climate crisis.</p>
       <p>Institutional representatives and specialists in international cooperation, humanitarian action and peacebuilding discussed cooperation as a means of protecting rights and building fairer, more peaceful societies.</p>
-      <p>The recording is available in the player on this page.</p>
     `,
     video: {
       title: "Contribution to the event Challenges for cooperation and peace",
@@ -1516,7 +1514,7 @@ export const editorialItems: EditorialItem[] = [
     image: "2026-07-yuste-course-01",
     imageAlt: "Elena Díaz Galán participant au cours UE-ALC à Yuste.",
     gallery: galleryFor("yuste", "fr"),
-    body: `<p class="lead">L’intervention a porté sur les relations entre l’Union européenne, l’Amérique latine et les Caraïbes dans un contexte international en mutation.</p><p>L’enregistrement est disponible dans le lecteur de cette page.</p>`,
+    body: `<p class="lead">L’intervention a porté sur les relations entre l’Union européenne, l’Amérique latine et les Caraïbes dans un contexte international en mutation.</p>`,
     video: {
       title: "Intervention d’Elena Díaz Galán au cours UE-ALC",
       src: `${VIDEO_BASE_URL}/videos/elena-diaz-yuste-2026.mp4`,
@@ -1540,7 +1538,6 @@ export const editorialItems: EditorialItem[] = [
       <p class="lead">Elena Carolina Díaz Galán a participé à la rencontre organisée par Movimiento por la Paz à l’occasion de la présentation du numéro 159 de la revue <em>Tiempo de Paz</em>.</p>
       <p>Organisée dans les locaux du Parlement européen à Madrid, la rencontre a examiné les défis de la coopération internationale dans un contexte marqué par la multiplication des conflits, les inégalités et la crise climatique.</p>
       <p>Des représentants institutionnels et des spécialistes de la coopération internationale, de l’action humanitaire et de la consolidation de la paix ont réfléchi au rôle de la coopération dans la protection des droits et la construction de sociétés plus justes et pacifiques.</p>
-      <p>L’enregistrement est disponible dans le lecteur de cette page.</p>
     `,
     video: {
       title: "Intervention lors de la rencontre Les défis de la coopération et de la paix",
