@@ -16,7 +16,7 @@ const { locale } = Astro.props;
 const path = homePaths[locale];
 const localizedPaths = homePaths;
 const { items } = await getEditorialItems(locale);
-const latest = items.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
+const latest = items.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8);
 const copy = {
   es: {
     title: "Relatora Especial sobre extrema pobreza y derechos humanos",
