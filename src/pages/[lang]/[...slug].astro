@@ -2,8 +2,8 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import EditorialListing from "@/components/EditorialListing.astro";
+import HostedVideo from "@/components/HostedVideo.astro";
 import Picture from "@/components/Picture.astro";
-import VideoConsent from "@/components/VideoConsent.astro";
 import { editorialItems, itemsFor, localizedPathsFor, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
 import { getEditorialItems } from "@/lib/cms";
 import { locales, SITE_URL, type Locale, type LocalizedPaths } from "@/data/site";
@@ -186,7 +186,12 @@ const schema = isItem
         )}
         {props.item.video && (
           <div class="container section">
-            <VideoConsent locale={locale} videoId={props.item.video.id} title={props.item.video.title} />
+            <HostedVideo
+              locale={locale}
+              title={props.item.video.title}
+              src={props.item.video.src}
+              poster={props.item.video.poster}
+            />
           </div>
         )}
       </article>

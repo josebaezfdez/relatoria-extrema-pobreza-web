@@ -24,7 +24,7 @@ export interface EditorialItem {
   body: string;
   links?: { label: string; href: string }[];
   download?: { label: string; href: string };
-  video?: { id: string; title: string };
+  video?: { title: string; src: string; poster?: string };
   audio?: { label: string; href: string };
 }
 
@@ -50,6 +50,8 @@ export interface StaticPage {
 type GalleryAsset = Omit<MediaImage, "alt"> & {
   alt: Record<Locale, string>;
 };
+
+const VIDEO_BASE_URL = "https://pub-64679aa506054abcbbd3e8c93e07fb2b.r2.dev";
 
 const gallerySets = {
   hrc62Report: [
@@ -528,11 +530,13 @@ export const editorialItems: EditorialItem[] = [
       <h2>Una estrategia más allá del crecimiento</h2>
       <p>El informe propone situar el bienestar, la igualdad, la sostenibilidad y la participación efectiva de las personas en situación de pobreza en el centro de las estrategias nacionales.</p>
       <p>La presentación subrayó que la pobreza es multidimensional y que su erradicación no puede reducirse al aumento de los ingresos o del producto interior bruto.</p>
-      <h2>Vídeo de la presentación</h2>
-      <p>El vídeo se carga únicamente cuando la persona visitante lo solicita, para evitar conexiones automáticas con plataformas externas.</p>
+      <h2>Grabación oficial</h2>
+      <p>La sesión completa está disponible en la plataforma audiovisual oficial de Naciones Unidas.</p>
     `,
-    video: { id: "g134D1hsoXw", title: "Presentación ante la 62.ª sesión del Consejo de Derechos Humanos" },
-    links: [{ label: "Mandato oficial en OHCHR", href: "https://www.ohchr.org/es/special-procedures/sr-poverty" }],
+    links: [
+      { label: "Ver la sesión en UN Web TV", href: "https://webtv.un.org/en/asset/k1p/k1pocugoo5" },
+      { label: "Mandato oficial en OHCHR", href: "https://www.ohchr.org/es/special-procedures/sr-poverty" },
+    ],
   },
   {
     id: "hrc62-roadmap-en",
@@ -556,11 +560,13 @@ export const editorialItems: EditorialItem[] = [
       <h2>A strategy beyond growth</h2>
       <p>The report proposes placing well-being, equality, sustainability and the effective participation of people living in poverty at the centre of national strategies.</p>
       <p>The presentation stressed that poverty is multidimensional and that its eradication cannot be reduced to increases in income or gross domestic product.</p>
-      <h2>Video of the presentation</h2>
-      <p>The video loads only when requested by the visitor, avoiding automatic connections to external platforms.</p>
+      <h2>Official recording</h2>
+      <p>The full session is available on the United Nations official audiovisual platform.</p>
     `,
-    video: { id: "g134D1hsoXw", title: "Presentation to the 62nd session of the Human Rights Council" },
-    links: [{ label: "Official OHCHR mandate page", href: "https://www.ohchr.org/en/special-procedures/sr-poverty" }],
+    links: [
+      { label: "Watch the session on UN Web TV", href: "https://webtv.un.org/en/asset/k1p/k1pocugoo5" },
+      { label: "Official OHCHR mandate page", href: "https://www.ohchr.org/en/special-procedures/sr-poverty" },
+    ],
   },
   {
     id: "paris-es",
@@ -839,7 +845,12 @@ export const editorialItems: EditorialItem[] = [
     image: "2026-07-yuste-course-01",
     imageAlt: "Participación de Elena Díaz Galán en el curso UE-ALC de Yuste.",
     gallery: galleryFor("yuste", "es"),
-    body: `<p class="lead">La intervención abordó las relaciones entre la Unión Europea, América Latina y el Caribe en un contexto de transformación internacional.</p><aside class="note"><strong>Vídeo pendiente.</strong> El vídeo maestro entregado corresponde exclusivamente a este curso. Se publicará tras completar control audiovisual, subtítulos y transcripción.</aside>`,
+    body: `<p class="lead">La intervención abordó las relaciones entre la Unión Europea, América Latina y el Caribe en un contexto de transformación internacional.</p><p>La grabación de la intervención está disponible en el reproductor de esta página.</p>`,
+    video: {
+      title: "Intervención de Elena Díaz Galán en el curso UE-ALC",
+      src: `${VIDEO_BASE_URL}/videos/elena-diaz-yuste-2026.mp4`,
+      poster: `${VIDEO_BASE_URL}/posters/elena-diaz-yuste-2026.jpg`,
+    },
     links: [{ label: "Página oficial del curso en la Fundación Yuste", href: "https://www.fundacionyuste.org/campusyuste2026_2/" }],
   },
   {
@@ -857,7 +868,12 @@ export const editorialItems: EditorialItem[] = [
     image: "2026-07-yuste-course-01",
     imageAlt: "Elena Díaz Galán taking part in the EU-LAC course in Yuste.",
     gallery: galleryFor("yuste", "en"),
-    body: `<p class="lead">The intervention addressed relations between the European Union, Latin America and the Caribbean in a changing international context.</p><aside class="note"><strong>Video pending.</strong> The supplied master video belongs exclusively to this course. It will be published after audiovisual quality control, captions and a transcript are complete.</aside>`,
+    body: `<p class="lead">The intervention addressed relations between the European Union, Latin America and the Caribbean in a changing international context.</p><p>The recording is available in the player on this page.</p>`,
+    video: {
+      title: "Elena Díaz Galán’s contribution to the EU-LAC course",
+      src: `${VIDEO_BASE_URL}/videos/elena-diaz-yuste-2026.mp4`,
+      poster: `${VIDEO_BASE_URL}/posters/elena-diaz-yuste-2026.jpg`,
+    },
     links: [{ label: "Official course page at Fundación Yuste", href: "https://www.fundacionyuste.org/campusyuste2026_2/" }],
   },
   {
@@ -876,8 +892,13 @@ export const editorialItems: EditorialItem[] = [
       <p class="lead">Elena Carolina Díaz Galán participó en la jornada organizada por Movimiento por la Paz con motivo de la presentación del número 159 de la revista <em>Tiempo de Paz</em>.</p>
       <p>El encuentro, celebrado en la sede del Parlamento Europeo en Madrid, analizó los desafíos de la cooperación internacional en un contexto marcado por el aumento de los conflictos, las desigualdades y la crisis climática.</p>
       <p>La jornada reunió a representantes institucionales y especialistas en cooperación internacional, acción humanitaria y construcción de paz para reflexionar sobre la cooperación como instrumento de protección de derechos y de construcción de sociedades más justas y pacíficas.</p>
-      <aside class="note"><strong>Vídeo pendiente.</strong> La grabación entregada se publicará cuando finalicen el control audiovisual, los subtítulos y la transcripción accesible.</aside>
+      <p>La grabación de la intervención está disponible en el reproductor de esta página.</p>
     `,
+    video: {
+      title: "Intervención en la jornada Desafíos de la cooperación y la paz",
+      src: `${VIDEO_BASE_URL}/videos/tiempo-de-paz-2026.mp4`,
+      poster: `${VIDEO_BASE_URL}/posters/tiempo-de-paz-2026.jpg`,
+    },
     links: [
       { label: "Noticias de Movimiento por la Paz", href: "https://www.mpdl.org/noticias" },
       { label: "Número 159 de Tiempo de Paz", href: "https://www.fundipax.org/revista-tiempo-de-paz-159-desafios-de-la-cooperacion-y-la-paz/" },
@@ -899,8 +920,13 @@ export const editorialItems: EditorialItem[] = [
       <p class="lead">Elena Carolina Díaz Galán took part in the event organised by Movimiento por la Paz to present issue 159 of the journal <em>Tiempo de Paz</em>.</p>
       <p>Held at the European Parliament’s office in Madrid, the event examined the challenges facing international cooperation amid rising conflict, inequality and the climate crisis.</p>
       <p>Institutional representatives and specialists in international cooperation, humanitarian action and peacebuilding discussed cooperation as a means of protecting rights and building fairer, more peaceful societies.</p>
-      <aside class="note"><strong>Video pending.</strong> The supplied recording will be published after audiovisual quality control, captions and an accessible transcript are complete.</aside>
+      <p>The recording is available in the player on this page.</p>
     `,
+    video: {
+      title: "Contribution to the event Challenges for cooperation and peace",
+      src: `${VIDEO_BASE_URL}/videos/tiempo-de-paz-2026.mp4`,
+      poster: `${VIDEO_BASE_URL}/posters/tiempo-de-paz-2026.jpg`,
+    },
     links: [
       { label: "Movimiento por la Paz news", href: "https://www.mpdl.org/noticias" },
       { label: "Issue 159 of Tiempo de Paz", href: "https://www.fundipax.org/revista-tiempo-de-paz-159-desafios-de-la-cooperacion-y-la-paz/" },
@@ -1336,11 +1362,13 @@ export const editorialItems: EditorialItem[] = [
       <h2>Une stratégie au-delà de la croissance</h2>
       <p>Le rapport propose de placer le bien-être, l’égalité, la durabilité et la participation effective des personnes vivant dans la pauvreté au cœur des stratégies nationales.</p>
       <p>La présentation a souligné que la pauvreté est multidimensionnelle et que son éradication ne peut se réduire à l’augmentation des revenus ou du produit intérieur brut.</p>
-      <h2>Vidéo de la présentation</h2>
-      <p>La vidéo n’est chargée qu’à la demande de la personne qui visite le site, afin d’éviter toute connexion automatique à des plateformes externes.</p>
+      <h2>Enregistrement officiel</h2>
+      <p>La session complète est disponible sur la plateforme audiovisuelle officielle des Nations Unies.</p>
     `,
-    video: { id: "g134D1hsoXw", title: "Présentation à la 62e session du Conseil des droits de l’homme" },
-    links: [{ label: "Page officielle du mandat sur le site du HCDH", href: "https://www.ohchr.org/fr/special-procedures/sr-poverty" }],
+    links: [
+      { label: "Voir la session sur UN Web TV", href: "https://webtv.un.org/fr/asset/k1p/k1pocugoo5" },
+      { label: "Page officielle du mandat sur le site du HCDH", href: "https://www.ohchr.org/fr/special-procedures/sr-poverty" },
+    ],
   },
   {
     id: "paris-fr",
@@ -1488,7 +1516,12 @@ export const editorialItems: EditorialItem[] = [
     image: "2026-07-yuste-course-01",
     imageAlt: "Elena Díaz Galán participant au cours UE-ALC à Yuste.",
     gallery: galleryFor("yuste", "fr"),
-    body: `<p class="lead">L’intervention a porté sur les relations entre l’Union européenne, l’Amérique latine et les Caraïbes dans un contexte international en mutation.</p><aside class="note"><strong>Vidéo à venir.</strong> La vidéo source fournie concerne exclusivement ce cours. Elle sera publiée après le contrôle de qualité audiovisuelle et la réalisation des sous-titres et de la transcription.</aside>`,
+    body: `<p class="lead">L’intervention a porté sur les relations entre l’Union européenne, l’Amérique latine et les Caraïbes dans un contexte international en mutation.</p><p>L’enregistrement est disponible dans le lecteur de cette page.</p>`,
+    video: {
+      title: "Intervention d’Elena Díaz Galán au cours UE-ALC",
+      src: `${VIDEO_BASE_URL}/videos/elena-diaz-yuste-2026.mp4`,
+      poster: `${VIDEO_BASE_URL}/posters/elena-diaz-yuste-2026.jpg`,
+    },
     links: [{ label: "Page officielle du cours de la Fondation Yuste", href: "https://www.fundacionyuste.org/campusyuste2026_2/" }],
   },
   {
@@ -1507,8 +1540,13 @@ export const editorialItems: EditorialItem[] = [
       <p class="lead">Elena Carolina Díaz Galán a participé à la rencontre organisée par Movimiento por la Paz à l’occasion de la présentation du numéro 159 de la revue <em>Tiempo de Paz</em>.</p>
       <p>Organisée dans les locaux du Parlement européen à Madrid, la rencontre a examiné les défis de la coopération internationale dans un contexte marqué par la multiplication des conflits, les inégalités et la crise climatique.</p>
       <p>Des représentants institutionnels et des spécialistes de la coopération internationale, de l’action humanitaire et de la consolidation de la paix ont réfléchi au rôle de la coopération dans la protection des droits et la construction de sociétés plus justes et pacifiques.</p>
-      <aside class="note"><strong>Vidéo à venir.</strong> L’enregistrement fourni sera publié après le contrôle de qualité audiovisuelle et la réalisation des sous-titres et d’une transcription accessible.</aside>
+      <p>L’enregistrement est disponible dans le lecteur de cette page.</p>
     `,
+    video: {
+      title: "Intervention lors de la rencontre Les défis de la coopération et de la paix",
+      src: `${VIDEO_BASE_URL}/videos/tiempo-de-paz-2026.mp4`,
+      poster: `${VIDEO_BASE_URL}/posters/tiempo-de-paz-2026.jpg`,
+    },
     links: [
       { label: "Actualités de Movimiento por la Paz", href: "https://www.mpdl.org/noticias" },
       { label: "Numéro 159 de Tiempo de Paz", href: "https://www.fundipax.org/revista-tiempo-de-paz-159-desafios-de-la-cooperacion-y-la-paz/" },

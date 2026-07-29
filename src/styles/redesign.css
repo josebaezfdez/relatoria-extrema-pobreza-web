@@ -1016,9 +1016,9 @@
     line-height: 1.45;
   }
 
-  .video-consent {
-    min-height: 29rem;
+  .hosted-video figure {
     border-radius: var(--radius-large);
+    box-shadow: 0 1rem 2.2rem rgb(6 29 45 / 8%);
   }
 
   .complaint-section {
