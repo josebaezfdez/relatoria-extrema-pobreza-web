@@ -13,8 +13,6 @@ export const localeConfig = {
     skip: "Saltar al contenido",
     menu: "Menú",
     close: "Cerrar",
-    search: "Buscar",
-    searchPath: "buscar",
     readMore: "Leer la información completa",
     latest: "Actualidad",
     all: "Ver todo",
@@ -48,8 +46,6 @@ export const localeConfig = {
     skip: "Skip to content",
     menu: "Menu",
     close: "Close",
-    search: "Search",
-    searchPath: "search",
     readMore: "Read the full information",
     latest: "Latest",
     all: "View all",
@@ -83,8 +79,6 @@ export const localeConfig = {
     skip: "Aller au contenu",
     menu: "Menu",
     close: "Fermer",
-    search: "Rechercher",
-    searchPath: "recherche",
     readMore: "Lire l’information complète",
     latest: "Actualités",
     all: "Tout voir",
@@ -164,12 +158,6 @@ export const homePaths: LocalizedPaths = {
   es: "/es/",
   en: "/en/",
   fr: "/fr/",
-};
-
-export const searchPaths: LocalizedPaths = {
-  es: "/es/buscar/",
-  en: "/en/search/",
-  fr: "/fr/recherche/",
 };
 
 export const socialImage = "/media/elena-diaz-galan-portrait/cover.jpg";

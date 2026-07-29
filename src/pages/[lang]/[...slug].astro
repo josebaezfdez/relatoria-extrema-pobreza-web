@@ -3,16 +3,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import EditorialListing from "@/components/EditorialListing.astro";
 import Picture from "@/components/Picture.astro";
-import SearchBox from "@/components/SearchBox.astro";
 import VideoConsent from "@/components/VideoConsent.astro";
 import { editorialItems, itemsFor, localizedPathsFor, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
 import { getEditorialItems } from "@/lib/cms";
-import { locales, searchPaths, SITE_URL, type Locale, type LocalizedPaths } from "@/data/site";
+import { locales, SITE_URL, type Locale, type LocalizedPaths } from "@/data/site";
 
 type RouteProps =
   | { kind: "static"; locale: Locale; page: StaticPage; localizedPaths: LocalizedPaths }
-  | { kind: "item"; locale: Locale; item: EditorialItem; localizedPaths: LocalizedPaths }
-  | { kind: "search"; locale: Locale; path: string; localizedPaths: LocalizedPaths };
+  | { kind: "item"; locale: Locale; item: EditorialItem; localizedPaths: LocalizedPaths };
 
 export async function getStaticPaths() {
   const staticRoutes = staticPages.map((page) => ({
@@ -32,48 +30,30 @@ export async function getStaticPaths() {
     },
     props: { kind: "item" as const, locale: item.locale, item, localizedPaths: localizedPathsFor(item, routedItems) },
   }));
-  const searchRoutes = locales.map((locale) => ({
-    params: { lang: locale, slug: searchPaths[locale].replace(`/${locale}/`, "").replace(/\/$/, "") },
-    props: { kind: "search" as const, locale, path: searchPaths[locale], localizedPaths: searchPaths },
-  }));
-  return [...staticRoutes, ...itemRoutes, ...searchRoutes];
+  return [...staticRoutes, ...itemRoutes];
 }
 
 const props = Astro.props as RouteProps;
 const { locale } = props;
 const isStatic = props.kind === "static";
 const isItem = props.kind === "item";
-const isSearch = props.kind === "search";
 const pageCopy = {
   es: {
-    searchTitle: "Buscar",
-    searchDescription: "Busca informes, visitas, eventos y noticias del mandato.",
     resources: "Recursos y fuentes",
-    archive: "Archivo del mandato",
     gallery: "Galería de imágenes",
   },
   en: {
-    searchTitle: "Search",
-    searchDescription: "Search mandate reports, visits, events and news.",
     resources: "Resources and sources",
-    archive: "Mandate archive",
     gallery: "Image gallery",
   },
   fr: {
-    searchTitle: "Recherche",
-    searchDescription: "Recherchez des rapports, des visites, des événements et des actualités du mandat.",
     resources: "Ressources et sources",
-    archive: "Archives du mandat",
     gallery: "Galerie d’images",
   },
 }[locale];
-const title = isStatic ? props.page.title : isItem ? props.item.title : pageCopy.searchTitle;
-const description = isStatic
-  ? props.page.description
-  : isItem
-    ? props.item.summary
-    : pageCopy.searchDescription;
-const path = isStatic ? props.page.path : isItem ? props.item.path : props.path;
+const title = isStatic ? props.page.title : props.item.title;
+const description = isStatic ? props.page.description : props.item.summary;
+const path = isStatic ? props.page.path : props.item.path;
 const localizedPaths = props.localizedPaths;
 const listingItems = isStatic && props.page.listing ? itemsFor(locale, props.page.listing) : [];
 const image = isItem && props.item.image ? `/media/${props.item.image}/cover.jpg` : undefined;
@@ -123,14 +103,14 @@ const schema = isItem
         <div class="page-header__inner container">
           <div>
             {props.page.eyebrow && <p class="eyebrow">{props.page.eyebrow}</p>}
-            <h1 data-pagefind-meta="title">{props.page.title}</h1>
+            <h1>{props.page.title}</h1>
           </div>
           <p class="page-header__description">{props.page.description}</p>
         </div>
       </header>
-      {props.page.body && <article class="prose" data-pagefind-body set:html={props.page.body} />}
+      {props.page.body && <article class="prose" set:html={props.page.body} />}
       {props.page.listing && (
-        <section class="section listing-section" aria-label={props.page.title} data-pagefind-ignore>
+        <section class="section listing-section" aria-label={props.page.title}>
           <div class="container">
             <EditorialListing items={listingItems} context="archive" headingLevel={2} />
           </div>
@@ -141,12 +121,12 @@ const schema = isItem
 
   {isItem && (
     <>
-      <article data-pagefind-body>
+      <article>
         <header class="article-header">
           <div class="article-header__grid container">
             <div>
               <p class="eyebrow">{props.item.eyebrow}</p>
-              <h1 data-pagefind-meta="title">{props.item.title}</h1>
+              <h1>{props.item.title}</h1>
               <p class="article-header__summary">{props.item.summary}</p>
               <ul class="article-header__meta">
                 <li><time datetime={props.item.date}>{props.item.displayDate}</time></li>
@@ -168,7 +148,7 @@ const schema = isItem
         </header>
         <div class="prose" set:html={props.item.body} />
         {props.item.gallery?.length && (
-          <section class="media-gallery section" aria-labelledby="article-gallery-title" data-pagefind-ignore>
+          <section class="media-gallery section" aria-labelledby="article-gallery-title">
             <div class="container">
               <header class="media-gallery__header">
                 <p class="eyebrow">{pageCopy.gallery}</p>
@@ -213,18 +193,4 @@ const schema = isItem
     </>
   )}
 
-  {isSearch && (
-    <>
-      <header class="page-header">
-        <div class="page-header__inner container">
-          <div>
-            <p class="eyebrow">{pageCopy.archive}</p>
-            <h1>{title}</h1>
-          </div>
-          <p class="page-header__description">{description}</p>
-        </div>
-      </header>
-      <SearchBox {locale} />
-    </>
-  )}
 </BaseLayout>

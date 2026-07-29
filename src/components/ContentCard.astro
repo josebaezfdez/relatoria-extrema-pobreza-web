@@ -21,7 +21,6 @@ const headingId = `card-title-${item.id}`;
 
 <article
   class:list={["editorial-card", `editorial-card--${variant}`]}
-  data-pagefind-filter={`type:${item.type}`}
 >
   <a class="editorial-card__link" href={item.path} aria-labelledby={headingId}>
     {item.image && (

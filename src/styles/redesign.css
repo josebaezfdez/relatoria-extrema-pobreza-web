@@ -199,11 +199,6 @@
     color: var(--white);
   }
 
-  .site-header--hero .site-nav__search {
-    border-color: rgb(255 255 255 / 26%);
-    background: rgb(6 29 45 / 18%);
-  }
-
   .wordmark {
     max-width: 23rem;
   }
@@ -263,25 +258,6 @@
 
   .site-nav a[aria-current="page"] {
     color: var(--clay-dark);
-  }
-
-  .site-nav__search {
-    gap: 0.4rem;
-    padding-inline: 0.7rem;
-    border: 1px solid var(--line);
-    border-radius: 0.35rem;
-    background: rgb(255 255 255 / 58%);
-  }
-
-  .site-nav__search::after {
-    display: none;
-  }
-
-  .site-nav__search svg {
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-width: 1.8;
   }
 
   .hero {
@@ -1222,9 +1198,6 @@
       font-size: 0.7rem;
     }
 
-    .site-nav__search span {
-      display: none;
-    }
   }
 
   @media (max-width: 64rem) {
