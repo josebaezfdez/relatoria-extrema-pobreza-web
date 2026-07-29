@@ -798,8 +798,7 @@
   }
 
   .site-footer__legal,
-  .site-footer__credit,
-  .site-footer__creator {
+  .site-footer__credit {
     display: inline-flex;
     align-items: center;
   }
@@ -815,12 +814,8 @@
 
   .site-footer__creator {
     flex: 0 0 auto;
-  }
-
-  .site-footer__creator-logo {
-    width: auto;
-    height: 0.8rem;
-    filter: brightness(0) invert(1);
+    font-weight: 700;
+    white-space: nowrap;
   }
 
   .site-footer__separator {
