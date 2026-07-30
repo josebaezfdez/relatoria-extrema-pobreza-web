@@ -13,10 +13,10 @@
     "test:a11y": "playwright test"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/newsreader": "^5.2.8",
     "@fontsource-variable/public-sans": "^5.2.8",
-    "astro": "^5.13.5"
+    "astro": "^7.1.6"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
