@@ -73,10 +73,10 @@ with sync_playwright() as playwright:
                 )
 
             if route_name == "home":
-                quote_author = page.locator(".quote-band cite").inner_text()
-                if quote_author.strip().casefold() != "Nelson Mandela".casefold():
+                quote_band = page.locator(".quote-band").inner_text()
+                if "Dignity" not in quote_band and "dignidad" not in quote_band.lower():
                     issues.append(
-                        f"{viewport_name}/home: unexpected quote attribution {quote_author!r}"
+                        f"{viewport_name}/home: mandate principle quote is missing"
                     )
 
             if route_name == "mpdl":

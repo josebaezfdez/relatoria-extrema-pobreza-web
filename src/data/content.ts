@@ -1762,8 +1762,28 @@ export const staticPages: StaticPage[] = [
   { id: "holder-en", locale: "en", path: "/en/current-holder/", alternatePath: "/es/titular-actual/", title: "Elena Carolina Díaz Galán", description: "Profile of the current Special Rapporteur on extreme poverty and human rights.", eyebrow: "Current mandate holder", body: holderEn },
   { id: "reports-es", locale: "es", path: "/es/informes/", alternatePath: "/en/reports/", title: "Informes", description: "Informes presentados ante el Consejo de Derechos Humanos y la Asamblea General.", eyebrow: "Trabajo del mandato", listing: "report" },
   { id: "reports-en", locale: "en", path: "/en/reports/", alternatePath: "/es/informes/", title: "Reports", description: "Reports presented to the Human Rights Council and the General Assembly.", eyebrow: "Mandate work", listing: "report" },
-  { id: "visits-es", locale: "es", path: "/es/visitas/", alternatePath: "/en/visits/", title: "Visitas y trabajo sobre el terreno", description: "Encuentros y visitas relacionados con las prioridades del mandato.", eyebrow: "Terreno", listing: "visit" },
-  { id: "visits-en", locale: "en", path: "/en/visits/", alternatePath: "/es/visitas/", title: "Visits and field work", description: "Meetings and visits related to the mandate’s priorities.", eyebrow: "Field work", listing: "visit" },
+  {
+    id: "visits-es", locale: "es", path: "/es/visitas/", alternatePath: "/en/visits/", title: "Visitas y trabajo sobre el terreno", description: "Encuentros y visitas relacionados con las prioridades del mandato.", eyebrow: "Terreno",
+    body: `
+      <section class="empty-state" aria-labelledby="visits-coming-soon">
+        <p class="empty-state__label">Próximamente</p>
+        <h2 id="visits-coming-soon">Estamos preparando nuevas visitas</h2>
+        <p>En cuanto haya nuevas actividades sobre el terreno, las encontrarás aquí. Mientras tanto, consulta las visitas ya publicadas en Actualidad.</p>
+        <p><a class="button button--secondary" href="/es/actualidad/">Ver Actualidad</a></p>
+      </section>
+    `,
+  },
+  {
+    id: "visits-en", locale: "en", path: "/en/visits/", alternatePath: "/es/visitas/", title: "Visits and field work", description: "Meetings and visits related to the mandate’s priorities.", eyebrow: "Field work",
+    body: `
+      <section class="empty-state" aria-labelledby="visits-coming-soon">
+        <p class="empty-state__label">Coming soon</p>
+        <h2 id="visits-coming-soon">New visits are on the way</h2>
+        <p>New field activities will appear here as they are published. In the meantime, explore the visits already published in News.</p>
+        <p><a class="button button--secondary" href="/en/news/">View News</a></p>
+      </section>
+    `,
+  },
   { id: "news-es", locale: "es", path: "/es/actualidad/", alternatePath: "/en/news/", title: "Actualidad", description: "Comunicados, eventos y apariciones en medios del mandato.", eyebrow: "Actividad reciente", listing: "news" },
   { id: "news-en", locale: "en", path: "/en/news/", alternatePath: "/es/actualidad/", title: "News", description: "Press releases, events and media appearances related to the mandate.", eyebrow: "Recent activity", listing: "news" },
   { id: "press-es", locale: "es", path: "/es/actualidad/comunicados/", alternatePath: "/en/news/press-releases/", title: "Comunicados de prensa", description: "Declaraciones y comunicados relacionados con el mandato.", eyebrow: "Actualidad", listing: "press_release" },
@@ -1776,13 +1796,13 @@ export const staticPages: StaticPage[] = [
     id: "initiatives-es", locale: "es", path: "/es/iniciativas/", alternatePath: "/en/initiatives/", title: "Iniciativas y colaboraciones", description: "Proyectos académicos y colaboraciones vinculados a la lucha contra la pobreza.", eyebrow: "Red de conocimiento",
     body: `
       <p class="lead">Estas iniciativas están relacionadas con el trabajo académico y de colaboración de la titular, pero no constituyen actividades oficiales del mandato.</p>
-      <section id="lufepo">
+      <section id="lufepo" class="initiative-block initiative-block--featured">
         <h2>LUFEPO</h2>
         <p>Proyecto sobre lucha contra la feminización de la pobreza, desarrollado entre 2025 y 2026.</p>
         <p><a href="https://lufepo.com/">Conocer LUFEPO</a></p>
       </section>
-      <section id="observatorio">
-        <h2>Observatorio Internacional</h2>
+      <section id="observatorio" class="initiative-block initiative-block--observatory">
+        <h2>Observatorio internacional sobre lucha contra la pobreza</h2>
         <p>El Instituto de Estudios Internacionales y Europeos «Francisco de Vitoria» de la Universidad Carlos III de Madrid creó este espacio para dar continuidad a la investigación sobre pobreza y derechos humanos, con la colaboración del CEIB de la Universidad Rey Juan Carlos.</p>
         <h3>Líneas de trabajo</h3>
         <ul>
@@ -1794,7 +1814,7 @@ export const staticPages: StaticPage[] = [
         </ul>
         <p><a href="https://www.uc3m.es/ss/Satellite/INST-FranciscoVitoria/es/TextoDosColumnas/1371477256191/Observatorio_Internacional_para_la_Investigacion_de_la_Erradicacion_de_la_Pobreza_y_la_Proteccio">Consultar objetivos, actividades y equipo del Observatorio</a></p>
       </section>
-      <section>
+      <section class="initiative-block">
         <h2>Centro de Investigación en Estudios de Iberoamérica</h2>
         <p>Esta web se ha puesto en marcha con la colaboración del CEIB de la Universidad Rey Juan Carlos, centro dedicado a la investigación, la formación y la cooperación en el espacio iberoamericano.</p>
         <p><a href="https://www.urjc.es/ceib">Conocer el CEIB</a></p>
@@ -1805,13 +1825,13 @@ export const staticPages: StaticPage[] = [
     id: "initiatives-en", locale: "en", path: "/en/initiatives/", alternatePath: "/es/iniciativas/", title: "Initiatives and collaborations", description: "Academic projects and collaborations related to the fight against poverty.", eyebrow: "Knowledge network",
     body: `
       <p class="lead">These initiatives relate to the mandate holder’s academic and collaborative work but are not official activities of the mandate.</p>
-      <section id="lufepo">
+      <section id="lufepo" class="initiative-block initiative-block--featured">
         <h2>LUFEPO</h2>
         <p>A project addressing the feminisation of poverty, running from 2025 to 2026.</p>
         <p><a href="https://lufepo.com/">Visit LUFEPO</a></p>
       </section>
-      <section id="observatory">
-        <h2>International Observatory</h2>
+      <section id="observatory" class="initiative-block initiative-block--observatory">
+        <h2>International Observatory on Poverty Eradication and Human Rights</h2>
         <p>The Francisco de Vitoria Institute for International and European Studies at Universidad Carlos III de Madrid created this space to sustain research on poverty and human rights, in collaboration with CEIB at Rey Juan Carlos University.</p>
         <h3>Areas of work</h3>
         <ul>
@@ -1823,7 +1843,7 @@ export const staticPages: StaticPage[] = [
         </ul>
         <p><a href="https://www.uc3m.es/ss/Satellite/INST-FranciscoVitoria/es/TextoDosColumnas/1371477256191/Observatorio_Internacional_para_la_Investigacion_de_la_Erradicacion_de_la_Pobreza_y_la_Proteccio">View the Observatory’s objectives, activities and team</a></p>
       </section>
-      <section>
+      <section class="initiative-block">
         <h2>Centre for Research in Ibero-American Studies</h2>
         <p>This website was launched with the collaboration of CEIB at Rey Juan Carlos University, a centre devoted to research, education and cooperation across the Ibero-American space.</p>
         <p><a href="https://www.urjc.es/ceib">Visit CEIB</a></p>
@@ -1841,7 +1861,17 @@ export const staticPages: StaticPage[] = [
   { id: "mandate-fr", locale: "fr", path: "/fr/mandat/", alternatePath: "/es/mandato/", title: "Mandat sur l’extrême pauvreté et les droits de l’homme", description: "Origine, objectifs et portée du mandat des Nations Unies sur l’extrême pauvreté et les droits de l’homme.", eyebrow: "Le mandat", body: mandateFr },
   { id: "holder-fr", locale: "fr", path: "/fr/titulaire-actuelle/", alternatePath: "/es/titular-actual/", title: "Elena Carolina Díaz Galán", description: "Profil de l’actuelle Rapporteuse spéciale sur l’extrême pauvreté et les droits de l’homme.", eyebrow: "Titulaire actuelle du mandat", body: holderFr },
   { id: "reports-fr", locale: "fr", path: "/fr/rapports/", alternatePath: "/es/informes/", title: "Rapports", description: "Rapports présentés au Conseil des droits de l’homme et à l’Assemblée générale.", eyebrow: "Travaux du mandat", listing: "report" },
-  { id: "visits-fr", locale: "fr", path: "/fr/visites/", alternatePath: "/es/visitas/", title: "Visites et travail de terrain", description: "Rencontres et visites liées aux priorités du mandat.", eyebrow: "Travail de terrain", listing: "visit" },
+  {
+    id: "visits-fr", locale: "fr", path: "/fr/visites/", alternatePath: "/es/visitas/", title: "Visites et travail de terrain", description: "Rencontres et visites liées aux priorités du mandat.", eyebrow: "Travail de terrain",
+    body: `
+      <section class="empty-state" aria-labelledby="visits-coming-soon">
+        <p class="empty-state__label">Bientôt disponible</p>
+        <h2 id="visits-coming-soon">De nouvelles visites arrivent</h2>
+        <p>Les nouvelles activités de terrain seront publiées ici. En attendant, découvrez les visites déjà publiées dans les Actualités.</p>
+        <p><a class="button button--secondary" href="/fr/actualites/">Voir les Actualités</a></p>
+      </section>
+    `,
+  },
   { id: "news-fr", locale: "fr", path: "/fr/actualites/", alternatePath: "/es/actualidad/", title: "Actualités", description: "Communiqués, événements et apparitions dans les médias liés au mandat.", eyebrow: "Activité récente", listing: "news" },
   { id: "press-fr", locale: "fr", path: "/fr/actualites/communiques/", alternatePath: "/es/actualidad/comunicados/", title: "Communiqués de presse", description: "Déclarations et communiqués de presse liés au mandat.", eyebrow: "Actualités", listing: "press_release" },
   { id: "events-fr", locale: "fr", path: "/fr/actualites/evenements/", alternatePath: "/es/actualidad/eventos/", title: "Événements et rencontres", description: "Participation à des conférences, dialogues et rencontres institutionnelles.", eyebrow: "Actualités", listing: "event" },
@@ -1850,13 +1880,13 @@ export const staticPages: StaticPage[] = [
     id: "initiatives-fr", locale: "fr", path: "/fr/initiatives/", alternatePath: "/es/iniciativas/", title: "Initiatives et collaborations", description: "Projets universitaires et collaborations liés à la lutte contre la pauvreté.", eyebrow: "Réseau de connaissances",
     body: `
       <p class="lead">Ces initiatives relèvent des travaux universitaires et des collaborations de la titulaire du mandat, mais ne constituent pas des activités officielles du mandat.</p>
-      <section id="lufepo">
+      <section id="lufepo" class="initiative-block initiative-block--featured">
         <h2>LUFEPO</h2>
         <p>Projet consacré à la lutte contre la féminisation de la pauvreté, mené de 2025 à 2026.</p>
         <p><a href="https://lufepo.com/">Découvrir LUFEPO</a></p>
       </section>
-      <section id="observatoire">
-        <h2>Observatoire international</h2>
+      <section id="observatoire" class="initiative-block initiative-block--observatory">
+        <h2>Observatoire international sur la lutte contre la pauvreté</h2>
         <p>L’Institut d’études internationales et européennes « Francisco de Vitoria » de l’Université Carlos III de Madrid a créé cet espace afin de pérenniser la recherche sur la pauvreté et les droits de l’homme, avec la collaboration du CEIB de l’Université Rey Juan Carlos.</p>
         <h3>Axes de travail</h3>
         <ul>
@@ -1868,7 +1898,7 @@ export const staticPages: StaticPage[] = [
         </ul>
         <p><a href="https://www.uc3m.es/ss/Satellite/INST-FranciscoVitoria/es/TextoDosColumnas/1371477256191/Observatorio_Internacional_para_la_Investigacion_de_la_Erradicacion_de_la_Pobreza_y_la_Proteccio">Consulter les objectifs, les activités et l’équipe de l’Observatoire</a></p>
       </section>
-      <section>
+      <section class="initiative-block">
         <h2>Centre de recherche en études ibéro-américaines</h2>
         <p>Ce site a été lancé avec la collaboration du CEIB de l’Université Rey Juan Carlos, un centre consacré à la recherche, à la formation et à la coopération dans l’espace ibéro-américain.</p>
         <p><a href="https://www.urjc.es/ceib">Découvrir le CEIB</a></p>

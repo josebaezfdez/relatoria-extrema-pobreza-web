@@ -35,7 +35,7 @@ export const localeConfig = {
     ogLocale: "es_ES",
     disclaimer:
       "Esta web no está gestionada por la Oficina del Alto Comisionado de las Naciones Unidas para los Derechos Humanos. Su contenido no refleja la postura oficial de las Naciones Unidas.",
-    complaint: "Presentar una comunicación ante OHCHR",
+    complaint: "Presentar una comunicación ante la OHCHR",
     complaintNote: "Esta web no recibe ni tramita denuncias.",
   },
   en: {

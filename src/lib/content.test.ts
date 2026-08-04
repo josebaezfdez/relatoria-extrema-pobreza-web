@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { editorialItems, localizedPathsFor, staticPages } from "../data/content";
+import { editorialItems, itemsFor, localizedPathsFor, staticPages } from "../data/content";
 import { locales } from "../data/site";
 
 describe("multilingual content contract", () => {
@@ -35,6 +35,15 @@ describe("multilingual content contract", () => {
       expect(entry.path).toMatch(new RegExp(`^/${entry.locale}/`));
       expect(entry.path).toMatch(/^\/(es|en|fr)\//);
       expect(entry.path).toMatch(/\/$/);
+    }
+  });
+
+  it("keeps the visits archive empty while showing visits in the news archive", () => {
+    for (const locale of locales) {
+      const visitsPage = staticPages.find((page) => page.id === `visits-${locale}`);
+      expect(visitsPage?.listing).toBeUndefined();
+      expect(visitsPage?.body).toContain(locale === "es" ? "Próximamente" : locale === "en" ? "Coming soon" : "Bientôt disponible");
+      expect(itemsFor(locale, "news").some((item) => item.type === "visit")).toBe(true);
     }
   });
 });
