@@ -46,4 +46,19 @@ describe("multilingual content contract", () => {
       expect(itemsFor(locale, "news").some((item) => item.type === "visit")).toBe(true);
     }
   });
+
+  it("includes the Dujol meeting in the events and news archives", () => {
+    for (const locale of locales) {
+      const item = editorialItems.find((candidate) => candidate.id === `dujol-${locale}`);
+      expect(item?.type).toBe("event");
+      expect(item?.date).toBe("2026-07-02");
+      expect(item?.image).toBe("2026-07-02-dujol-meeting");
+      expect(item?.links).toEqual(expect.arrayContaining([
+        expect.objectContaining({ href: "https://x.com/srpoverty" }),
+        expect.objectContaining({ href: "https://www.linkedin.com/in/elena-carolina-d%C3%ADaz-gal%C3%A1n-58025a41b/" }),
+      ]));
+      expect(itemsFor(locale, "news")).toContainEqual(expect.objectContaining({ id: `dujol-${locale}` }));
+      expect(itemsFor(locale, "event")).toContainEqual(expect.objectContaining({ id: `dujol-${locale}` }));
+    }
+  });
 });

@@ -619,6 +619,54 @@ export const editorialItems: EditorialItem[] = [
     `,
   },
   {
+    id: "dujol-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/reunion-dujol-cohesion-social/",
+    alternatePath: "/en/news/events/dujol-social-cohesion-meeting/",
+    eyebrow: "Reunión institucional",
+    title: "Reunión de la Relatora con Mr Jean-Benoît Dujol, Director general para la Cohesión social, Ministerio de Solidaridad, Igualdad, Discapacidad, Infancia, Gobierno de Francia",
+    summary: "Encuentro institucional con el Director general para la Cohesión social del Gobierno de Francia sobre la lucha contra la pobreza y la protección de los derechos humanos.",
+    date: "2026-07-02",
+    displayDate: "2 de julio de 2026",
+    image: "2026-07-02-dujol-meeting",
+    imageAlt: "La Relatora Especial junto a Jean-Benoît Dujol, Director general para la Cohesión social del Gobierno de Francia.",
+    imageWidth: 1200,
+    imageHeight: 1600,
+    body: `
+      <p class="lead">El 2 de julio de 2026, la Relatora Especial se reunió con Mr Jean-Benoît Dujol, Director general para la Cohesión social del Ministerio de Solidaridad, Igualdad, Discapacidad, Infancia del Gobierno de Francia.</p>
+      <p>La reunión permitió compartir perspectivas sobre la cohesión social, la lucha contra la pobreza y la protección de los derechos humanos.</p>
+    `,
+    links: [
+      { label: "Perfil de la Relatora en X", href: "https://x.com/srpoverty" },
+      { label: "Perfil de Elena Carolina Díaz Galán en LinkedIn", href: "https://www.linkedin.com/in/elena-carolina-d%C3%ADaz-gal%C3%A1n-58025a41b/" },
+    ],
+  },
+  {
+    id: "dujol-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/dujol-social-cohesion-meeting/",
+    alternatePath: "/es/actualidad/eventos/reunion-dujol-cohesion-social/",
+    eyebrow: "Institutional meeting",
+    title: "Meeting with Mr Jean-Benoît Dujol, Director-General for Social Cohesion, Ministry of Solidarity, Equality, Disability and Children, Government of France",
+    summary: "Institutional meeting with the Director-General for Social Cohesion of the Government of France on poverty eradication and human rights protection.",
+    date: "2026-07-02",
+    displayDate: "2 July 2026",
+    image: "2026-07-02-dujol-meeting",
+    imageAlt: "The Special Rapporteur with Jean-Benoît Dujol, Director-General for Social Cohesion of the Government of France.",
+    imageWidth: 1200,
+    imageHeight: 1600,
+    body: `
+      <p class="lead">On 2 July 2026, the Special Rapporteur met with Mr Jean-Benoît Dujol, Director-General for Social Cohesion at the Ministry of Solidarity, Equality, Disability and Children of the Government of France.</p>
+      <p>The meeting provided an opportunity to exchange perspectives on social cohesion, poverty eradication and human rights protection.</p>
+    `,
+    links: [
+      { label: "The Special Rapporteur’s profile on X", href: "https://x.com/srpoverty" },
+      { label: "Elena Carolina Díaz Galán’s LinkedIn profile", href: "https://www.linkedin.com/in/elena-carolina-d%C3%ADaz-gal%C3%A1n-58025a41b/" },
+    ],
+  },
+  {
     id: "press-release-es",
     type: "press_release",
     locale: "es",
@@ -1392,6 +1440,30 @@ export const editorialItems: EditorialItem[] = [
       <h2>Atelier parisien d’urbanisme</h2>
       <p>La rencontre avec l’APUR a porté sur la dimension urbaine de la pauvreté et le rôle de l’information territoriale.</p>
     `,
+  },
+  {
+    id: "dujol-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontre-dujol-cohesion-sociale/",
+    alternatePath: "/es/actualidad/eventos/reunion-dujol-cohesion-social/",
+    eyebrow: "Rencontre institutionnelle",
+    title: "Rencontre avec M. Jean-Benoît Dujol, directeur général de la cohésion sociale, ministère de la Solidarité, de l’Égalité, du Handicap et de l’Enfance, Gouvernement de la France",
+    summary: "Rencontre institutionnelle avec le directeur général de la cohésion sociale du Gouvernement de la France sur l’éradication de la pauvreté et la protection des droits de l’homme.",
+    date: "2026-07-02",
+    displayDate: "2 juillet 2026",
+    image: "2026-07-02-dujol-meeting",
+    imageAlt: "La Rapporteuse spéciale aux côtés de Jean-Benoît Dujol, directeur général de la cohésion sociale du Gouvernement de la France.",
+    imageWidth: 1200,
+    imageHeight: 1600,
+    body: `
+      <p class="lead">Le 2 juillet 2026, la Rapporteuse spéciale a rencontré M. Jean-Benoît Dujol, directeur général de la cohésion sociale au ministère de la Solidarité, de l’Égalité, du Handicap et de l’Enfance du Gouvernement de la France.</p>
+      <p>La rencontre a permis d’échanger sur la cohésion sociale, l’éradication de la pauvreté et la protection des droits de l’homme.</p>
+    `,
+    links: [
+      { label: "Profil de la Rapporteuse spéciale sur X", href: "https://x.com/srpoverty" },
+      { label: "Profil LinkedIn d’Elena Carolina Díaz Galán", href: "https://www.linkedin.com/in/elena-carolina-d%C3%ADaz-gal%C3%A1n-58025a41b/" },
+    ],
   },
   {
     id: "press-release-fr",
