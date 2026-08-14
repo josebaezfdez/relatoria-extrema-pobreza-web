@@ -322,6 +322,28 @@ const gallerySets = {
       },
     },
   ],
+  extremaduraMeeting: [
+    {
+      slug: "2026-08-11-extremadura-meeting-02",
+      width: 2048,
+      height: 1366,
+      alt: {
+        es: "La Relatora conversa con la Presidenta de la Junta de Extremadura.",
+        en: "The Special Rapporteur in conversation with the President of the Government of Extremadura.",
+        fr: "La Rapporteuse s’entretient avec la présidente du gouvernement d’Estrémadure.",
+      },
+    },
+    {
+      slug: "2026-08-11-extremadura-meeting-03",
+      width: 2048,
+      height: 1366,
+      alt: {
+        es: "La Relatora durante el encuentro institucional en Extremadura.",
+        en: "The Special Rapporteur during the institutional meeting in Extremadura.",
+        fr: "La Rapporteuse lors de la réunion institutionnelle en Estrémadure.",
+      },
+    },
+  ],
   cadenaSer: [
     {
       slug: "2026-07-23-cadena-ser-02",
@@ -665,6 +687,100 @@ export const editorialItems: EditorialItem[] = [
       { label: "The Special Rapporteur’s profile on X", href: "https://x.com/srpoverty" },
       { label: "Elena Carolina Díaz Galán’s LinkedIn profile", href: "https://www.linkedin.com/in/elena-carolina-d%C3%ADaz-gal%C3%A1n-58025a41b/" },
     ],
+  },
+  {
+    id: "sambhali-trust-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/reunion-sambhali-trust/",
+    alternatePath: "/en/news/events/sambhali-trust-meeting/",
+    eyebrow: "Reunión con la sociedad civil",
+    title: "La Relatora se reúne con el equipo de Sambhali Trust (India)",
+    summary: "Encuentro con la ONG india sobre la lucha contra la pobreza y la pobreza extrema, la protección de los derechos humanos y el papel de las mujeres.",
+    date: "2026-08-07",
+    displayDate: "7 de agosto de 2026",
+    image: "2026-08-07-sambhali-trust-meeting-01",
+    imageAlt: "Captura de una reunión en línea de la Relatora con el equipo de Sambhali Trust.",
+    imageWidth: 1920,
+    imageHeight: 1020,
+    body: `
+      <p class="lead">El 7 de agosto de 2026, la Relatora Especial se reunió con el equipo de Sambhali Trust, una organización no gubernamental que trabaja en India, para abordar la lucha contra la pobreza y la pobreza extrema y la protección de los derechos humanos de los grupos en situación de vulnerabilidad.</p>
+      <p>El intercambio prestó especial atención al papel de las mujeres y a la importancia de situar sus experiencias y su liderazgo en el centro de las respuestas frente a la pobreza.</p>
+    `,
+  },
+  {
+    id: "sambhali-trust-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/sambhali-trust-meeting/",
+    alternatePath: "/es/actualidad/eventos/reunion-sambhali-trust/",
+    eyebrow: "Meeting with civil society",
+    title: "The Special Rapporteur meets with the Sambhali Trust team (India)",
+    summary: "Meeting with the Indian NGO on poverty and extreme poverty eradication, human rights protection and the role of women.",
+    date: "2026-08-07",
+    displayDate: "7 August 2026",
+    image: "2026-08-07-sambhali-trust-meeting-01",
+    imageAlt: "Screenshot of an online meeting between the Special Rapporteur and the Sambhali Trust team.",
+    imageWidth: 1920,
+    imageHeight: 1020,
+    body: `
+      <p class="lead">On 7 August 2026, the Special Rapporteur met with the Sambhali Trust team, a non-governmental organisation working in India, to discuss efforts to combat poverty and extreme poverty and to protect the human rights of groups in situations of vulnerability.</p>
+      <p>The exchange paid particular attention to the role of women and to the importance of placing their experiences and leadership at the centre of responses to poverty.</p>
+    `,
+  },
+  {
+    id: "extremadura-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/reunion-extremadura/",
+    alternatePath: "/en/news/events/extremadura-meeting/",
+    eyebrow: "Reunión institucional",
+    title: "Reunión con la Presidenta de Extremadura, María Guardiola, y el Vicepresidente, Abel Bautista",
+    summary: "Encuentro institucional para reforzar la sensibilización sobre la pobreza y promover la acción regional, con especial atención a la feminización de la pobreza y a las personas con discapacidad.",
+    date: "2026-08-11",
+    displayDate: "11 de agosto de 2026",
+    location: "Extremadura, España",
+    image: "2026-08-11-extremadura-meeting-01",
+    imageAlt: "La Relatora con María Guardiola y Abel Bautista durante el encuentro institucional en Extremadura.",
+    imageWidth: 2048,
+    imageHeight: 1366,
+    gallery: galleryFor("extremaduraMeeting", "es"),
+    body: `
+      <p class="lead">El 11 de agosto de 2026, la Relatora Especial se reunió con María Guardiola, Presidenta de la Comunidad Autónoma de Extremadura (España), y Abel Bautista, Vicepresidente, para sensibilizar sobre las situaciones de pobreza y promover la acción de los actores regionales en los Estados.</p>
+      <p>Durante el encuentro se abordó, entre otras cuestiones, la lucha contra la feminización de la pobreza y la situación de las personas con discapacidad.</p>
+    `,
+    video: {
+      title: "Vídeo de la reunión en Extremadura",
+      src: "/media/2026-08-11-extremadura-meeting/video-corto.mp4",
+      poster: "/media/2026-08-11-extremadura-meeting-01/cover.webp",
+    },
+  },
+  {
+    id: "extremadura-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/extremadura-meeting/",
+    alternatePath: "/es/actualidad/eventos/reunion-extremadura/",
+    eyebrow: "Institutional meeting",
+    title: "Meeting with María Guardiola, President of Extremadura, and Abel Bautista, Vice-President",
+    summary: "Institutional meeting to raise awareness of poverty and promote regional action, with particular attention to the feminisation of poverty and persons with disabilities.",
+    date: "2026-08-11",
+    displayDate: "11 August 2026",
+    location: "Extremadura, Spain",
+    image: "2026-08-11-extremadura-meeting-01",
+    imageAlt: "The Special Rapporteur with María Guardiola and Abel Bautista during the institutional meeting in Extremadura.",
+    imageWidth: 2048,
+    imageHeight: 1366,
+    gallery: galleryFor("extremaduraMeeting", "en"),
+    body: `
+      <p class="lead">On 11 August 2026, the Special Rapporteur met with María Guardiola, President of the Autonomous Community of Extremadura (Spain), and Abel Bautista, Vice-President, to raise awareness of poverty and promote action by regional actors within States.</p>
+      <p>The meeting addressed, among other issues, efforts to combat the feminisation of poverty and the situation of persons with disabilities.</p>
+    `,
+    video: {
+      title: "Video of the meeting in Extremadura",
+      src: "/media/2026-08-11-extremadura-meeting/video-corto.mp4",
+      poster: "/media/2026-08-11-extremadura-meeting-01/cover.webp",
+    },
   },
   {
     id: "press-release-es",
@@ -1464,6 +1580,53 @@ export const editorialItems: EditorialItem[] = [
       { label: "Profil de la Rapporteuse spéciale sur X", href: "https://x.com/srpoverty" },
       { label: "Profil LinkedIn d’Elena Carolina Díaz Galán", href: "https://www.linkedin.com/in/elena-carolina-d%C3%ADaz-gal%C3%A1n-58025a41b/" },
     ],
+  },
+  {
+    id: "sambhali-trust-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontre-sambhali-trust/",
+    alternatePath: "/es/actualidad/eventos/reunion-sambhali-trust/",
+    eyebrow: "Rencontre avec la société civile",
+    title: "La Rapporteuse rencontre l’équipe de Sambhali Trust (Inde)",
+    summary: "Rencontre avec l’ONG indienne sur la lutte contre la pauvreté et l’extrême pauvreté, la protection des droits de l’homme et le rôle des femmes.",
+    date: "2026-08-07",
+    displayDate: "7 août 2026",
+    image: "2026-08-07-sambhali-trust-meeting-01",
+    imageAlt: "Capture d’écran d’une réunion en ligne entre la Rapporteuse et l’équipe de Sambhali Trust.",
+    imageWidth: 1920,
+    imageHeight: 1020,
+    body: `
+      <p class="lead">Le 7 août 2026, la Rapporteuse spéciale a rencontré l’équipe de Sambhali Trust, une organisation non gouvernementale active en Inde, afin d’échanger sur la lutte contre la pauvreté et l’extrême pauvreté et sur la protection des droits de l’homme des groupes en situation de vulnérabilité.</p>
+      <p>Les échanges ont porté en particulier sur le rôle des femmes et sur l’importance de placer leurs expériences et leur leadership au cœur des réponses à la pauvreté.</p>
+    `,
+  },
+  {
+    id: "extremadura-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontre-extremadure/",
+    alternatePath: "/es/actualidad/eventos/reunion-extremadura/",
+    eyebrow: "Rencontre institutionnelle",
+    title: "Rencontre avec María Guardiola, présidente de l’Estrémadure, et Abel Bautista, vice-président",
+    summary: "Rencontre institutionnelle consacrée à la sensibilisation à la pauvreté et à l’action régionale, avec une attention particulière à la féminisation de la pauvreté et aux personnes handicapées.",
+    date: "2026-08-11",
+    displayDate: "11 août 2026",
+    location: "Estrémadure, Espagne",
+    image: "2026-08-11-extremadura-meeting-01",
+    imageAlt: "La Rapporteuse aux côtés de María Guardiola et d’Abel Bautista lors de la rencontre institutionnelle en Estrémadure.",
+    imageWidth: 2048,
+    imageHeight: 1366,
+    gallery: galleryFor("extremaduraMeeting", "fr"),
+    body: `
+      <p class="lead">Le 11 août 2026, la Rapporteuse spéciale a rencontré María Guardiola, présidente de la Communauté autonome d’Estrémadure (Espagne), et Abel Bautista, vice-président, afin de sensibiliser aux situations de pauvreté et de promouvoir l’action des acteurs régionaux au sein des États.</p>
+      <p>La rencontre a notamment porté sur la lutte contre la féminisation de la pauvreté et sur la situation des personnes handicapées.</p>
+    `,
+    video: {
+      title: "Vidéo de la rencontre en Estrémadure",
+      src: "/media/2026-08-11-extremadura-meeting/video-corto.mp4",
+      poster: "/media/2026-08-11-extremadura-meeting-01/cover.webp",
+    },
   },
   {
     id: "press-release-fr",
