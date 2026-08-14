@@ -10,14 +10,17 @@ interface Props {
 }
 
 const { item, variant = "standard", position, headingLevel = 3 } = Astro.props;
-const actionLabel = item.locale === "es" ? "Ver contenido" : "View item";
+const actionLabel = {
+  es: "Ver contenido",
+  en: "View item",
+  fr: "Voir le contenu",
+}[item.locale];
 const Heading = headingLevel === 2 ? "h2" : "h3";
 const headingId = `card-title-${item.id}`;
 ---
 
 <article
   class:list={["editorial-card", `editorial-card--${variant}`]}
-  data-pagefind-filter={`type:${item.type}`}
 >
   <a class="editorial-card__link" href={item.path} aria-labelledby={headingId}>
     {item.image && (

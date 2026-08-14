@@ -1,13 +1,13 @@
 ---
-import { localeConfig, navigation, type Locale } from "@/data/site";
+import { localeConfig, locales, navigation, type Locale, type LocalizedPaths } from "@/data/site";
 
 interface Props {
   locale: Locale;
   currentPath: string;
-  alternatePath: string;
+  localizedPaths: LocalizedPaths;
 }
 
-const { locale, currentPath, alternatePath } = Astro.props;
+const { locale, currentPath, localizedPaths } = Astro.props;
 const strings = localeConfig[locale];
 const isHome = currentPath === `/${locale}/`;
 ---
@@ -18,12 +18,23 @@ const isHome = currentPath === `/${locale}/`;
     <div class="site-header__utility-inner container">
       <span class="site-header__status">
         <span class="site-header__status-mark" aria-hidden="true"></span>
-        {locale === "es" ? "Sitio independiente del mandato actual" : "Independent website for the current mandate"}
+        {strings.status}
       </span>
-      <nav class="language-switcher" aria-label={locale === "es" ? "Selector de idioma" : "Language selector"}>
-        <a href={locale === "es" ? currentPath : alternatePath} lang="es" hreflang="es" aria-current={locale === "es" ? "true" : undefined}>ES</a>
-        <span aria-hidden="true">·</span>
-        <a href={locale === "en" ? currentPath : alternatePath} lang="en" hreflang="en" aria-current={locale === "en" ? "true" : undefined}>EN</a>
+      <nav class="language-switcher" aria-label={strings.languageSelector}>
+        {locales.map((language, index) => (
+          <>
+            {index > 0 && <span aria-hidden="true">·</span>}
+            <a
+              href={localizedPaths[language]}
+              lang={language}
+              hreflang={language}
+              aria-current={locale === language ? "true" : undefined}
+              aria-label={localeConfig[language].label}
+            >
+              {localeConfig[language].short}
+            </a>
+          </>
+        ))}
       </nav>
     </div>
   </div>
@@ -31,34 +42,19 @@ const isHome = currentPath === `/${locale}/`;
     <a
       class="wordmark"
       href={strings.home}
-      aria-label={locale === "es" ? "Elena Carolina Díaz Galán — Inicio" : "Elena Carolina Díaz Galán — Home"}
+      aria-label={`Elena Carolina Díaz Galán — ${strings.homeLabel}`}
     >
       <span class="wordmark__primary">Elena Carolina Díaz Galán</span>
       <span class="wordmark__secondary">
-        {locale === "es"
-          ? "Relatora Especial sobre extrema pobreza y derechos humanos"
-          : "Special Rapporteur on extreme poverty and human rights"}
+        {strings.fullSiteName}
       </span>
     </a>
     <div class="site-header__navigation">
-      <nav class="site-nav" aria-label={locale === "es" ? "Navegación principal" : "Primary navigation"}>
+      <nav class="site-nav" aria-label={strings.primaryNavigation}>
         <ul class="site-nav__list">
           {navigation[locale].map((item) => (
             <li><a href={item.href} aria-current={currentPath.startsWith(item.href) ? "page" : undefined}>{item.label}</a></li>
           ))}
-          <li>
-            <a
-              class="site-nav__search"
-              href={`/${locale}/${locale === "es" ? "buscar" : "search"}/`}
-              aria-current={currentPath.includes(locale === "es" ? "/buscar/" : "/search/") ? "page" : undefined}
-            >
-              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-                <circle cx="11" cy="11" r="6.5"></circle>
-                <path d="m16 16 4 4"></path>
-              </svg>
-              <span>{strings.search}</span>
-            </a>
-          </li>
         </ul>
       </nav>
       <details class="mobile-nav">
@@ -66,19 +62,11 @@ const isHome = currentPath === `/${locale}/`;
           <span class="mobile-nav__label">{strings.menu}</span>
           <span class="mobile-nav__icon" aria-hidden="true"></span>
         </summary>
-        <nav aria-label={locale === "es" ? "Navegación móvil" : "Mobile navigation"}>
+        <nav aria-label={strings.mobileNavigation}>
           <ul class="site-nav__list">
             {navigation[locale].map((item) => (
               <li><a href={item.href} aria-current={currentPath.startsWith(item.href) ? "page" : undefined}>{item.label}</a></li>
             ))}
-            <li>
-              <a
-                href={`/${locale}/${locale === "es" ? "buscar" : "search"}/`}
-                aria-current={currentPath.includes(locale === "es" ? "/buscar/" : "/search/") ? "page" : undefined}
-              >
-                {strings.search}
-              </a>
-            </li>
           </ul>
         </nav>
       </details>
