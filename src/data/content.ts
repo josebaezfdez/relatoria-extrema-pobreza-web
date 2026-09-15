@@ -783,6 +783,119 @@ export const editorialItems: EditorialItem[] = [
     },
   },
   {
+    id: "international-organisations-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/reuniones-organizaciones-internacionales/",
+    alternatePath: "/en/news/events/international-organisations-meetings/",
+    eyebrow: "Reuniones de trabajo",
+    title: "Reuniones con organizaciones e instituciones internacionales",
+    summary: "La Relatora recaba perspectivas sobre extrema pobreza, derechos humanos y cooperación con la CEPE, HIC e IDSN.",
+    date: "2026-08-24",
+    displayDate: "24 de agosto de 2026",
+    location: "Reuniones internacionales",
+    image: "2026-08-24-international-organisations-meetings-01",
+    imageAlt: "Sede de las Naciones Unidas en Ginebra, imagen de contexto para las reuniones de trabajo.",
+    imageWidth: 1600,
+    imageHeight: 1016,
+    body: `
+      <p class="lead">El 24 de agosto de 2026, la Relatora Especial mantuvo diversas reuniones de trabajo con representantes de organizaciones e instituciones internacionales para recabar información y perspectivas relevantes para el desarrollo de su mandato.</p>
+      <p>Entre los encuentros se incluyeron reuniones con la Comisión Económica de las Naciones Unidas para Europa (CEPE), la red Habitat International Coalition (HIC) y la International Dalit Solidarity Network (IDSN).</p>
+      <p>Los intercambios permitieron abordar distintas dimensiones de la extrema pobreza y la protección de los derechos humanos, así como conocer experiencias, desafíos y propuestas desde perspectivas institucionales y de la sociedad civil, manteniendo la lucha contra la pobreza en el centro de los debates internacionales.</p>
+    `,
+  },
+  {
+    id: "platform-childhood-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/reunion-plataforma-infancia/",
+    alternatePath: "/en/news/events/platform-childhood-meeting/",
+    eyebrow: "Reunión institucional",
+    title: "Reunión con la Plataforma de Infancia de España",
+    summary: "Encuentro con Ricardo Ibarra sobre pobreza infantil, desigualdades y protección de los derechos de niños, niñas y adolescentes.",
+    date: "2026-09-03",
+    displayDate: "3 de septiembre de 2026",
+    location: "España",
+    image: "2026-09-03-platform-childhood-meeting-01",
+    imageAlt: "Ricardo Ibarra y la Relatora durante su reunión sobre pobreza infantil en España.",
+    imageWidth: 2048,
+    imageHeight: 1536,
+    body: `
+      <p class="lead">El 3 de septiembre de 2026, la Relatora Especial se reunió con Ricardo Ibarra, Director de la Plataforma de Infancia de España, para abordar la situación de la infancia y la adolescencia en contextos de pobreza y vulnerabilidad.</p>
+      <p>La conversación se centró en los desafíos para garantizar el pleno ejercicio de sus derechos, con especial atención a las desigualdades sociales, la protección frente a la exclusión y el acceso efectivo a servicios y prestaciones esenciales.</p>
+      <p>El encuentro permitió intercambiar perspectivas sobre las políticas públicas y las medidas necesarias para reforzar la protección de los niños, niñas y adolescentes en situación de mayor vulnerabilidad, destacando la importancia de un enfoque basado en los derechos humanos y de una coordinación más estrecha entre las instituciones públicas y la sociedad civil.</p>
+    `,
+    links: [
+      { label: "Leer la información de la Plataforma de Infancia", href: "https://www.plataformadeinfancia.org/la-plataforma-de-infancia-traslada-a-la-relatora-especial-de-la-onu-la-situacion-de-la-pobreza-infantil-en-espana/" },
+    ],
+  },
+  {
+    id: "aacid-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/reunion-aacid/",
+    alternatePath: "/en/news/events/aacid-meeting/",
+    eyebrow: "Cooperación internacional",
+    title: "Reunión con la Agencia Andaluza de Cooperación Internacional para el Desarrollo",
+    summary: "Encuentro sobre cooperación al desarrollo, pobreza y exclusión social en grupos especialmente vulnerables, y posibles colaboraciones del mandato.",
+    date: "2026-09-07",
+    displayDate: "7 de septiembre de 2026",
+    location: "Andalucía, España",
+    image: "2026-09-07-aacid-meeting-01",
+    imageAlt: "Captura de la reunión en línea de la Relatora con representantes de la Agencia Andaluza de Cooperación Internacional para el Desarrollo.",
+    imageWidth: 887,
+    imageHeight: 449,
+    body: `
+      <p class="lead">El 7 de septiembre de 2026, la Relatora Especial se reunió con representantes de la Agencia Andaluza de Cooperación Internacional para el Desarrollo (AACID).</p>
+      <p>La reunión abordó cuestiones relativas a la cooperación al desarrollo, con especial énfasis en la lucha contra la pobreza y la exclusión social de los grupos especialmente vulnerables. También se exploraron posibles vías de colaboración, así como la participación y presencia del mandato en eventos relacionados con estas cuestiones.</p>
+    `,
+  },
+  {
+    id: "emmaus-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/encuentro-emmaus/",
+    alternatePath: "/en/news/events/emmaus-meeting/",
+    eyebrow: "Encuentro con la sociedad civil",
+    title: "Encuentro con Emmaús Internacional",
+    summary: "El mandato intercambia propuestas de colaboración con Emmaús Internacional para mantener la pobreza en el centro de los debates y reforzar los derechos.",
+    date: "2026-09-07",
+    displayDate: "7 de septiembre de 2026",
+    image: "2026-09-07-emmaus-meeting-01",
+    imageAlt: "Captura de una reunión en línea con representantes de Emmaús Internacional.",
+    imageWidth: 888,
+    imageHeight: 826,
+    body: `
+      <p class="lead">El 7 de septiembre de 2026, el mandato participó en un encuentro con Emmaús Internacional, un movimiento que reúne a personas que han experimentado o no la exclusión para construir juntas respuestas a situaciones de injusticia.</p>
+      <p>En la reunión participaron su Presidenta, Carina Aaltonen, y sus compañeros Adrien Chaboche y Anaïs Gournay. Se debatieron distintas formas de colaboración para mantener la pobreza en el centro de los debates internacionales y fortalecer los derechos de quienes viven en situación de pobreza.</p>
+    `,
+    links: [
+      { label: "Conocer Emmaús Internacional", href: "https://www.emmaus-international.org/es/quienes-somos/" },
+    ],
+  },
+  {
+    id: "just-fair-es",
+    type: "event",
+    locale: "es",
+    path: "/es/actualidad/eventos/encuentro-just-fair/",
+    alternatePath: "/en/news/events/just-fair-meeting/",
+    eyebrow: "Encuentro con la sociedad civil",
+    title: "Encuentro con la sociedad civil del Reino Unido organizado por JUST FAIR",
+    summary: "Organizaciones y personas de todo el Reino Unido comparten experiencias sobre pobreza, derechos humanos y vulnerabilidad.",
+    date: "2026-09-07",
+    displayDate: "7 de septiembre de 2026",
+    location: "Reino Unido",
+    image: "2026-09-07-just-fair-01",
+    imageAlt: "Logotipo de JUST FAIR, organización que organizó el encuentro con la sociedad civil del Reino Unido.",
+    imageWidth: 894,
+    imageHeight: 296,
+    body: `
+      <p class="lead">El 7 de septiembre de 2026, el mandato participó en un encuentro con la sociedad civil del Reino Unido organizado por JUST FAIR.</p>
+      <p>La sesión reunió a organizaciones y personas de todo el país para compartir cómo se experimentan la pobreza y los derechos humanos sobre el terreno, especialmente entre los grupos en situación de vulnerabilidad.</p>
+      <p>La discusión destacó cómo la pobreza limita la capacidad de las personas para hacer efectivos sus derechos a la vivienda, la alimentación, la sanidad, la educación, la seguridad social y el trabajo digno.</p>
+    `,
+  },
+  {
     id: "press-release-es",
     type: "press_release",
     locale: "es",
@@ -809,6 +922,119 @@ export const editorialItems: EditorialItem[] = [
       <p>Las relatorías especiales son expertas independientes nombradas por el Consejo de Derechos Humanos. Actúan a título individual, de forma voluntaria, y no forman parte del personal de Naciones Unidas.</p>
     `,
     download: { label: "Descargar comunicado original en inglés, francés y español (DOCX)", href: "/documents/2026-06-25-beyond-growth-press-release.docx" },
+  },
+  {
+    id: "international-organisations-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/international-organisations-meetings/",
+    alternatePath: "/es/actualidad/eventos/reuniones-organizaciones-internacionales/",
+    eyebrow: "Working meetings",
+    title: "Meetings with international organisations and institutions",
+    summary: "The Special Rapporteur gathers perspectives on extreme poverty, human rights and cooperation from UNECE, HIC and IDSN.",
+    date: "2026-08-24",
+    displayDate: "24 August 2026",
+    location: "International meetings",
+    image: "2026-08-24-international-organisations-meetings-01",
+    imageAlt: "United Nations building in Geneva, used as a contextual image for the working meetings.",
+    imageWidth: 1600,
+    imageHeight: 1016,
+    body: `
+      <p class="lead">On 24 August 2026, the Special Rapporteur held a series of working meetings with representatives of international organisations and institutions to gather information and perspectives relevant to the development of her mandate.</p>
+      <p>The meetings included exchanges with the United Nations Economic Commission for Europe (UNECE), the Habitat International Coalition (HIC) and the International Dalit Solidarity Network (IDSN).</p>
+      <p>The discussions addressed different dimensions of extreme poverty and human rights protection, while bringing experiences, challenges and proposals from institutional and civil society perspectives into international debates on poverty eradication.</p>
+    `,
+  },
+  {
+    id: "platform-childhood-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/platform-childhood-meeting/",
+    alternatePath: "/es/actualidad/eventos/reunion-plataforma-infancia/",
+    eyebrow: "Institutional meeting",
+    title: "Meeting with Plataforma de Infancia Spain",
+    summary: "Meeting with Ricardo Ibarra on child poverty, inequality and the protection of children’s and adolescents’ rights.",
+    date: "2026-09-03",
+    displayDate: "3 September 2026",
+    location: "Spain",
+    image: "2026-09-03-platform-childhood-meeting-01",
+    imageAlt: "Ricardo Ibarra and the Special Rapporteur during their meeting on child poverty in Spain.",
+    imageWidth: 2048,
+    imageHeight: 1536,
+    body: `
+      <p class="lead">On 3 September 2026, the Special Rapporteur met with Ricardo Ibarra, Director of Plataforma de Infancia Spain, to discuss the situation of children and adolescents living in contexts of poverty and vulnerability.</p>
+      <p>The conversation focused on the challenges of ensuring the full enjoyment of their rights, with particular attention to social inequalities, protection from exclusion and effective access to essential services and benefits.</p>
+      <p>The meeting also provided an opportunity to exchange perspectives on public policies and measures needed to strengthen the protection of children and adolescents in situations of greatest vulnerability, highlighting the importance of a human rights-based approach and stronger coordination between public institutions and civil society organisations.</p>
+    `,
+    links: [
+      { label: "Read Plataforma de Infancia’s report", href: "https://www.plataformadeinfancia.org/la-plataforma-de-infancia-traslada-a-la-relatora-especial-de-la-onu-la-situacion-de-la-pobreza-infantil-en-espana/" },
+    ],
+  },
+  {
+    id: "aacid-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/aacid-meeting/",
+    alternatePath: "/es/actualidad/eventos/reunion-aacid/",
+    eyebrow: "International cooperation",
+    title: "Meeting with the Andalusian Agency for International Development Cooperation",
+    summary: "Meeting on development cooperation, poverty and social exclusion among particularly vulnerable groups, and possible mandate collaborations.",
+    date: "2026-09-07",
+    displayDate: "7 September 2026",
+    location: "Andalusia, Spain",
+    image: "2026-09-07-aacid-meeting-01",
+    imageAlt: "Screenshot of the Special Rapporteur’s online meeting with representatives of the Andalusian Agency for International Development Cooperation.",
+    imageWidth: 887,
+    imageHeight: 449,
+    body: `
+      <p class="lead">On 7 September 2026, the Special Rapporteur met with representatives of the Andalusian Agency for International Development Cooperation (AACID).</p>
+      <p>The meeting addressed development cooperation, with a particular focus on combating poverty and social exclusion among particularly vulnerable groups. It also explored possible areas of collaboration and the participation and presence of the mandate in events related to these issues.</p>
+    `,
+  },
+  {
+    id: "emmaus-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/emmaus-meeting/",
+    alternatePath: "/es/actualidad/eventos/encuentro-emmaus/",
+    eyebrow: "Civil society meeting",
+    title: "Meeting with Emmaüs International",
+    summary: "The mandate exchanges proposals for cooperation with Emmaüs International to keep poverty at the centre of international debates and strengthen rights.",
+    date: "2026-09-07",
+    displayDate: "7 September 2026",
+    image: "2026-09-07-emmaus-meeting-01",
+    imageAlt: "Screenshot of an online meeting with representatives of Emmaüs International.",
+    imageWidth: 888,
+    imageHeight: 826,
+    body: `
+      <p class="lead">On 7 September 2026, the mandate took part in a meeting with Emmaüs International, a movement bringing together people who have experienced exclusion and others who work with them to build responses to injustice.</p>
+      <p>Participants included its President, Carina Aaltonen, and colleagues Adrien Chaboche and Anaïs Gournay. The discussion explored forms of collaboration to keep poverty at the centre of international debates and strengthen the rights of people living in poverty.</p>
+    `,
+    links: [
+      { label: "About Emmaüs International", href: "https://www.emmaus-international.org/es/quienes-somos/" },
+    ],
+  },
+  {
+    id: "just-fair-en",
+    type: "event",
+    locale: "en",
+    path: "/en/news/events/just-fair-meeting/",
+    alternatePath: "/es/actualidad/eventos/encuentro-just-fair/",
+    eyebrow: "Civil society meeting",
+    title: "Meeting with UK civil society organised by JUST FAIR",
+    summary: "Organisations and people from across the United Kingdom share experiences of poverty, human rights and vulnerability.",
+    date: "2026-09-07",
+    displayDate: "7 September 2026",
+    location: "United Kingdom",
+    image: "2026-09-07-just-fair-01",
+    imageAlt: "JUST FAIR logo, the organisation that organised the meeting with UK civil society.",
+    imageWidth: 894,
+    imageHeight: 296,
+    body: `
+      <p class="lead">On 7 September 2026, the mandate took part in a meeting with UK civil society organised by JUST FAIR.</p>
+      <p>The session brought together organisations and people from across the country to share how poverty and human rights are experienced on the ground, particularly by groups in situations of vulnerability.</p>
+      <p>The discussion highlighted how poverty limits people’s ability to realise their rights to housing, food, healthcare, education, social security and decent work.</p>
+    `,
   },
   {
     id: "press-release-en",
@@ -1627,6 +1853,118 @@ export const editorialItems: EditorialItem[] = [
       src: "/media/2026-08-11-extremadura-meeting/video-corto.mp4",
       poster: "/media/2026-08-11-extremadura-meeting-01/cover.webp",
     },
+  },
+  {
+    id: "international-organisations-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontres-organisations-internationales/",
+    alternatePath: "/es/actualidad/eventos/reuniones-organizaciones-internacionales/",
+    eyebrow: "Réunions de travail",
+    title: "Rencontres avec des organisations et institutions internationales",
+    summary: "La Rapporteuse recueille des perspectives sur l’extrême pauvreté, les droits de l’homme et la coopération auprès de la CEE-ONU, de la HIC et de l’IDSN.",
+    date: "2026-08-24",
+    displayDate: "24 août 2026",
+    image: "2026-08-24-international-organisations-meetings-01",
+    imageAlt: "Palais des Nations à Genève, siège de nombreuses organisations internationales.",
+    imageWidth: 1600,
+    imageHeight: 1016,
+    body: `
+      <p class="lead">Le 24 août 2026, la Rapporteuse spéciale a tenu plusieurs réunions de travail avec des représentantes et représentants d’organisations et d’institutions internationales afin de recueillir des informations et des perspectives utiles au développement de son mandat.</p>
+      <p>Ces échanges ont notamment réuni la Commission économique des Nations Unies pour l’Europe (CEE-ONU), la Habitat International Coalition (HIC) et l’International Dalit Solidarity Network (IDSN).</p>
+      <p>Ils ont permis d’aborder différentes dimensions de l’extrême pauvreté et de la protection des droits de l’homme, ainsi que de partager des expériences, des difficultés et des propositions issues de perspectives institutionnelles et de la société civile.</p>
+    `,
+  },
+  {
+    id: "platform-childhood-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontre-plateforme-enfance/",
+    alternatePath: "/es/actualidad/eventos/reunion-plataforma-infancia/",
+    eyebrow: "Rencontre avec la société civile",
+    title: "Rencontre avec la Plateforme de l’enfance d’Espagne",
+    summary: "Un échange consacré à la pauvreté infantile, aux inégalités sociales et à la protection des droits des enfants et des adolescentes et adolescents.",
+    date: "2026-09-03",
+    displayDate: "3 septembre 2026",
+    location: "Espagne",
+    image: "2026-09-03-platform-childhood-meeting-01",
+    imageAlt: "La Rapporteuse spéciale aux côtés de Ricardo Ibarra, directeur de la Plateforme de l’enfance d’Espagne.",
+    imageWidth: 2048,
+    imageHeight: 1536,
+    body: `
+      <p class="lead">Le 3 septembre 2026, la Rapporteuse spéciale a rencontré Ricardo Ibarra, directeur de la Plateforme de l’enfance d’Espagne, pour échanger sur la situation des enfants et des adolescentes et adolescents en contexte de pauvreté et de vulnérabilité.</p>
+      <p>La réunion a porté sur les principaux défis liés au plein exercice de leurs droits, notamment les inégalités sociales, la protection contre l’exclusion et l’accès effectif aux services et prestations essentiels.</p>
+      <p>Les échanges ont également permis de partager des informations et des perspectives sur les politiques publiques et les mesures nécessaires pour renforcer la protection des enfants et des adolescentes et adolescents les plus vulnérables, en soulignant l’importance d’une approche fondée sur les droits de l’homme et d’une meilleure coordination entre les institutions publiques et les organisations de la société civile.</p>
+    `,
+    links: [
+      { label: "La Plateforme de l’enfance présente la situation de la pauvreté infantile en Espagne", href: "https://www.plataformadeinfancia.org/la-plataforma-de-infancia-traslada-a-la-relatora-especial-de-la-onu-la-situacion-de-la-pobreza-infantil-en-espana/" },
+    ],
+  },
+  {
+    id: "aacid-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontre-aacid/",
+    alternatePath: "/es/actualidad/eventos/reunion-aacid/",
+    eyebrow: "Coopération internationale",
+    title: "Rencontre avec l’Agence andalouse de coopération internationale pour le développement",
+    summary: "Un échange sur la coopération au développement, la lutte contre la pauvreté et l’exclusion sociale des groupes en situation de vulnérabilité.",
+    date: "2026-09-07",
+    displayDate: "7 septembre 2026",
+    location: "Andalousie, Espagne",
+    image: "2026-09-07-aacid-meeting-01",
+    imageAlt: "Réunion en ligne entre la Rapporteuse spéciale et des représentantes de l’Agence andalouse de coopération internationale pour le développement.",
+    imageWidth: 887,
+    imageHeight: 449,
+    body: `
+      <p class="lead">Le 7 septembre 2026, la Rapporteuse spéciale a rencontré l’Agence andalouse de coopération internationale pour le développement (AACID).</p>
+      <p>Les échanges ont porté sur la coopération au développement, avec une attention particulière à la lutte contre la pauvreté et l’exclusion sociale des groupes en situation de vulnérabilité. Ils ont également permis d’examiner de possibles collaborations ainsi que la participation et la présence du mandat lors d’événements consacrés à ces questions.</p>
+    `,
+  },
+  {
+    id: "emmaus-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontre-emmaus/",
+    alternatePath: "/es/actualidad/eventos/encuentro-emmaus/",
+    eyebrow: "Rencontre avec la société civile",
+    title: "Rencontre avec Emmaüs International",
+    summary: "Le mandat échange avec Emmaüs International sur les collaborations possibles pour maintenir la pauvreté au centre des débats internationaux et renforcer les droits des personnes qui la vivent.",
+    date: "2026-09-07",
+    displayDate: "7 septembre 2026",
+    image: "2026-09-07-emmaus-meeting-01",
+    imageAlt: "Réunion en ligne entre la Rapporteuse spéciale et des représentantes et représentants d’Emmaüs International.",
+    imageWidth: 888,
+    imageHeight: 826,
+    body: `
+      <p class="lead">Le 7 septembre 2026, le mandat a participé à une rencontre avec Emmaüs International, un mouvement qui réunit des personnes ayant vécu ou non l’exclusion afin de construire ensemble des réponses aux situations d’injustice.</p>
+      <p>La réunion, à laquelle ont participé sa présidente Carina Aaltonen ainsi qu’Adrien Chaboche et Anaïs Gournay, a permis d’échanger sur différentes formes de collaboration pour maintenir la pauvreté au centre des débats internationaux et renforcer les droits des personnes qui vivent dans la pauvreté.</p>
+    `,
+    links: [
+      { label: "Qui sommes-nous ? — Emmaüs International", href: "https://www.emmaus-international.org/es/quienes-somos/" },
+    ],
+  },
+  {
+    id: "just-fair-fr",
+    type: "event",
+    locale: "fr",
+    path: "/fr/actualites/evenements/rencontre-just-fair/",
+    alternatePath: "/es/actualidad/eventos/encuentro-just-fair/",
+    eyebrow: "Rencontre avec la société civile",
+    title: "Rencontre avec la société civile du Royaume-Uni organisée par JUST FAIR",
+    summary: "Une rencontre consacrée aux réalités de la pauvreté et à l’exercice des droits de l’homme pour les groupes en situation de vulnérabilité au Royaume-Uni.",
+    date: "2026-09-07",
+    displayDate: "7 septembre 2026",
+    location: "Royaume-Uni",
+    image: "2026-09-07-just-fair-01",
+    imageAlt: "Logo de JUST FAIR, organisation qui a organisé la rencontre avec la société civile du Royaume-Uni.",
+    imageWidth: 894,
+    imageHeight: 296,
+    body: `
+      <p class="lead">Le 7 septembre 2026, le mandat a participé à une rencontre avec la société civile du Royaume-Uni organisée par JUST FAIR.</p>
+      <p>La session a réuni des organisations et des personnes de tout le Royaume-Uni afin de partager leurs expériences de la pauvreté et des droits de l’homme sur le terrain, en particulier pour les groupes en situation de vulnérabilité.</p>
+      <p>Les échanges ont mis en évidence les effets de la pauvreté sur la capacité des personnes à exercer leurs droits au logement, à l’alimentation, à la santé, à l’éducation, à la sécurité sociale et à un travail décent.</p>
+    `,
   },
   {
     id: "press-release-fr",
