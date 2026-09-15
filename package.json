@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist",
+    "build": "astro check && astro build",
     "deploy": "wrangler deploy",
     "preview": "astro preview",
     "check": "astro check",
@@ -13,18 +13,17 @@
     "test:a11y": "playwright test"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/newsreader": "^5.2.8",
     "@fontsource-variable/public-sans": "^5.2.8",
-    "astro": "^5.13.5"
+    "astro": "^7.1.6"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@playwright/test": "^1.55.0",
-    "pagefind": "^1.4.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4",
     "wrangler": "4.114.0"
   },
-  "packageManager": "pnpm@11.9.0"
+  "packageManager": "pnpm@11.18.0"
 }

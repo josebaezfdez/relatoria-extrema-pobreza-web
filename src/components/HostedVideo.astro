@@ -1,0 +1,43 @@
+---
+import type { Locale } from "@/data/site";
+
+interface Props {
+  locale: Locale;
+  title: string;
+  src: string;
+  poster?: string;
+}
+
+const { locale, title, src, poster } = Astro.props;
+const copy = {
+  es: {
+    fallback: "Descargar el vídeo",
+    captionStatus: "Los subtítulos y la transcripción accesible están en revisión.",
+  },
+  en: {
+    fallback: "Download the video",
+    captionStatus: "Captions and the accessible transcript are under review.",
+  },
+  fr: {
+    fallback: "Télécharger la vidéo",
+    captionStatus: "Les sous-titres et la transcription accessible sont en cours de révision.",
+  },
+}[locale];
+---
+
+<section class="hosted-video" aria-labelledby="hosted-video-title">
+  <h2 id="hosted-video-title">{title}</h2>
+  <figure>
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      poster={poster}
+      aria-describedby="hosted-video-caption"
+    >
+      <source src={src} type="video/mp4" />
+      <a href={src}>{copy.fallback}</a>
+    </video>
+    <figcaption id="hosted-video-caption">{copy.captionStatus}</figcaption>
+  </figure>
+</section>

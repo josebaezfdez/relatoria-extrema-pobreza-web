@@ -3,27 +3,118 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Picture from "@/components/Picture.astro";
 import EditorialListing from "@/components/EditorialListing.astro";
 import { getEditorialItems } from "@/lib/cms";
-import { SITE_URL, type Locale } from "@/data/site";
+import { homePaths, locales, SITE_URL } from "@/data/site";
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: "es" }, props: { locale: "es" as Locale } },
-    { params: { lang: "en" }, props: { locale: "en" as Locale } },
-  ];
+  return locales.map((locale) => ({
+    params: { lang: locale },
+    props: { locale },
+  }));
 }
 
 const { locale } = Astro.props;
-const isEs = locale === "es";
-const path = `/${locale}/`;
-const alternatePath = isEs ? "/en/" : "/es/";
+const path = homePaths[locale];
+const localizedPaths = homePaths;
 const { items } = await getEditorialItems(locale);
-const latest = items.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
-const title = isEs
-  ? "Relatora Especial sobre extrema pobreza y derechos humanos"
-  : "Special Rapporteur on extreme poverty and human rights";
-const description = isEs
-  ? "Mandato, informes y actividades de Elena Carolina Díaz Galán, Relatora Especial sobre la extrema pobreza y los derechos humanos."
-  : "Mandate, reports and activities of Elena Carolina Díaz Galán, Special Rapporteur on extreme poverty and human rights.";
+const latest = items.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8);
+const copy = {
+  es: {
+    title: "Relatora Especial sobre extrema pobreza y derechos humanos",
+    description: "Mandato, informes y actividades de Elena Carolina Díaz Galán, Relatora Especial sobre la extrema pobreza y los derechos humanos.",
+    jobTitle: "Relatora Especial sobre la extrema pobreza y los derechos humanos",
+    holderPath: "/es/titular-actual/",
+    mandatePeriod: "Mandato actual · 2026–2029",
+    heroTitle: "La pobreza es una cuestión de derechos.",
+    heroIntro: "Elena Carolina Díaz Galán, Relatora Especial sobre la extrema pobreza y los derechos humanos.",
+    mandatePath: "/es/mandato/",
+    mandateAction: "Conocer el mandato",
+    newsPath: "/es/actualidad/",
+    newsAction: "Ver actualidad",
+    principlesLabel: "Principios del mandato",
+    principles: ["Dignidad", "Igualdad", "Rendición de cuentas"],
+    explore: "Explorar",
+    latestEyebrow: "El mandato en movimiento",
+    latestTitle: "Actividad reciente",
+    allNews: "Toda la actualidad",
+    priority: "Prioridad temática",
+    citiesTitle: "Ciudades y pobreza",
+    citiesText: "Comprender cómo el territorio, la vivienda, los servicios y las desigualdades urbanas condicionan el ejercicio efectivo de los derechos humanos.",
+    visitsPath: "/es/actualidad/",
+    visitsAction: "Ver las visitas en Actualidad",
+    quoteLabel: "Una idea para el mandato",
+    quote: "La dignidad debe estar en el centro de toda respuesta a la pobreza.",
+    knowledge: "Conocimiento compartido",
+    initiativesTitle: "Iniciativas y colaboraciones",
+    initiativesText: "Investigación, alianzas académicas y proyectos relacionados con la erradicación de la pobreza, claramente diferenciados de la actividad oficial del mandato.",
+    initiativesPath: "/es/iniciativas/",
+    initiativesAction: "Conocer las iniciativas",
+  },
+  en: {
+    title: "Special Rapporteur on extreme poverty and human rights",
+    description: "Mandate, reports and activities of Elena Carolina Díaz Galán, Special Rapporteur on extreme poverty and human rights.",
+    jobTitle: "Special Rapporteur on extreme poverty and human rights",
+    holderPath: "/en/current-holder/",
+    mandatePeriod: "Current mandate · 2026–2029",
+    heroTitle: "Poverty is a matter of rights.",
+    heroIntro: "Elena Carolina Díaz Galán, Special Rapporteur on extreme poverty and human rights.",
+    mandatePath: "/en/mandate/",
+    mandateAction: "Explore the mandate",
+    newsPath: "/en/news/",
+    newsAction: "View latest news",
+    principlesLabel: "Mandate principles",
+    principles: ["Dignity", "Equality", "Accountability"],
+    explore: "Explore",
+    latestEyebrow: "The mandate in motion",
+    latestTitle: "Recent activity",
+    allNews: "All news",
+    priority: "Thematic priority",
+    citiesTitle: "Cities and poverty",
+    citiesText: "Understanding how territory, housing, services and urban inequality shape the effective enjoyment of human rights.",
+    visitsPath: "/en/news/",
+    visitsAction: "View visits in News",
+    quoteLabel: "A principle for the mandate",
+    quote: "Dignity must be at the centre of every response to poverty.",
+    knowledge: "Shared knowledge",
+    initiativesTitle: "Initiatives and collaborations",
+    initiativesText: "Research, academic partnerships and projects related to poverty eradication, clearly distinguished from the mandate’s official activity.",
+    initiativesPath: "/en/initiatives/",
+    initiativesAction: "Explore initiatives",
+  },
+  fr: {
+    title: "Rapporteuse spéciale sur l’extrême pauvreté et les droits de l’homme",
+    description: "Mandat, rapports et activités d’Elena Carolina Díaz Galán, Rapporteuse spéciale sur l’extrême pauvreté et les droits de l’homme.",
+    jobTitle: "Rapporteuse spéciale sur l’extrême pauvreté et les droits de l’homme",
+    holderPath: "/fr/titulaire-actuelle/",
+    mandatePeriod: "Mandat actuel · 2026–2029",
+    heroTitle: "La pauvreté est une question de droits.",
+    heroIntro: "Elena Carolina Díaz Galán, Rapporteuse spéciale sur l’extrême pauvreté et les droits de l’homme.",
+    mandatePath: "/fr/mandat/",
+    mandateAction: "Découvrir le mandat",
+    newsPath: "/fr/actualites/",
+    newsAction: "Voir les actualités",
+    principlesLabel: "Principes du mandat",
+    principles: ["Dignité", "Égalité", "Responsabilité"],
+    explore: "Explorer",
+    latestEyebrow: "Le mandat en action",
+    latestTitle: "Activité récente",
+    allNews: "Toutes les actualités",
+    priority: "Priorité thématique",
+    citiesTitle: "Villes et pauvreté",
+    citiesText: "Comprendre comment le territoire, le logement, les services et les inégalités urbaines conditionnent l’exercice effectif des droits de l’homme.",
+    visitsPath: "/fr/actualites/",
+    visitsAction: "Voir les visites dans les Actualités",
+    quoteLabel: "Un principe pour le mandat",
+    quote: "La dignité doit être au cœur de toute réponse à la pauvreté.",
+    knowledge: "Connaissances partagées",
+    initiativesTitle: "Initiatives et collaborations",
+    initiativesText: "Recherche, partenariats universitaires et projets liés à l’éradication de la pauvreté, clairement distingués des activités officielles du mandat.",
+    initiativesPath: "/fr/initiatives/",
+    initiativesAction: "Découvrir les initiatives",
+  },
+}[locale];
+const officialProfile = `https://www.ohchr.org/${locale}/special-procedures/sr-poverty/ms-elena-carolina-diaz-galan`;
+
+const { title, description } = copy;
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -37,69 +128,45 @@ const schema = {
     {
       "@type": "Person",
       name: "Elena Carolina Díaz Galán",
-      jobTitle: isEs
-        ? "Relatora Especial sobre la extrema pobreza y los derechos humanos"
-        : "Special Rapporteur on extreme poverty and human rights",
-      url: `${SITE_URL}${isEs ? "/es/titular-actual/" : "/en/current-holder/"}`,
-      sameAs: ["https://www.ohchr.org/es/special-procedures/sr-poverty/ms-elena-carolina-diaz-galan"],
+      jobTitle: copy.jobTitle,
+      url: `${SITE_URL}${copy.holderPath}`,
+      sameAs: [officialProfile],
     },
   ],
 };
 ---
 
-<BaseLayout {locale} {title} {description} {path} {alternatePath} {schema}>
+<BaseLayout {locale} {title} {description} {path} {localizedPaths} {schema}>
   <section class="hero">
     <div class="hero__media" aria-hidden="true">
-      <Picture
-        slug="elena-diaz-galan-portrait"
-        alt=""
-        width={2000}
-        height={1126}
-        eager
-        responsive
-      />
+      <Picture slug="elena-diaz-galan-portrait" alt="" width={2000} height={1126} eager responsive />
     </div>
     <div class="hero__content container">
       <div class="hero__copy">
-        <p class="eyebrow">{isEs ? "Mandato actual · 2026–2029" : "Current mandate · 2026–2029"}</p>
-        <h1>{isEs ? "La pobreza es una cuestión de derechos." : "Poverty is a matter of rights."}</h1>
-        <p class="hero__intro">
-          {isEs
-            ? "Elena Carolina Díaz Galán, Relatora Especial sobre la extrema pobreza y los derechos humanos."
-            : "Elena Carolina Díaz Galán, Special Rapporteur on extreme poverty and human rights."}
-        </p>
+        <p class="eyebrow">{copy.mandatePeriod}</p>
+        <h1>{copy.heroTitle}</h1>
+        <p class="hero__intro">{copy.heroIntro}</p>
         <div class="hero__actions">
-          <a class="button" href={isEs ? "/es/mandato/" : "/en/mandate/"}>
-            {isEs ? "Conocer el mandato" : "Explore the mandate"}
-          </a>
-          <a class="button button--ghost" href={isEs ? "/es/actualidad/" : "/en/news/"}>
-            {isEs ? "Ver actualidad" : "View latest news"}
-          </a>
+          <a class="button" href={copy.mandatePath}>{copy.mandateAction}</a>
+          <a class="button button--ghost" href={copy.newsPath}>{copy.newsAction}</a>
         </div>
       </div>
-      <aside class="hero__principles" aria-label={isEs ? "Principios del mandato" : "Mandate principles"}>
+      <aside class="hero__principles" aria-label={copy.principlesLabel}>
         <span aria-hidden="true">01</span>
-        <p>{isEs ? "Dignidad" : "Dignity"}</p>
-        <p>{isEs ? "Igualdad" : "Equality"}</p>
-        <p>{isEs ? "Rendición de cuentas" : "Accountability"}</p>
+        {copy.principles.map((principle) => <p>{principle}</p>)}
       </aside>
     </div>
-    <div class="hero__scroll" aria-hidden="true">
-      <span></span>
-      {isEs ? "Explorar" : "Explore"}
-    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span>{copy.explore}</div>
   </section>
 
-  <section class="section" aria-labelledby="latest-heading" data-pagefind-body>
+  <section class="section" aria-labelledby="latest-heading">
     <div class="container">
       <header class="section-heading">
         <div>
-          <p class="eyebrow">{isEs ? "El mandato en movimiento" : "The mandate in motion"}</p>
-          <h2 id="latest-heading">{isEs ? "Actividad reciente" : "Recent activity"}</h2>
+          <p class="eyebrow">{copy.latestEyebrow}</p>
+          <h2 id="latest-heading">{copy.latestTitle}</h2>
         </div>
-        <a href={isEs ? "/es/actualidad/" : "/en/news/"}>
-          {isEs ? "Toda la actualidad" : "All news"} →
-        </a>
+        <a href={copy.newsPath}>{copy.allNews} →</a>
       </header>
       <EditorialListing items={latest} context="home" headingLevel={3} />
     </div>
@@ -109,30 +176,21 @@ const schema = {
     <div class="container mandate-feature">
       <div>
         <p class="mandate-feature__number" aria-hidden="true">01</p>
-        <p class="eyebrow">{isEs ? "Prioridad temática" : "Thematic priority"}</p>
+        <p class="eyebrow">{copy.priority}</p>
       </div>
       <div>
-        <h2 id="mandate-heading">{isEs ? "Ciudades y pobreza" : "Cities and poverty"}</h2>
-        <p>
-          {isEs
-            ? "Comprender cómo el territorio, la vivienda, los servicios y las desigualdades urbanas condicionan el ejercicio efectivo de los derechos humanos."
-            : "Understanding how territory, housing, services and urban inequality shape the effective enjoyment of human rights."}
-        </p>
-        <p><a href={isEs ? "/es/visitas/" : "/en/visits/"}>{isEs ? "Explorar el trabajo sobre el terreno" : "Explore field work"} →</a></p>
+        <h2 id="mandate-heading">{copy.citiesTitle}</h2>
+        <p>{copy.citiesText}</p>
+        <p><a href={copy.visitsPath}>{copy.visitsAction} →</a></p>
       </div>
     </div>
   </section>
 
-  <section class="quote-band" aria-label={isEs ? "Cita destacada" : "Featured quotation"}>
+  <section class="quote-band" aria-label={copy.quoteLabel}>
     <div class="container quote-band__inner">
       <span class="quote-band__mark" aria-hidden="true">“</span>
       <div>
-        <blockquote>
-          {isEs
-            ? "La pobreza la crea el ser humano. Y solo él puede erradicarla."
-            : "Poverty is created by human beings. And only human beings can eradicate it."}
-        </blockquote>
-        <cite>Elena Carolina Díaz Galán</cite>
+        <blockquote>{copy.quote}</blockquote>
       </div>
     </div>
   </section>
@@ -140,16 +198,12 @@ const schema = {
   <section class="section" aria-labelledby="network-heading">
     <div class="container mandate-feature">
       <div>
-        <p class="eyebrow">{isEs ? "Conocimiento compartido" : "Shared knowledge"}</p>
-        <h2 id="network-heading">{isEs ? "Iniciativas y colaboraciones" : "Initiatives and collaborations"}</h2>
+        <p class="eyebrow">{copy.knowledge}</p>
+        <h2 id="network-heading">{copy.initiativesTitle}</h2>
       </div>
       <div>
-        <p>
-          {isEs
-            ? "Investigación, alianzas académicas y proyectos relacionados con la erradicación de la pobreza, claramente diferenciados de la actividad oficial del mandato."
-            : "Research, academic partnerships and projects related to poverty eradication, clearly distinguished from the mandate’s official activity."}
-        </p>
-        <p><a href={isEs ? "/es/iniciativas/" : "/en/initiatives/"}>{isEs ? "Conocer las iniciativas" : "Explore initiatives"} →</a></p>
+        <p>{copy.initiativesText}</p>
+        <p><a href={copy.initiativesPath}>{copy.initiativesAction} →</a></p>
       </div>
     </div>
   </section>
