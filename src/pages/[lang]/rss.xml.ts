@@ -1,5 +1,6 @@
 import { itemsFor } from "@/data/content";
 import { locales, SITE_URL, type Locale } from "@/data/site";
+import { editorialRssDate } from "@/lib/editorial-dates";
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -42,7 +43,7 @@ export function GET({ params }: { params: { lang?: string } }) {
       <title>${escapeXml(item.title)}</title>
       <link>${SITE_URL}${item.path}</link>
       <guid>${SITE_URL}${item.path}</guid>
-      <pubDate>${new Date(`${item.date}T12:00:00Z`).toUTCString()}</pubDate>
+      ${editorialRssDate(item.date) ? `<pubDate>${editorialRssDate(item.date)}</pubDate>` : ""}
       <description>${escapeXml(item.summary)}</description>
     </item>`).join("")}
   </channel>

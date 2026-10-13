@@ -724,6 +724,20 @@
     font-size: clamp(2rem, 1.55rem + 1.5vw, 3rem);
   }
 
+  .editorial-card--text .editorial-card__link {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .editorial-card--text .editorial-card__body {
+    justify-content: center;
+    border-top: 0.25rem solid var(--blue-600);
+  }
+
+  .editorial-card--text .editorial-card__action {
+    margin-top: 0;
+  }
+
   .mandate-feature {
     position: relative;
     z-index: 1;
@@ -1055,6 +1069,20 @@
   .article-header__image {
     border-radius: var(--radius);
     box-shadow: 1rem 1rem 0 var(--blue-300);
+  }
+
+  .article-header__grid--text {
+    grid-template-columns: minmax(0, 52rem);
+  }
+
+  /* Preserve the full poster or document, including its practical information. */
+  .article-header__image--document {
+    aspect-ratio: auto;
+  }
+
+  .article-header__image--document img {
+    height: auto;
+    object-fit: contain;
   }
 
   .resource-list {

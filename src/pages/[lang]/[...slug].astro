@@ -6,6 +6,7 @@ import HostedVideo from "@/components/HostedVideo.astro";
 import Picture from "@/components/Picture.astro";
 import { editorialItems, itemsFor, localizedPathsFor, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
 import { getEditorialItems } from "@/lib/cms";
+import { exactEditorialDate } from "@/lib/editorial-dates";
 import { locales, SITE_URL, type Locale, type LocalizedPaths } from "@/data/site";
 
 type RouteProps =
@@ -57,6 +58,7 @@ const path = isStatic ? props.page.path : props.item.path;
 const localizedPaths = props.localizedPaths;
 const listingItems = isStatic && props.page.listing ? itemsFor(locale, props.page.listing) : [];
 const image = isItem && props.item.image ? `/media/${props.item.image}/cover.jpg` : undefined;
+const exactDate = isItem ? exactEditorialDate(props.item.date) : undefined;
 const schemaType = isItem
   ? props.item.type === "event"
     ? "Event"
@@ -73,8 +75,9 @@ const schema = isItem
       name: props.item.title,
       headline: props.item.title,
       description: props.item.summary,
-      datePublished: props.item.date,
-      startDate: props.item.type === "event" ? props.item.date : undefined,
+      datePublished: exactDate,
+      startDate: props.item.type === "event" ? exactDate : undefined,
+      endDate: props.item.type === "event" && props.item.endDate ? exactEditorialDate(props.item.endDate) : undefined,
       location: props.item.location ? { "@type": "Place", name: props.item.location } : undefined,
       image: image ? new URL(image, SITE_URL).toString() : undefined,
       url: new URL(path, SITE_URL).toString(),
@@ -92,7 +95,7 @@ const schema = isItem
   {localizedPaths}
   {image}
   type={isItem ? "article" : "website"}
-  published={isItem ? props.item.date : undefined}
+  published={exactDate}
   {schema}
 >
   <Breadcrumbs {locale} current={title} />
@@ -123,7 +126,7 @@ const schema = isItem
     <>
       <article>
         <header class="article-header">
-          <div class="article-header__grid container">
+          <div class:list={["article-header__grid", "container", !props.item.image && "article-header__grid--text"]}>
             <div>
               <p class="eyebrow">{props.item.eyebrow}</p>
               <h1>{props.item.title}</h1>
@@ -134,7 +137,7 @@ const schema = isItem
               </ul>
             </div>
             {props.item.image && (
-              <figure class="article-header__image">
+              <figure class:list={["article-header__image", props.item.imagePresentation === "document" && "article-header__image--document"]}>
                 <Picture
                   slug={props.item.image}
                   alt={props.item.imageAlt || ""}

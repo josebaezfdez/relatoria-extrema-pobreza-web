@@ -1,4 +1,5 @@
 import { locales, type Locale, type LocalizedPaths } from "./site";
+import { october2026Items } from "./october2026";
 
 export type ContentType = "report" | "visit" | "event" | "media" | "press_release";
 
@@ -13,13 +14,16 @@ export interface EditorialItem {
   eyebrow: string;
   title: string;
   summary: string;
+  /** ISO calendar day (YYYY-MM-DD) or month (YYYY-MM), preserving source precision. */
   date: string;
+  endDate?: string;
   displayDate: string;
   location?: string;
   image?: string;
   imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
+  imagePresentation?: "document";
   gallery?: MediaImage[];
   body: string;
   links?: { label: string; href: string }[];
@@ -530,6 +534,7 @@ const holderFr = `
 `;
 
 export const editorialItems: EditorialItem[] = [
+  ...october2026Items,
   {
     id: "hrc62-roadmap-es",
     type: "report",

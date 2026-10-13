@@ -20,7 +20,7 @@ const headingId = `card-title-${item.id}`;
 ---
 
 <article
-  class:list={["editorial-card", `editorial-card--${variant}`]}
+  class:list={["editorial-card", `editorial-card--${variant}`, !item.image && "editorial-card--text"]}
 >
   <a class="editorial-card__link" href={item.path} aria-labelledby={headingId}>
     {item.image && (
