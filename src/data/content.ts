@@ -29,7 +29,7 @@ export interface EditorialItem {
   body: string;
   links?: { label: string; href: string }[];
   download?: { label: string; href: string };
-  video?: { title: string; src: string; poster?: string };
+  video?: { title: string; src: string; poster?: string; width?: number; height?: number };
   audio?: { label: string; href: string };
 }
 

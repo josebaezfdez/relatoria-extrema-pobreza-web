@@ -9,6 +9,12 @@ const assets = assetData as Record<string, {
   alt: Record<Locale, string>;
 }>;
 
+const videoTitles: Record<Locale, string> = {
+  es: "Vídeo del encuentro con el alcalde de Grigny",
+  en: "Video of the meeting with the Mayor of Grigny",
+  fr: "Vidéo de la rencontre avec le maire de Grigny",
+};
+
 const content = {
   es: {
     path: "/es/actualidad/eventos/encuentro-alcalde-grigny-philippe-rio/",
@@ -60,5 +66,12 @@ export const grigny2026Items: EditorialItem[] = locales.map((locale) => {
     imageHeight: image.height,
     imageAlt: image.alt,
     gallery: ["2772", "2777", "2782", "2791", "2820"].map((number) => photo(number, locale)),
+    video: {
+      title: videoTitles[locale],
+      src: "/media/2026-10-12-grigny-video/grigny-2026-10-12.mp4",
+      poster: "/media/2026-10-12-grigny-video/poster.jpg",
+      width: 720,
+      height: 1280,
+    },
   };
 });

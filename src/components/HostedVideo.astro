@@ -6,9 +6,12 @@ interface Props {
   title: string;
   src: string;
   poster?: string;
+  width?: number;
+  height?: number;
 }
 
-const { locale, title, src, poster } = Astro.props;
+const { locale, title, src, poster, width, height } = Astro.props;
+const isPortrait = Boolean(width && height && height > width);
 const copy = {
   es: {
     fallback: "Descargar el vídeo",
@@ -25,7 +28,7 @@ const copy = {
 }[locale];
 ---
 
-<section class="hosted-video" aria-labelledby="hosted-video-title">
+<section class:list={["hosted-video", { "hosted-video--portrait": isPortrait }]} aria-labelledby="hosted-video-title">
   <h2 id="hosted-video-title">{title}</h2>
   <figure>
     <video
@@ -33,6 +36,8 @@ const copy = {
       playsinline
       preload="metadata"
       poster={poster}
+      width={width}
+      height={height}
       aria-describedby="hosted-video-caption"
     >
       <source src={src} type="video/mp4" />

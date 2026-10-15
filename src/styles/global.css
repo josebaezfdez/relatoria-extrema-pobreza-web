@@ -698,6 +698,15 @@
     font-size: var(--step--1);
   }
 
+  .hosted-video--portrait figure {
+    max-width: 26rem;
+    margin-inline: auto;
+  }
+
+  .hosted-video--portrait video {
+    aspect-ratio: 9 / 16;
+  }
+
   .complaint-cta {
     display: grid;
     padding: var(--space-l);
