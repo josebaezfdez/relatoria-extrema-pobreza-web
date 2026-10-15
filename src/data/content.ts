@@ -1,5 +1,6 @@
 import { locales, type Locale, type LocalizedPaths } from "./site";
 import { october2026Items } from "./october2026";
+import { grigny2026Items } from "./grigny2026";
 
 export type ContentType = "report" | "visit" | "event" | "media" | "press_release";
 
@@ -534,6 +535,7 @@ const holderFr = `
 `;
 
 export const editorialItems: EditorialItem[] = [
+  ...grigny2026Items,
   ...october2026Items,
   {
     id: "hrc62-roadmap-es",

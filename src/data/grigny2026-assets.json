@@ -1,0 +1,152 @@
+{
+  "2772": {
+    "slug": "2026-10-12-grigny-2772",
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ],
+    "alt": {
+      "es": "Vista general de la reunión de Elena Díaz Galán con el alcalde de Grigny y su equipo.",
+      "en": "Overview of Elena Díaz Galán’s meeting with the Mayor of Grigny and his team.",
+      "fr": "Vue d’ensemble de la rencontre d’Elena Díaz Galán avec le maire de Grigny et son équipe."
+    },
+    "source": "00_sources/deliveries/2026-10-15-grigny/IMG_2772.HEIC",
+    "sha256": "8c2e01017c0c4f0a3992e4713e95f0e1b4aa5d923964009c8ba01b3ce06bc5c4",
+    "original_bytes": 1699129,
+    "cover_webp_bytes": 206374,
+    "cover_avif_bytes": 123716,
+    "cover_dimensions": [
+      1600,
+      1200
+    ]
+  },
+  "2777": {
+    "slug": "2026-10-12-grigny-2777",
+    "width": 5712,
+    "height": 4284,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ],
+    "alt": {
+      "es": "Conversación durante el encuentro sobre las políticas de lucha contra la pobreza en Grigny.",
+      "en": "Discussion during the meeting on policies to combat poverty in Grigny.",
+      "fr": "Échanges lors de la rencontre sur les politiques de lutte contre la pauvreté à Grigny."
+    },
+    "source": "00_sources/deliveries/2026-10-15-grigny/IMG_2777.HEIC",
+    "sha256": "e34ac33b86e8091625b2fcbce943221d1c82748681d38853cfca8d416229ae5f",
+    "original_bytes": 2677314,
+    "cover_webp_bytes": 198934,
+    "cover_avif_bytes": 114572,
+    "cover_dimensions": [
+      1600,
+      1200
+    ]
+  },
+  "2782": {
+    "slug": "2026-10-12-grigny-2782",
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ],
+    "alt": {
+      "es": "Participantes revisan documentos durante la reunión de trabajo en Grigny.",
+      "en": "Participants review documents during the working meeting in Grigny.",
+      "fr": "Des participants examinent des documents lors de la réunion de travail à Grigny."
+    },
+    "source": "00_sources/deliveries/2026-10-15-grigny/IMG_2782.HEIC",
+    "sha256": "aa3b11c9f2b284aa52a2706027c473da6eb0fdfbfd198cadac5f7a62e4ccfe2d",
+    "original_bytes": 1529326,
+    "cover_webp_bytes": 266964,
+    "cover_avif_bytes": 172727,
+    "cover_dimensions": [
+      1600,
+      2133
+    ]
+  },
+  "2791": {
+    "slug": "2026-10-12-grigny-2791",
+    "width": 4284,
+    "height": 5712,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ],
+    "alt": {
+      "es": "Participantes en la mesa de trabajo sobre pobreza y exclusión social en Grigny.",
+      "en": "Participants at the working session on poverty and social exclusion in Grigny.",
+      "fr": "Participants à la séance de travail sur la pauvreté et l’exclusion sociale à Grigny."
+    },
+    "source": "00_sources/deliveries/2026-10-15-grigny/IMG_2791.HEIC",
+    "sha256": "e12b7b81a84785eafe3ce2f7d01bf1e074b19cf83719d7deb675a95a2d0cec30",
+    "original_bytes": 2315016,
+    "cover_webp_bytes": 244644,
+    "cover_avif_bytes": 160659,
+    "cover_dimensions": [
+      1600,
+      2133
+    ]
+  },
+  "2820": {
+    "slug": "2026-10-12-grigny-2820",
+    "width": 5712,
+    "height": 4284,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ],
+    "alt": {
+      "es": "Presentación proyectada durante el encuentro sobre políticas públicas en Grigny.",
+      "en": "Presentation shown during the meeting on public policies in Grigny.",
+      "fr": "Présentation projetée lors de la rencontre sur les politiques publiques à Grigny."
+    },
+    "source": "00_sources/deliveries/2026-10-15-grigny/IMG_2820.HEIC",
+    "sha256": "7fbef782eeae6eb7354cc533ed9fdf735556f21e40c4c7232565acc922d59c9d",
+    "original_bytes": 2593946,
+    "cover_webp_bytes": 158742,
+    "cover_avif_bytes": 98540,
+    "cover_dimensions": [
+      1600,
+      1200
+    ]
+  },
+  "2825": {
+    "slug": "2026-10-12-grigny-2825",
+    "width": 5712,
+    "height": 4284,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ],
+    "alt": {
+      "es": "Fotografía de grupo de Elena Díaz Galán, el alcalde de Grigny, Philippe Rio, y su equipo.",
+      "en": "Group photograph of Elena Díaz Galán, the Mayor of Grigny, Philippe Rio, and his team.",
+      "fr": "Photographie de groupe d’Elena Díaz Galán, du maire de Grigny, Philippe Rio, et de son équipe."
+    },
+    "source": "00_sources/deliveries/2026-10-15-grigny/IMG_2825.HEIC",
+    "sha256": "93d6677e7030f2649c0309d67d837d234d74eb534b9f2462465ca30ab13fc7a2",
+    "original_bytes": 3910721,
+    "cover_webp_bytes": 265474,
+    "cover_avif_bytes": 139414,
+    "cover_dimensions": [
+      1600,
+      1200
+    ]
+  }
+}

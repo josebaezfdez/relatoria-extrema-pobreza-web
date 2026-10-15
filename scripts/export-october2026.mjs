@@ -29,17 +29,23 @@ function loadStaticModule(filename, override) {
 
 const filename = `${root}/src/data/content.ts`.replaceAll("\\", "/");
 const current = loadStaticModule(filename);
-const baselineRef = "738e4ecc6a870f0b5e2141423bea66c7ae2508e8";
+const grignyRelease = process.argv.includes("--grigny");
+const baselineRef = grignyRelease
+  ? "6dbed4a8a4465d6ddb68aeebbf646e4fd608e515"
+  : "738e4ecc6a870f0b5e2141423bea66c7ae2508e8";
 const baselineSource = execFileSync("git", ["show", `${baselineRef}:src/data/content.ts`], { cwd: root, encoding: "utf8" });
 const baseline = loadStaticModule(filename, baselineSource);
-const additions = loadStaticModule(`${root}/src/data/october2026.ts`).october2026Items;
+const additions = grignyRelease
+  ? loadStaticModule(`${root}/src/data/grigny2026.ts`).grigny2026Items
+  : loadStaticModule(`${root}/src/data/october2026.ts`).october2026Items;
 const differences = baseline.editorialItems.filter((old) => {
   const now = current.editorialItems.find((candidate) => candidate.id === old.id);
   return JSON.stringify(old) !== JSON.stringify(now);
 });
 if (differences.length) throw new Error(`Earlier entries changed: ${differences.map((item) => item.id).join(", ")}`);
-if (additions.length !== 57 || new Set(additions.map((item) => item.translation_group)).size !== 19) {
-  throw new Error("October delivery does not contain exactly 19 groups and 57 translations.");
+const groups = grignyRelease ? 1 : 19;
+if (additions.length !== groups * 3 || new Set(additions.map((item) => item.translation_group)).size !== groups) {
+  throw new Error(`Delivery must contain ${groups} groups and ${groups * 3} translations.`);
 }
 const output = {
   additions,
@@ -52,6 +58,7 @@ const output = {
     reports: additions.filter((item) => item.locale === locale && item.type === "report").length,
   }])),
 };
-fs.mkdirSync(`${root}/artifacts/october-2026`, { recursive: true });
-fs.writeFileSync(`${root}/artifacts/october-2026/content.json`, JSON.stringify(output, null, 2));
+const artifactDirectory = `${root}/artifacts/${grignyRelease ? "grigny-2026" : "october-2026"}`;
+fs.mkdirSync(artifactDirectory, { recursive: true });
+fs.writeFileSync(`${artifactDirectory}/content.json`, JSON.stringify(output, null, 2));
 console.log(JSON.stringify({ counts: output.counts, previousEntriesPreserved: output.previousEntriesPreserved }));
