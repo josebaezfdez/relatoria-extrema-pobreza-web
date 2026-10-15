@@ -20,7 +20,7 @@ interface OctoberEntry {
   displayDate?: Localized;
   image?: number;
   localizedImages?: Partial<Record<Locale, string>>;
-  gallery?: number[];
+  gallery?: Array<number | string>;
   imagePresentation?: "document";
   links?: { label: Localized; href: string }[];
   download?: { label: Localized; href: string };
@@ -42,7 +42,7 @@ const updates: OctoberEntry[] = [
       `<p class="lead">Le 15 septembre 2026, Elena Díaz Galán a rencontré Manuel Sánchez-Montero, directeur général de la Fundación Acción contra el Hambre, ACF-Spain.</p><p>La rencontre a permis d’échanger sur leurs agendas respectifs et d’explorer d’éventuelles pistes de coopération pour renforcer la protection des droits humains et contribuer à la réalisation des objectifs de développement durable.</p>`),
   },
   {
-    key: "celios-meeting", date: "2026-09-16",
+    key: "celios-meeting", date: "2026-09-16", gallery: ["celios-rtf"],
     slug: tr("reunion-celios-indonesia", "celios-indonesia-meeting", "rencontre-celios-indonesie"),
     title: tr("Reunión con CELIOS, Center of Economic and Law Studies", "Meeting with CELIOS, Center of Economic and Law Studies", "Rencontre avec CELIOS, Center of Economic and Law Studies"),
     summary: tr("Intercambio con el centro de estudios de Indonesia sobre la situación de la pobreza y los datos académicos disponibles.", "Discussion with the Indonesian research centre about poverty and available academic evidence.", "Échanges avec le centre de recherche indonésien sur la pauvreté et les données universitaires disponibles."),

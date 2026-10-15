@@ -598,5 +598,26 @@
       768,
       1280
     ]
+  },
+  "celios-rtf": {
+    "source": "00_sources/deliveries/2026-10-09/celios-captura-rtf.png",
+    "original": "Captura de CELIOS incrustada en actualización 9 octubre.rtf",
+    "slug": "2026-09-16-celios-website",
+    "date": "2026-09-16",
+    "group": "celios-meeting",
+    "alt": {
+      "es": "Captura de la web de CELIOS incluida en la documentación facilitada por la Relatoría.",
+      "en": "Screenshot of the CELIOS website included in the information supplied by the Rapporteur’s office.",
+      "fr": "Capture du site de CELIOS incluse dans la documentation fournie par le bureau de la Rapporteuse."
+    },
+    "acquisition": "PNG embedded in the RTF attached to email 1a120583a587d85e; WMF alternative is the same illustration",
+    "width": 1651,
+    "height": 571,
+    "sha256": "8121bcec6b4c71ea835e020fd8ff130a5dfeb5eedf8a5c0fe106ea0d8dd645d5",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
   }
 }
