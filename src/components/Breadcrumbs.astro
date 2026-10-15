@@ -1,5 +1,5 @@
 ---
-import type { Locale } from "@/data/site";
+import { localeConfig, type Locale } from "@/data/site";
 
 interface Props {
   locale: Locale;
@@ -9,9 +9,9 @@ interface Props {
 const { locale, current } = Astro.props;
 ---
 
-<nav class="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : "Breadcrumb"}>
+<nav class="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : locale === "fr" ? "Fil d’Ariane" : "Breadcrumb"}>
   <ol class="breadcrumbs__list container">
-    <li><a href={`/${locale}/`}>{locale === "es" ? "Inicio" : "Home"}</a></li>
+    <li><a href={`/${locale}/`}>{localeConfig[locale].homeLabel}</a></li>
     <li aria-current="page">{current}</li>
   </ol>
 </nav>

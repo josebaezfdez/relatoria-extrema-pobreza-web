@@ -1,6 +1,6 @@
 # Sitio web de la Relatoría Especial
 
-Sitio bilingüe en Astro sobre el mandato de la Relatora Especial de las Naciones Unidas sobre la extrema pobreza y los derechos humanos.
+Sitio en español, inglés y francés desarrollado con Astro sobre el mandato de la Relatora Especial de las Naciones Unidas sobre la extrema pobreza y los derechos humanos.
 
 ## Desarrollo
 
