@@ -68,7 +68,7 @@ export const grigny2026Items: EditorialItem[] = locales.map((locale) => {
     gallery: ["2772", "2777", "2782", "2791", "2820"].map((number) => photo(number, locale)),
     video: {
       title: videoTitles[locale],
-      src: "/media/2026-10-12-grigny-video/grigny-2026-10-12.mp4",
+      src: "https://pub-64679aa506054abcbbd3e8c93e07fb2b.r2.dev/videos/grigny-2026-10-12-299184bed013.mp4",
       poster: "/media/2026-10-12-grigny-video/poster.jpg",
       width: 720,
       height: 1280,
