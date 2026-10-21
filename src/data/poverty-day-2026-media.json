@@ -1,0 +1,47 @@
+{
+  "archive_path": "00_sources/deliveries/2026-10-21-poverty-day/día de la lucha contra la pobreza.mp4",
+  "original_bytes": 545909381,
+  "source_sha256": "25350d017a6929c58a97588157f3d31ecd4204a174efd2cf7c83e58810e8519c",
+  "optimized_bytes": 55682225,
+  "reduction_percent": 89.8,
+  "sha256": "613da9e3c8ffe3602f78bed9928c5a623b3aabdc27f96e239889a3d596023117",
+  "duration_seconds": 216.4,
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "codec": "H.264 High / yuv420p / BT.709 SDR",
+  "fps": 30,
+  "audio": "AAC stereo 96 kbit/s; original audio retained",
+  "faststart": true,
+  "metadata_removed": true,
+  "bucket": "relatoria-media",
+  "r2_key": "videos/day-against-poverty-2026-10-17-613da9e3c8ff.mp4",
+  "public_src": "https://pub-64679aa506054abcbbd3e8c93e07fb2b.r2.dev/videos/day-against-poverty-2026-10-17-613da9e3c8ff.mp4",
+  "public_poster": "/media/2026-10-17-day-against-poverty/poster.jpg",
+  "commemoration_date": "2026-10-17",
+  "recording_date": "not-confirmed",
+  "captions_status": "under-review",
+  "mp4_boxes": [
+    {
+      "type": "ftyp",
+      "offset": 0,
+      "size": 32
+    },
+    {
+      "type": "moov",
+      "offset": 32,
+      "size": 235719
+    },
+    {
+      "type": "free",
+      "offset": 235751,
+      "size": 8
+    },
+    {
+      "type": "mdat",
+      "offset": 235759,
+      "size": 55446466
+    }
+  ]
+}

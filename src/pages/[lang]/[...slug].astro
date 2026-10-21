@@ -4,26 +4,27 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import EditorialListing from "@/components/EditorialListing.astro";
 import HostedVideo from "@/components/HostedVideo.astro";
 import Picture from "@/components/Picture.astro";
-import { editorialItems, itemsFor, localizedPathsFor, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
+import { editorialItems, itemsForPage, localizedPathsFor, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
+import { povertyDayCopy } from "@/data/povertyDay2026";
 import { getEditorialItems } from "@/lib/cms";
 import { exactEditorialDate } from "@/lib/editorial-dates";
 import { locales, SITE_URL, type Locale, type LocalizedPaths } from "@/data/site";
 
 type RouteProps =
-  | { kind: "static"; locale: Locale; page: StaticPage; localizedPaths: LocalizedPaths }
+  | { kind: "static"; locale: Locale; page: StaticPage; localizedPaths: LocalizedPaths; items: EditorialItem[] }
   | { kind: "item"; locale: Locale; item: EditorialItem; localizedPaths: LocalizedPaths };
 
 export async function getStaticPaths() {
+  const remoteCollections = await Promise.all(locales.map((locale) => getEditorialItems(locale)));
+  const cmsItems = remoteCollections.flatMap((collection) => collection.items);
+  const routedItems = cmsItems.length ? cmsItems : editorialItems;
   const staticRoutes = staticPages.map((page) => ({
     params: {
       lang: page.locale,
       slug: page.path.replace(`/${page.locale}/`, "").replace(/\/$/, ""),
     },
-    props: { kind: "static" as const, locale: page.locale, page, localizedPaths: localizedPathsFor(page, staticPages) },
+    props: { kind: "static" as const, locale: page.locale, page, localizedPaths: localizedPathsFor(page, staticPages), items: routedItems.filter((item) => item.locale === page.locale) },
   }));
-  const remoteCollections = await Promise.all(locales.map((locale) => getEditorialItems(locale)));
-  const cmsItems = remoteCollections.flatMap((collection) => collection.items);
-  const routedItems = cmsItems.length ? cmsItems : editorialItems;
   const itemRoutes = routedItems.map((item) => ({
     params: {
       lang: item.locale,
@@ -42,22 +43,31 @@ const pageCopy = {
   es: {
     resources: "Recursos y fuentes",
     gallery: "Galería de imágenes",
+    related: "Actividades y materiales relacionados",
+    details: "Ver la ficha del vídeo",
   },
   en: {
     resources: "Resources and sources",
     gallery: "Image gallery",
+    related: "Related activities and resources",
+    details: "View the video article",
   },
   fr: {
     resources: "Ressources et sources",
     gallery: "Galerie d’images",
+    related: "Activités et ressources associées",
+    details: "Voir la fiche de la vidéo",
   },
 }[locale];
 const title = isStatic ? props.page.title : props.item.title;
 const description = isStatic ? props.page.description : props.item.summary;
 const path = isStatic ? props.page.path : props.item.path;
 const localizedPaths = props.localizedPaths;
-const listingItems = isStatic && props.page.listing ? itemsFor(locale, props.page.listing) : [];
-const image = isItem && props.item.image ? `/media/${props.item.image}/cover.jpg` : undefined;
+const { featuredItem, items: listingItems } = isStatic && props.page.listing
+  ? itemsForPage(props.page, props.items)
+  : { featuredItem: undefined, items: [] };
+const imageItem = isItem ? props.item : featuredItem;
+const image = imageItem?.image ? `/media/${imageItem.image}/cover.jpg` : undefined;
 const exactDate = isItem ? exactEditorialDate(props.item.date) : undefined;
 const schemaType = isItem
   ? props.item.type === "event"
@@ -112,10 +122,22 @@ const schema = isItem
         </div>
       </header>
       {props.page.body && <article class="prose" set:html={props.page.body} />}
-      {props.page.listing && (
+      {props.page.id === `news-${locale}` && (
+        <aside class="prose" aria-label={povertyDayCopy[locale].title}>
+          <p><a href={povertyDayCopy[locale].path}>{povertyDayCopy[locale].title} →</a></p>
+        </aside>
+      )}
+      {featuredItem?.video && (
+        <div class="container section">
+          <HostedVideo locale={locale} {...featuredItem.video} />
+          <p><a href={featuredItem.path}>{pageCopy.details} →</a></p>
+        </div>
+      )}
+      {props.page.listing && listingItems.length > 0 && (
         <section class="section listing-section" aria-label={props.page.title}>
           <div class="container">
-            <EditorialListing items={listingItems} context="archive" headingLevel={2} />
+            {props.page.topic && <h2>{pageCopy.related}</h2>}
+            <EditorialListing items={listingItems} context="archive" headingLevel={props.page.topic ? 3 : 2} />
           </div>
         </section>
       )}

@@ -1,12 +1,14 @@
 import { locales, type Locale, type LocalizedPaths } from "./site";
 import { october2026Items } from "./october2026";
 import { grigny2026Items } from "./grigny2026";
+import { povertyDay2026Items, povertyDayPages } from "./povertyDay2026";
 
 export type ContentType = "report" | "visit" | "event" | "media" | "press_release";
 
 export interface EditorialItem {
   id: string;
   type: ContentType;
+  topics?: string[];
   locale: Locale;
   path: string;
   alternatePath: string;
@@ -50,6 +52,8 @@ export interface StaticPage {
   eyebrow?: string;
   body?: string;
   listing?: ContentType | "news";
+  topic?: string;
+  featuredItemId?: string;
 }
 
 type GalleryAsset = Omit<MediaImage, "alt"> & {
@@ -535,6 +539,7 @@ const holderFr = `
 `;
 
 export const editorialItems: EditorialItem[] = [
+  ...povertyDay2026Items,
   ...grigny2026Items,
   ...october2026Items,
   {
@@ -2336,6 +2341,7 @@ export const editorialItems: EditorialItem[] = [
 ];
 
 export const staticPages: StaticPage[] = [
+  ...povertyDayPages,
   { id: "mandate-es", locale: "es", path: "/es/mandato/", alternatePath: "/en/mandate/", title: "Mandato sobre extrema pobreza y derechos humanos", description: "Origen, objetivos y alcance del mandato de Naciones Unidas sobre extrema pobreza y derechos humanos.", eyebrow: "El mandato", body: mandateEs },
   { id: "mandate-en", locale: "en", path: "/en/mandate/", alternatePath: "/es/mandato/", title: "Mandate on extreme poverty and human rights", description: "Origin, objectives and scope of the United Nations mandate on extreme poverty and human rights.", eyebrow: "The mandate", body: mandateEn },
   { id: "holder-es", locale: "es", path: "/es/titular-actual/", alternatePath: "/en/current-holder/", title: "Elena Carolina Díaz Galán", description: "Perfil de la actual Relatora Especial sobre la extrema pobreza y los derechos humanos.", eyebrow: "Titular actual", body: holderEs },
@@ -2495,6 +2501,18 @@ export function itemsFor(locale: Locale, type?: ContentType | "news"): Editorial
   return editorialItems
     .filter((item) => item.locale === locale && (!type || type === "news" || item.type === type))
     .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function itemsForPage(page: StaticPage, collection: EditorialItem[] = editorialItems) {
+  const matchingItems = collection
+    .filter((item) => item.locale === page.locale
+      && (!page.listing || page.listing === "news" || item.type === page.listing)
+      && (!page.topic || item.topics?.includes(page.topic)))
+    .sort((a, b) => b.date.localeCompare(a.date));
+  const featuredItem = page.featuredItemId
+    ? matchingItems.find((item) => item.id === page.featuredItemId)
+    : undefined;
+  return { featuredItem, items: matchingItems.filter((item) => item.id !== featuredItem?.id) };
 }
 
 type TranslatedEntry = Pick<EditorialItem | StaticPage, "id" | "locale" | "path">;

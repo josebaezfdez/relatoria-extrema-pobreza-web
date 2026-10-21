@@ -4,6 +4,7 @@ import Picture from "@/components/Picture.astro";
 import EditorialListing from "@/components/EditorialListing.astro";
 import { getEditorialItems } from "@/lib/cms";
 import { homePaths, locales, SITE_URL } from "@/data/site";
+import { povertyDayCopy } from "@/data/povertyDay2026";
 
 export function getStaticPaths() {
   return locales.map((locale) => ({
@@ -17,6 +18,7 @@ const path = homePaths[locale];
 const localizedPaths = homePaths;
 const { items } = await getEditorialItems(locale);
 const latest = items.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8);
+const povertyDay = povertyDayCopy[locale];
 const copy = {
   es: {
     title: "Relatora Especial sobre extrema pobreza y derechos humanos",
@@ -169,6 +171,19 @@ const schema = {
         <a href={copy.newsPath}>{copy.allNews} →</a>
       </header>
       <EditorialListing items={latest} context="home" headingLevel={3} />
+    </div>
+  </section>
+
+  <section class="section section--paper" aria-labelledby="poverty-day-heading">
+    <div class="container mandate-feature">
+      <div>
+        <p class="eyebrow">{povertyDay.eyebrow}</p>
+        <h2 id="poverty-day-heading">{povertyDay.title}</h2>
+      </div>
+      <div>
+        <p>{povertyDay.description}</p>
+        <p><a href={povertyDay.path}>{povertyDay.action} →</a></p>
+      </div>
     </div>
   </section>
 
