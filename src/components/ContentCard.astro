@@ -1,6 +1,7 @@
 ---
 import type { EditorialItem } from "@/data/content";
 import Picture from "./Picture.astro";
+import { archiveCopy, categories, topics, categoryHref, topicHref, formatsFor } from "@/data/editorial-taxonomy";
 
 interface Props {
   item: EditorialItem;
@@ -17,14 +18,17 @@ const actionLabel = {
 }[item.locale];
 const Heading = headingLevel === 2 ? "h2" : "h3";
 const headingId = `card-title-${item.id}`;
+const copy = archiveCopy[item.locale];
+const category = item.category ? categories[item.category][item.locale] : item.eyebrow;
+const context = item.category === "press" || item.category === "reports" ? item.eyebrow : undefined;
 ---
 
 <article
-  class:list={["editorial-card", `editorial-card--${variant}`, !item.image && "editorial-card--text"]}
+  class:list={["editorial-card", `editorial-card--${variant}`, !item.image && "editorial-card--text", item.category === "reports" && "editorial-card--report"]}
 >
-  <a class="editorial-card__link" href={item.path} aria-labelledby={headingId}>
+  <div class="editorial-card__link">
     {item.image && (
-      <figure class="editorial-card__media">
+      <a class="editorial-card__media" href={item.path} tabindex="-1" aria-hidden="true">
         <Picture
           slug={item.image}
           alt=""
@@ -32,20 +36,23 @@ const headingId = `card-title-${item.id}`;
           height={item.imageHeight}
         />
         <span class="editorial-card__media-action" aria-hidden="true">↗</span>
-      </figure>
+      </a>
     )}
     <div class="editorial-card__body">
       <div class="editorial-card__meta">
         <time datetime={item.date}>{item.displayDate}</time>
         {position && <span aria-hidden="true">{String(position).padStart(2, "0")}</span>}
       </div>
-      <p class="eyebrow editorial-card__eyebrow">{item.eyebrow}</p>
-      <Heading id={headingId}>{item.title}</Heading>
+      <p class="eyebrow editorial-card__eyebrow">{item.category ? <a href={categoryHref(item.locale, item.category)}>{category}</a> : category}</p>
+      {context && <p class="editorial-card__context">{context}</p>}
+      <Heading id={headingId}><a href={item.path}>{item.title}</a></Heading>
       <p>{item.summary}</p>
-      <span class="editorial-card__action">
+      {formatsFor(item).length > 0 && <ul class="format-badges" aria-label={item.locale === "es" ? "Recursos disponibles" : item.locale === "en" ? "Available resources" : "Ressources disponibles"}>{formatsFor(item).map((format) => <li>{copy[format]}</li>)}</ul>}
+      {item.topics?.length ? <ul class="topic-tags" aria-label={copy.topic}>{item.topics.map((topic) => <li><a href={topicHref(item.locale, topic)}>{topics[topic][item.locale]}</a></li>)}</ul> : null}
+      <a href={item.path} class="editorial-card__action" aria-labelledby={headingId}>
         {actionLabel}
         <span aria-hidden="true">→</span>
-      </span>
+      </a>
     </div>
-  </a>
+  </div>
 </article>

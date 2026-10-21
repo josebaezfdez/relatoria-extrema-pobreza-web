@@ -2,13 +2,15 @@ import { locales, type Locale, type LocalizedPaths } from "./site";
 import { october2026Items } from "./october2026";
 import { grigny2026Items } from "./grigny2026";
 import { povertyDay2026Items, povertyDayPages } from "./povertyDay2026";
+import { classifyEditorialItem, updateStaticPageNavigation, type EditorialCategory, type EditorialTopic } from "./editorial-taxonomy";
 
 export type ContentType = "report" | "visit" | "event" | "media" | "press_release";
 
 export interface EditorialItem {
   id: string;
   type: ContentType;
-  topics?: string[];
+  category?: EditorialCategory;
+  topics?: EditorialTopic[];
   locale: Locale;
   path: string;
   alternatePath: string;
@@ -52,7 +54,7 @@ export interface StaticPage {
   eyebrow?: string;
   body?: string;
   listing?: ContentType | "news";
-  topic?: string;
+  topic?: EditorialTopic;
   featuredItemId?: string;
 }
 
@@ -2338,7 +2340,7 @@ export const editorialItems: EditorialItem[] = [
     body: `<p class="lead">Agencia EFE résume la conférence d’Elena Díaz Galán au IIe Campus international Ciudad de La Laguna, où elle a affirmé que l’extrême pauvreté n’est pas une question de charité, mais une urgence relevant des droits de l’homme.</p><p>L’article souligne le lien entre démocratie, protection des droits de l’homme et éradication de la pauvreté, ainsi que l’obligation des États de donner la priorité aux personnes les plus vulnérables et de renforcer les droits à l’alimentation, à l’eau, au logement et à un niveau de vie suffisant.</p>`,
     links: [{ label: "Lire l’article complet d’Agencia EFE", href: "https://efe.com/canarias/2026-07-28/relatora-de-la-onu-defiende-incluir-la-erradicacion-de-la-pobreza-en-los-derechos-humanos/" }],
   },
-];
+].map((item) => classifyEditorialItem(item as EditorialItem));
 
 export const staticPages: StaticPage[] = [
   ...povertyDayPages,
@@ -2495,11 +2497,12 @@ export const staticPages: StaticPage[] = [
   { id: "legal-fr", locale: "fr", path: "/fr/mentions-legales/", alternatePath: "/es/aviso-legal/", title: "Mentions légales", description: "Informations juridiques et indépendance éditoriale du site.", body: `<p class="lead">Ce site est un espace d’information indépendant consacré aux activités de l’actuelle titulaire du mandat.</p><h2>Indépendance</h2><p>Il n’est pas géré par le Haut-Commissariat des Nations Unies aux droits de l’homme. Son contenu ne reflète pas la position officielle des Nations Unies.</p><h2>Sources et exactitude</h2><p>Les contenus reposent sur les documents fournis par l’équipe et sur les sources institutionnelles indiquées. En cas de divergence, les sources officielles prévalent.</p>` },
   { id: "privacy-fr", locale: "fr", path: "/fr/confidentialite/", alternatePath: "/es/privacidad/", title: "Confidentialité", description: "Informations sur la confidentialité et la mesure d’audience sans cookies.", body: `<p class="lead">Le site est conçu pour fonctionner sans cookies de suivi ni formulaires recueillant des données à caractère personnel.</p><h2>Mesure d’audience</h2><p>L’infrastructure prévue utilise Cloudflare Web Analytics, un service de mesure agrégée sans cookies. Aucun contenu vidéo externe n’est chargé avant que la personne choisisse de le lire.</p><h2>Courrier électronique</h2><p>Lorsque vous écrivez à l’adresse officielle, la communication est traitée en dehors de ce site.</p>` },
   { id: "accessibility-fr", locale: "fr", path: "/fr/accessibilite/", alternatePath: "/es/accesibilidad/", title: "Accessibilité", description: "Engagement en faveur de l’accessibilité WCAG 2.2 niveau AA.", body: `<p class="lead">L’objectif est de respecter les WCAG 2.2 au niveau AA et d’offrir une expérience robuste avec la navigation au clavier, les lecteurs d’écran et l’agrandissement.</p><h2>Mesures mises en œuvre</h2><ul><li>Structure sémantique et hiérarchie logique des titres.</li><li>Indicateur de focus visible, lien d’évitement et navigation au clavier.</li><li>Contraste suffisant, typographie adaptable et réduction des animations.</li><li>Textes de remplacement, sous-titres, transcriptions et alternatives HTML aux documents.</li></ul><h2>Signaler un obstacle</h2><p>Écrivez à <a href="mailto:hrc-sr-extremepoverty-diazgalan@un.org">hrc-sr-extremepoverty-diazgalan@un.org</a> en indiquant la page concernée et la difficulté rencontrée.</p>` },
-];
+].map((page) => updateStaticPageNavigation(page as StaticPage));
 
 export function itemsFor(locale: Locale, type?: ContentType | "news"): EditorialItem[] {
   return editorialItems
-    .filter((item) => item.locale === locale && (!type || type === "news" || item.type === type))
+    .filter((item) => item.locale === locale && (!type || type === "news" || item.type === type)
+      && (type !== "media" || item.category !== "resources"))
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
@@ -2507,6 +2510,7 @@ export function itemsForPage(page: StaticPage, collection: EditorialItem[] = edi
   const matchingItems = collection
     .filter((item) => item.locale === page.locale
       && (!page.listing || page.listing === "news" || item.type === page.listing)
+      && (page.listing !== "media" || item.category !== "resources")
       && (!page.topic || item.topics?.includes(page.topic)))
     .sort((a, b) => b.date.localeCompare(a.date));
   const featuredItem = page.featuredItemId

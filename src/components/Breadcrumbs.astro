@@ -4,14 +4,16 @@ import { localeConfig, type Locale } from "@/data/site";
 interface Props {
   locale: Locale;
   current: string;
+  parents?: { label: string; href: string }[];
 }
 
-const { locale, current } = Astro.props;
+const { locale, current, parents = [] } = Astro.props;
 ---
 
 <nav class="breadcrumbs" aria-label={locale === "es" ? "Migas de pan" : locale === "fr" ? "Fil d’Ariane" : "Breadcrumb"}>
   <ol class="breadcrumbs__list container">
     <li><a href={`/${locale}/`}>{localeConfig[locale].homeLabel}</a></li>
+    {parents.map((parent) => <li><a href={parent.href}>{parent.label}</a></li>)}
     <li aria-current="page">{current}</li>
   </ol>
 </nav>

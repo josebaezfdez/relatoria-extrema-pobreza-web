@@ -16,7 +16,8 @@ describe("Day against poverty thematic collection", () => {
       expect(featuredItem?.video?.src).toMatch(/^https:\/\/pub-.*\.r2\.dev\/videos\/day-against-poverty-2026-10-17-[a-f0-9]{12}\.mp4$/);
       expect(items).toEqual([]);
       expect(itemsFor(locale, "news")).toContainEqual(featuredItem);
-      expect(itemsFor(locale, "media")).toContainEqual(featuredItem);
+      expect(featuredItem?.category).toBe("resources");
+      expect(itemsFor(locale, "media")).not.toContainEqual(featuredItem);
       expect(localizedPathsFor(page, staticPages)).toEqual(Object.fromEntries(locales.map((language) => [language, povertyDayCopy[language].path])));
     });
 
@@ -24,7 +25,7 @@ describe("Day against poverty thematic collection", () => {
       const page = staticPages.find((entry) => entry.id === `poverty-day-${locale}`)!;
       const featured = editorialItems.find((entry) => entry.id === page.featuredItemId)!;
       const activity: EditorialItem = { ...featured, id: `future-activity-${locale}`, type: "event", date: "2026-10-20", video: undefined };
-      const unrelated = { ...activity, id: `unrelated-${locale}`, topics: ["other-topic"] };
+      const unrelated: EditorialItem = { ...activity, id: `unrelated-${locale}`, topics: ["cities-housing"] };
       const otherLocale = { ...activity, id: "other-language", locale: locales.find((language) => language !== locale)! };
       const selected = itemsForPage(page, [unrelated, otherLocale, featured, activity]);
       expect(selected.featuredItem).toEqual(featured);

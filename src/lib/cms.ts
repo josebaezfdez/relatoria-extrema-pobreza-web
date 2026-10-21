@@ -1,5 +1,6 @@
 import { editorialItems, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
 import type { Locale } from "@/data/site";
+import { classifyEditorialItem } from "@/data/editorial-taxonomy";
 
 interface CmsCollection<T> {
   items: T[];
@@ -29,7 +30,7 @@ async function request<T>(path: string): Promise<T | null> {
 
 export async function getEditorialItems(locale: Locale): Promise<CmsCollection<EditorialItem>> {
   const remote = await request<{ items: EditorialItem[] }>(`/content?locale=${locale}`);
-  if (remote?.items?.length) return { items: remote.items, source: "wordpress" };
+  if (remote?.items?.length) return { items: remote.items.map(classifyEditorialItem), source: "wordpress" };
   return { items: editorialItems.filter((item) => item.locale === locale), source: "local" };
 }
 

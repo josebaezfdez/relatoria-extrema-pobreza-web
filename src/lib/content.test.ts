@@ -38,12 +38,15 @@ describe("multilingual content contract", () => {
     }
   });
 
-  it("keeps the visits archive empty while showing visits in the news archive", () => {
+  it("reserves the visits archive for mandate visits and keeps reclassified activities discoverable", () => {
     for (const locale of locales) {
       const visitsPage = staticPages.find((page) => page.id === `visits-${locale}`);
       expect(visitsPage?.listing).toBeUndefined();
       expect(visitsPage?.body).toContain(locale === "es" ? "Próximamente" : locale === "en" ? "Coming soon" : "Bientôt disponible");
-      expect(itemsFor(locale, "news").some((item) => item.type === "visit")).toBe(true);
+      expect(itemsFor(locale, "news").some((item) => item.type === "visit")).toBe(false);
+      for (const key of ["paris", "la-laguna-exhibitions", "muna-visit"]) {
+        expect(itemsFor(locale, "event")).toContainEqual(expect.objectContaining({ id: `${key}-${locale}` }));
+      }
     }
   });
 

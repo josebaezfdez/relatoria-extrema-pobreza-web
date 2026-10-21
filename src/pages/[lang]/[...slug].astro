@@ -2,17 +2,20 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import EditorialListing from "@/components/EditorialListing.astro";
+import EditorialArchive from "@/components/EditorialArchive.astro";
+import TopicHighlights from "@/components/TopicHighlights.astro";
 import HostedVideo from "@/components/HostedVideo.astro";
 import Picture from "@/components/Picture.astro";
 import { editorialItems, itemsForPage, localizedPathsFor, staticPages, type EditorialItem, type StaticPage } from "@/data/content";
-import { povertyDayCopy } from "@/data/povertyDay2026";
+import { archiveCopy, categories, topics, categoryHref, topicHref, newsPaths, reportPaths, relatedItems, formatsFor } from "@/data/editorial-taxonomy";
+import { pageOutline } from "@/lib/page-outline";
 import { getEditorialItems } from "@/lib/cms";
 import { exactEditorialDate } from "@/lib/editorial-dates";
 import { locales, SITE_URL, type Locale, type LocalizedPaths } from "@/data/site";
 
 type RouteProps =
   | { kind: "static"; locale: Locale; page: StaticPage; localizedPaths: LocalizedPaths; items: EditorialItem[] }
-  | { kind: "item"; locale: Locale; item: EditorialItem; localizedPaths: LocalizedPaths };
+  | { kind: "item"; locale: Locale; item: EditorialItem; localizedPaths: LocalizedPaths; items: EditorialItem[] };
 
 export async function getStaticPaths() {
   const remoteCollections = await Promise.all(locales.map((locale) => getEditorialItems(locale)));
@@ -30,7 +33,7 @@ export async function getStaticPaths() {
       lang: item.locale,
       slug: item.path.replace(`/${item.locale}/`, "").replace(/\/$/, ""),
     },
-    props: { kind: "item" as const, locale: item.locale, item, localizedPaths: localizedPathsFor(item, routedItems) },
+    props: { kind: "item" as const, locale: item.locale, item, localizedPaths: localizedPathsFor(item, routedItems), items: routedItems.filter((candidate) => candidate.locale === item.locale) },
   }));
   return [...staticRoutes, ...itemRoutes];
 }
@@ -45,24 +48,40 @@ const pageCopy = {
     gallery: "Galería de imágenes",
     related: "Actividades y materiales relacionados",
     details: "Ver la ficha del vídeo",
+    publishedReports: "Informes publicados",
+    exploreSection: "Explorar esta sección",
   },
   en: {
     resources: "Resources and sources",
     gallery: "Image gallery",
     related: "Related activities and resources",
     details: "View the video article",
+    publishedReports: "Published reports",
+    exploreSection: "Explore this section",
   },
   fr: {
     resources: "Ressources et sources",
     gallery: "Galerie d’images",
     related: "Activités et ressources associées",
     details: "Voir la fiche de la vidéo",
+    publishedReports: "Rapports publiés",
+    exploreSection: "Explorer cette rubrique",
   },
 }[locale];
 const title = isStatic ? props.page.title : props.item.title;
 const description = isStatic ? props.page.description : props.item.summary;
 const path = isStatic ? props.page.path : props.item.path;
 const localizedPaths = props.localizedPaths;
+const taxonomy = archiveCopy[locale];
+const isNews = isStatic && props.page.id === `news-${locale}`;
+const outline = isStatic && /^(mandate|holder)-(es|en|fr)$/.test(props.page.id)
+  ? pageOutline(props.page.body || "") : undefined;
+const related = isItem ? relatedItems(props.item, props.items) : [];
+const parents = isItem
+  ? props.item.category === "reports" ? [{ label: categories.reports[locale], href: reportPaths[locale] }]
+    : [{ label: locale === "es" ? "Actualidad" : locale === "en" ? "News" : "Actualités", href: newsPaths[locale] }, ...(props.item.category ? [{ label: categories[props.item.category][locale], href: categoryHref(locale, props.item.category) }] : [])]
+  : isStatic && (props.page.topic || (props.page.listing && !["news", "report"].includes(props.page.listing)))
+    ? [{ label: locale === "es" ? "Actualidad" : locale === "en" ? "News" : "Actualités", href: newsPaths[locale] }] : [];
 const { featuredItem, items: listingItems } = isStatic && props.page.listing
   ? itemsForPage(props.page, props.items)
   : { featuredItem: undefined, items: [] };
@@ -108,24 +127,23 @@ const schema = isItem
   published={exactDate}
   {schema}
 >
-  <Breadcrumbs {locale} current={title} />
+  <Breadcrumbs {locale} current={title} {parents} />
 
   {isStatic && (
     <>
-      <header class="page-header">
+      <header class:list={["page-header", { "page-header--archive": Boolean(props.page.listing) }]}>
         <div class="page-header__inner container">
           <div>
             {props.page.eyebrow && <p class="eyebrow">{props.page.eyebrow}</p>}
             <h1>{props.page.title}</h1>
           </div>
-          <p class="page-header__description">{props.page.description}</p>
+          <p class="page-header__description">{props.page.description}{isNews && <a class="page-header__archive-link" href="#archive">{taxonomy.fullArchive} <span aria-hidden="true">↓</span></a>}</p>
         </div>
       </header>
-      {props.page.body && <article class="prose" set:html={props.page.body} />}
-      {props.page.id === `news-${locale}` && (
-        <aside class="prose" aria-label={povertyDayCopy[locale].title}>
-          <p><a href={povertyDayCopy[locale].path}>{povertyDayCopy[locale].title} →</a></p>
-        </aside>
+      {outline && outline.headings.length >= 3 && <nav class="page-outline container" aria-label={taxonomy.onPage}><p class="eyebrow">{taxonomy.onPage}</p><ol>{outline.headings.map((heading) => <li><a href={`#${heading.id}`}>{heading.title}</a></li>)}</ol></nav>}
+      {props.page.body && <article class:list={["prose", { "prose--topic": Boolean(props.page.topic) }]} set:html={outline?.html || props.page.body} />}
+      {isNews && (
+        <TopicHighlights {locale} items={props.items} />
       )}
       {featuredItem?.video && (
         <div class="container section">
@@ -134,12 +152,7 @@ const schema = isItem
         </div>
       )}
       {props.page.listing && listingItems.length > 0 && (
-        <section class="section listing-section" aria-label={props.page.title}>
-          <div class="container">
-            {props.page.topic && <h2>{pageCopy.related}</h2>}
-            <EditorialListing items={listingItems} context="archive" headingLevel={props.page.topic ? 3 : 2} />
-          </div>
-        </section>
+        <EditorialArchive items={listingItems} {locale} label={isNews ? undefined : props.page.eyebrow || props.page.title} heading={props.page.topic ? pageCopy.related : isNews ? undefined : props.page.listing === "report" ? pageCopy.publishedReports : pageCopy.exploreSection} />
       )}
     </>
   )}
@@ -171,6 +184,11 @@ const schema = isItem
             )}
           </div>
         </header>
+        <nav class="article-taxonomy container" aria-label={taxonomy.navigation}>
+          {props.item.category && <a class="category-badge" href={categoryHref(locale, props.item.category)}>{categories[props.item.category][locale]}</a>}
+          {props.item.topics?.length ? <ul class="topic-tags">{props.item.topics.map((topic) => <li><a href={topicHref(locale, topic)}>{topics[topic][locale]}</a></li>)}</ul> : null}
+          {formatsFor(props.item).length > 0 && <ul class="format-badges">{formatsFor(props.item).map((format) => <li>{taxonomy[format]}</li>)}</ul>}
+        </nav>
         <div class="prose" set:html={props.item.body} />
         {props.item.video && (
           <div class="container section">
@@ -222,6 +240,7 @@ const schema = isItem
           </section>
         )}
       </article>
+      {related.length > 0 && <section class="related-content container" aria-labelledby="related-content-heading"><header class="section-heading"><h2 id="related-content-heading">{taxonomy.related}</h2></header><EditorialListing items={related} context="archive" headingLevel={3} /></section>}
     </>
   )}
 
