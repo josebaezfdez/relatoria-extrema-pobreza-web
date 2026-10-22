@@ -1,0 +1,31 @@
+---
+import type { EditorialItem } from "@/data/content";
+import type { Locale } from "@/data/site";
+import { archiveCopy, topics, topicHref, contentCount } from "@/data/editorial-taxonomy";
+import { povertyDayCopy } from "@/data/povertyDay2026";
+import Picture from "./Picture.astro";
+interface Props { locale: Locale; items: EditorialItem[]; id?: string; single?: boolean }
+const { locale, items, id = "topic-highlights", single = false } = Astro.props;
+const copy = archiveCopy[locale];
+const day = povertyDayCopy[locale];
+const dayItem = items.find((item) => item.topics?.includes("day-against-poverty") && item.video);
+const citiesItem = items.find((item) => item.type === "report" && item.topics?.includes("cities-housing"));
+const cityCopy = {
+  es: { title: "Ciudades y pobreza", description: "Vivienda, servicios y desigualdades urbanas: informes y actividades para explorar esta prioridad.", action: "Explorar el tema" },
+  en: { title: "Cities and poverty", description: "Housing, services and urban inequality: reports and activities exploring this priority.", action: "Explore the topic" },
+  fr: { title: "Villes et pauvreté", description: "Logement, services et inégalités urbaines : rapports et activités autour de cette priorité.", action: "Explorer le thème" },
+}[locale];
+---
+<section class:list={["topic-highlights container", { "topic-highlights--single": single }]} aria-labelledby={id}>
+  <header class="topic-highlights__heading"><p class="eyebrow">{copy.section}</p><h2 id={id}>{locale === "es" ? "Temas destacados" : locale === "en" ? "Featured topics" : "Thèmes à la une"}</h2></header>
+  <div class="topic-highlights__grid">
+    <article class="topic-feature topic-feature--day">
+      {dayItem?.image && <div class="topic-feature__image"><Picture slug={dayItem.image} alt="" width={dayItem.imageWidth} height={dayItem.imageHeight} responsive sizes="(max-width: 46rem) 100vw, 52vw" /></div>}
+      <div class="topic-feature__body"><p class="eyebrow">{day.eyebrow}</p><h3><a href={day.path}>{day.title}</a></h3><p>{day.description}</p><p class="topic-feature__count">{contentCount(locale, items.filter((item) => item.topics?.includes("day-against-poverty")).length)}</p><a class="topic-feature__action" href={day.path}>{day.action} <span aria-hidden="true">↗</span></a></div>
+    </article>
+    {!single && <article class="topic-feature topic-feature--cities">
+      {citiesItem?.image && <div class="topic-feature__image"><Picture slug={citiesItem.image} alt="" width={citiesItem.imageWidth} height={citiesItem.imageHeight} /></div>}
+      <div class="topic-feature__body"><p class="eyebrow">{topics["cities-housing"][locale]}</p><h3><a href={topicHref(locale, "cities-housing")}>{cityCopy.title}</a></h3><p>{cityCopy.description}</p><p class="topic-feature__count">{contentCount(locale, items.filter((item) => item.topics?.includes("cities-housing")).length)}</p><a class="topic-feature__action" href={topicHref(locale, "cities-housing")}>{cityCopy.action} <span aria-hidden="true">↗</span></a></div>
+    </article>}
+  </div>
+</section>

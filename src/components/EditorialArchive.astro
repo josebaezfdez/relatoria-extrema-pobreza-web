@@ -1,0 +1,114 @@
+---
+import type { EditorialItem } from "@/data/content";
+import type { Locale } from "@/data/site";
+import { categories, topics, archiveCopy, newsPaths, reportPaths, contentCount, type EditorialCategory, type EditorialTopic } from "@/data/editorial-taxonomy";
+import ContentCard from "./ContentCard.astro";
+
+interface Props { items: EditorialItem[]; locale: Locale; heading?: string; label?: string }
+const { items, locale, heading, label } = Astro.props;
+const copy = archiveCopy[locale];
+const categoryCounts = Object.keys(categories).map((key) => ({ key: key as EditorialCategory, count: items.filter((item) => item.category === key).length })).filter((entry) => entry.count);
+const topicCounts = Object.keys(topics).map((key) => ({ key: key as EditorialTopic, count: items.filter((item) => item.topics?.includes(key as EditorialTopic)).length })).filter((entry) => entry.count);
+const legacyPaths = {
+  es: [{ label: "Eventos y encuentros", path: "/es/actualidad/eventos/" }, { label: "Entrevistas y prensa", path: "/es/actualidad/medios/" }, { label: "Comunicados", path: "/es/actualidad/comunicados/" }],
+  en: [{ label: "Events and meetings", path: "/en/news/events/" }, { label: "Interviews and press", path: "/en/news/media/" }, { label: "Statements", path: "/en/news/press-releases/" }],
+  fr: [{ label: "Événements et rencontres", path: "/fr/actualites/evenements/" }, { label: "Entretiens et presse", path: "/fr/actualites/medias/" }, { label: "Communiqués", path: "/fr/actualites/communiques/" }],
+}[locale];
+---
+
+<section id="archive" class="archive container" data-editorial-archive data-filterable={items.length > 3}>
+  <header class="archive__heading">
+    <div><p class="eyebrow">{label || copy.fullArchive}</p><h2 tabindex="-1" data-archive-heading>{heading || copy.explore}</h2></div>
+    <output data-archive-count role="status" aria-live="polite" aria-atomic="true" data-results-label={copy.results} data-results-singular={contentCount(locale, 1).slice(2)}>{contentCount(locale, items.length)}</output>
+  </header>
+  <form class:list={["archive__filters", { "archive__filters--single": categoryCounts.length <= 1 }]} data-archive-filters hidden aria-label={copy.explore}>
+    <label hidden={categoryCounts.length <= 1}>{copy.category}
+      <select name="category"><option value="">{copy.all} ({items.length})</option>{categoryCounts.map(({ key, count }) => <option value={key} data-label={categories[key][locale]}>{categories[key][locale]} ({count})</option>)}</select>
+    </label>
+    <label>{copy.topic}
+      <select name="topic"><option value="">{copy.allTopics}</option>{topicCounts.map(({ key, count }) => <option value={key} data-label={topics[key][locale]}>{topics[key][locale]} ({count})</option>)}</select>
+    </label>
+    <button type="button" class="archive__clear" data-archive-clear>{copy.clear}</button>
+    <p class="archive__active" data-archive-active data-label={copy.active} hidden></p>
+  </form>
+  <nav class="archive__links" aria-label={copy.navigation}>
+    <a href={newsPaths[locale]}>{copy.fullArchive}</a>
+    {legacyPaths.map((entry) => <a href={entry.path}>{entry.label}</a>)}
+    <a href={reportPaths[locale]}>{categories.reports[locale]}</a>
+  </nav>
+  <noscript><p class="archive__notice">{locale === "es" ? "Aquí está disponible el archivo completo. También puedes explorar las páginas de categorías mediante los enlaces anteriores." : locale === "en" ? "The complete archive is available below. You can also use the category links above." : "Toutes les publications sont disponibles ci-dessous. Vous pouvez aussi utiliser les liens des catégories ci-dessus."}</p></noscript>
+  <p class="archive__empty" data-archive-empty hidden>{copy.empty}</p>
+  <ol class:list={["editorial-list", "editorial-list--archive", "archive__list", { "archive__list--pair": items.length === 2, "archive__list--single": items.length === 1 }]}>
+    {items.map((item) => <li class="editorial-list__item" data-archive-item data-category={item.category || ""} data-topics={item.topics?.join(" ") || ""}>
+      <ContentCard item={item} headingLevel={3} />
+    </li>)}
+  </ol>
+  <nav class="archive__pagination" data-archive-pagination hidden aria-label={locale === "es" ? "Paginación" : locale === "en" ? "Pagination" : "Pagination"}>
+    <button type="button" data-archive-previous>{copy.previous}</button>
+    <span data-archive-page data-page-label={copy.page} data-of-label={copy.of}></span>
+    <button type="button" data-archive-next>{copy.next}</button>
+  </nav>
+</section>
+
+<script>
+  import { readArchiveState, selectArchive } from "@/lib/archive-state";
+
+  document.querySelectorAll<HTMLElement>("[data-editorial-archive]").forEach((root) => {
+    const form = root.querySelector<HTMLFormElement>("[data-archive-filters]")!;
+    const category = form.querySelector<HTMLSelectElement>('[name="category"]')!;
+    const topic = form.querySelector<HTMLSelectElement>('[name="topic"]')!;
+    const rows = Array.from(root.querySelectorAll<HTMLElement>("[data-archive-item]"), (element) => ({ element, category: element.dataset.category || "", topics: (element.dataset.topics || "").split(" ").filter(Boolean) }));
+    const count = root.querySelector<HTMLOutputElement>("[data-archive-count]")!;
+    const clear = root.querySelector<HTMLButtonElement>("[data-archive-clear]")!;
+    const active = root.querySelector<HTMLElement>("[data-archive-active]")!;
+    const pagination = root.querySelector<HTMLElement>("[data-archive-pagination]")!;
+    const previous = pagination.querySelector<HTMLButtonElement>("[data-archive-previous]")!;
+    const next = pagination.querySelector<HTMLButtonElement>("[data-archive-next]")!;
+    const pageLabel = pagination.querySelector<HTMLElement>("[data-archive-page]")!;
+    const allowedCategories = Array.from(category.options, (option) => option.value);
+    const allowedTopics = Array.from(topic.options, (option) => option.value);
+    let state = readArchiveState(new URLSearchParams(location.search), allowedCategories, allowedTopics);
+
+    function render(updateHistory = false, focusHeading = false) {
+      const result = selectArchive(rows, state);
+      state.page = result.page;
+      const visible = new Set(result.visible);
+      rows.forEach((row) => { row.element.hidden = !visible.has(row); });
+      category.value = state.category;
+      topic.value = state.topic;
+      const end = result.start + result.visible.length;
+      count.textContent = `${result.matches.length} ${result.matches.length === 1 ? count.dataset.resultsSingular : count.dataset.resultsLabel}${end ? ` · ${result.start + 1}–${end}` : ""}`;
+      previous.disabled = result.page <= 1;
+      next.disabled = result.page >= result.pages;
+      pagination.hidden = result.pages <= 1;
+      pageLabel.textContent = `${pageLabel.dataset.pageLabel} ${result.page} ${pageLabel.dataset.ofLabel} ${result.pages}`;
+      root.querySelector<HTMLElement>("[data-archive-empty]")!.hidden = Boolean(result.matches.length);
+      const labels = [category, topic].filter((select) => select.value).map((select) => select.selectedOptions[0].dataset.label);
+      active.textContent = `${active.dataset.label}: ${labels.join(" · ")}`;
+      active.hidden = !labels.length;
+      clear.disabled = !labels.length && state.page === 1;
+      if (updateHistory) {
+        const url = new URL(location.href);
+        for (const [key, value] of Object.entries(state)) {
+          if (!value || (key === "page" && value === 1)) url.searchParams.delete(key);
+          else url.searchParams.set(key, String(value));
+        }
+        history.pushState(null, "", url);
+      }
+      if (focusHeading) {
+        const heading = root.querySelector<HTMLElement>("[data-archive-heading]")!;
+        heading.focus({ preventScroll: true });
+        heading.scrollIntoView({ block: "start" });
+      }
+    }
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+    form.addEventListener("change", () => { state = { category: category.value, topic: topic.value, page: 1 }; render(true); });
+    clear.addEventListener("click", () => { state = { category: "", topic: "", page: 1 }; render(true); });
+    previous.addEventListener("click", () => { state.page -= 1; render(true, true); });
+    next.addEventListener("click", () => { state.page += 1; render(true, true); });
+    window.addEventListener("popstate", () => { state = readArchiveState(new URLSearchParams(location.search), allowedCategories, allowedTopics); render(); });
+    form.hidden = root.dataset.filterable !== "true";
+    render();
+  });
+</script>

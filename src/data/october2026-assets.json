@@ -1,0 +1,623 @@
+{
+  "0": {
+    "source": "00_sources/deliveries/2026-10-13/doc0-INFORME ESPAÑOL.pdf",
+    "original": "INFORME ESPAÑOL.pdf",
+    "slug": "2026-07-22-cities-poverty-report",
+    "date": "2026-07-22",
+    "group": "cities-poverty",
+    "alt": {
+      "es": "Portada del informe A/81/261 sobre las ciudades y la pobreza, Asamblea General de Naciones Unidas.",
+      "en": "Cover of report A/81/261 on cities and poverty, United Nations General Assembly.",
+      "fr": "Couverture du rapport A/81/261 sur les villes et la pauvreté, Assemblée générale des Nations Unies."
+    },
+    "width": 1855,
+    "height": 2400,
+    "sha256": "1aa93a74e59dd4d8a23985881f59304ad0b2963c009f9b8cf01df6fe12788446",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "1": {
+    "source": "00_sources/deliveries/2026-10-09/img0-1.JPG",
+    "original": "1.JPG",
+    "slug": "2026-09-15-ach-01",
+    "date": "2026-09-15",
+    "group": "ach",
+    "alt": {
+      "es": "Identidad de Acción contra el Hambre en la sede de la reunión.",
+      "en": "Action Against Hunger signage at the meeting venue.",
+      "fr": "Signalétique d’Action contre la Faim sur le lieu de la rencontre."
+    },
+    "width": 1080,
+    "height": 1920,
+    "sha256": "7dcab000ecf0795b5a9af158e6fc4906bfce49468ccab7c42df91f004d73824f",
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "2": {
+    "source": "00_sources/deliveries/2026-10-09/img1-2.jpeg",
+    "original": "2.jpeg",
+    "slug": "2026-09-15-ach-02",
+    "date": "2026-09-15",
+    "group": "ach",
+    "alt": {
+      "es": "Elena Díaz Galán y Manuel Sánchez-Montero durante el encuentro con Acción contra el Hambre.",
+      "en": "Elena Díaz Galán and Manuel Sánchez-Montero at the Action Against Hunger meeting.",
+      "fr": "Elena Díaz Galán et Manuel Sánchez-Montero lors de la rencontre avec Action contre la Faim."
+    },
+    "width": 1512,
+    "height": 2016,
+    "sha256": "e63aa7035167570e0d19d5e60a0b67707ed8e70f8fe90427cce031604c24b283",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "3": {
+    "source": "00_sources/deliveries/2026-10-09/img2-3.jpeg",
+    "original": "3.jpeg",
+    "slug": "2026-09-15-ach-03",
+    "date": "2026-09-15",
+    "group": "ach",
+    "alt": {
+      "es": "Otra fotografía del encuentro de Elena Díaz Galán con Manuel Sánchez-Montero.",
+      "en": "Another photograph of Elena Díaz Galán’s meeting with Manuel Sánchez-Montero.",
+      "fr": "Autre photographie de la rencontre entre Elena Díaz Galán et Manuel Sánchez-Montero."
+    },
+    "width": 480,
+    "height": 640,
+    "sha256": "781fff58435742c23f51543876c37610ce8c302062cd29b938fcf1347164f74b",
+    "widths": [
+      480
+    ]
+  },
+  "4": {
+    "source": "00_sources/deliveries/2026-10-09/doc3-foto 4.pdf",
+    "original": "foto 4.pdf",
+    "slug": "2026-09-16-upv-poster",
+    "date": "2026-09-16",
+    "group": "upv-child-poverty",
+    "alt": {
+      "es": "Cartel completo del seminario Reflexiones sobre la pobreza infantil en el mundo: 16 de septiembre, 15:00, ETSINF, Universitat Politècnica de València.",
+      "en": "Full poster for the seminar on child poverty: 16 September, 15:00, ETSINF, Universitat Politècnica de València.",
+      "fr": "Affiche complète du séminaire sur la pauvreté infantile : 16 septembre, 15 h, ETSINF, Universitat Politècnica de València."
+    },
+    "width": 1021,
+    "height": 2400,
+    "sha256": "c5b6cb818d3eecadb7f1b1add35aa31ae8f738f0083ed683dd35aa32136ea0ac",
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "5": {
+    "source": "00_sources/deliveries/2026-10-09/img3-foto 5.jpg",
+    "original": "foto 5.jpg",
+    "slug": "2026-09-16-upv-05",
+    "date": "2026-09-16",
+    "group": "upv-child-poverty",
+    "alt": {
+      "es": "Elena Díaz Galán interviene en el seminario sobre pobreza infantil de la Universitat Politècnica de València.",
+      "en": "Elena Díaz Galán speaks at the Universitat Politècnica de València seminar on child poverty.",
+      "fr": "Elena Díaz Galán intervient au séminaire de la Universitat Politècnica de València sur la pauvreté infantile."
+    },
+    "width": 899,
+    "height": 1599,
+    "sha256": "729846b3cede6641595cd68febda78021670aa84c3a56d18e5c860104de4a998",
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "6": {
+    "source": "00_sources/deliveries/2026-10-09/img4-foto 6.jpg",
+    "original": "foto 6.jpg",
+    "slug": "2026-09-16-upv-06",
+    "date": "2026-09-16",
+    "group": "upv-child-poverty",
+    "alt": {
+      "es": "Con Vicente Cabedo, director de la Cátedra de Infancia y Adolescencia de la UPV; Daniel Oliva, director de la Cátedra sobre Sostenibilidad, Inclusión, Diversidad y Derechos Humanos de la UC3M; y Carlos Fernández Liesa, miembro del Comité de Derechos Humanos de Naciones Unidas.",
+      "en": "With Vicente Cabedo, director of UPV’s Chair of Childhood and Adolescence; Daniel Oliva, director of UC3M’s Chair on Sustainability, Inclusion, Diversity and Human Rights; and Carlos Fernández Liesa, a member of the UN Human Rights Committee.",
+      "fr": "Avec Vicente Cabedo, directeur de la Chaire enfance et adolescence de l’UPV ; Daniel Oliva, directeur de la Chaire durabilité, inclusion, diversité et droits humains de l’UC3M ; et Carlos Fernández Liesa, membre du Comité des droits de l’homme des Nations Unies."
+    },
+    "width": 1200,
+    "height": 1600,
+    "sha256": "a8583b2aebd8caa5aa4042762a643b1f0a95052f8d6f68bd94c278730f00c805",
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "8": {
+    "source": "00_sources/deliveries/2026-10-09/img5-foto 8.jpeg",
+    "original": "foto 8.jpeg",
+    "slug": "2026-09-18-cermi-08",
+    "date": "2026-09-18",
+    "group": "cermi-women",
+    "alt": {
+      "es": "Participación por videoconferencia en el XIX Encuentro del Observatorio sobre Feminismo y Discapacidad de CERMI Mujeres.",
+      "en": "Online participation in CERMI Mujeres’ 19th Observatory on Feminism and Disability meeting.",
+      "fr": "Participation en visioconférence à la XIXe rencontre de l’Observatoire sur le féminisme et le handicap de CERMI Mujeres."
+    },
+    "width": 2016,
+    "height": 1512,
+    "sha256": "450821fcfd14d7cd95650f9e1a7404c89b7fd5f9323e62f850bd889959d6cc05",
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "9": {
+    "source": "00_sources/deliveries/2026-10-09/doc5-9. programa.pdf",
+    "original": "9. programa.pdf",
+    "slug": "2026-09-19-luarca-poster",
+    "date": "2026-09-19",
+    "group": "luarca-peace",
+    "alt": {
+      "es": "Cartel del Congreso Internacional sobre el Derecho Humano a la Paz, celebrado en Luarca del 19 al 21 de septiembre de 2026.",
+      "en": "Poster for the International Congress on the Human Right to Peace, Luarca, 19–21 September 2026.",
+      "fr": "Affiche du Congrès international sur le droit humain à la paix, Luarca, du 19 au 21 septembre 2026."
+    },
+    "width": 1698,
+    "height": 2400,
+    "sha256": "366bf97a921a53c19fa8285c2692c05df1c87f99da4728e345bc945b2c5ad193",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "10": {
+    "source": "00_sources/deliveries/2026-10-09/img6-foto 10.jpg",
+    "original": "foto 10.jpg",
+    "slug": "2026-09-23-eapn-10",
+    "date": "2026-09-23",
+    "group": "eapn-meeting",
+    "alt": {
+      "es": "Reunión de trabajo con representantes de EAPN Galicia y EAPN España en Santiago de Compostela.",
+      "en": "Working meeting with EAPN Galicia and EAPN Spain in Santiago de Compostela.",
+      "fr": "Réunion de travail avec EAPN Galicia et EAPN Espagne à Saint-Jacques-de-Compostelle."
+    },
+    "width": 1600,
+    "height": 900,
+    "sha256": "ffeeab3f671f5eb0111349d8ebe0a9ff7130cf5291840e0983d078c021363155",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "11": {
+    "source": "00_sources/deliveries/2026-10-09/img7-foto 11.jpg",
+    "original": "foto 11.jpg",
+    "slug": "2026-09-23-valedora-11",
+    "date": "2026-09-23",
+    "group": "valedora-meeting",
+    "alt": {
+      "es": "Encuentro en la sede de la Valedora do Pobo con María Dolores Fernández Galiño y Carlos Susías.",
+      "en": "Meeting at the Valedora do Pobo’s offices with María Dolores Fernández Galiño and Carlos Susías.",
+      "fr": "Rencontre au siège de la Valedora do Pobo avec María Dolores Fernández Galiño et Carlos Susías."
+    },
+    "width": 1600,
+    "height": 900,
+    "sha256": "c606ec4a54e5b063af1e64a86a6a1ed9c52dbf5e6684fea064639f90ac5da893",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "12": {
+    "source": "00_sources/deliveries/2026-10-09/img8-foto 12.jpg",
+    "original": "foto 12.jpg",
+    "slug": "2026-09-23-aporophobia-12",
+    "date": "2026-09-23",
+    "group": "aporophobia-symposium",
+    "alt": {
+      "es": "Elena Díaz Galán interviene en el II Simposio Europeo sobre Aporofobia en Santiago de Compostela.",
+      "en": "Elena Díaz Galán speaks at the Second European Symposium on Aporophobia in Santiago de Compostela.",
+      "fr": "Elena Díaz Galán intervient au IIe Symposium européen sur l’aporophobie à Saint-Jacques-de-Compostelle."
+    },
+    "width": 1600,
+    "height": 1068,
+    "sha256": "eaf4bad62ffe6e45ddf26600f50239450fc1698c10eab0545391117dbfd27ec7",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "14": {
+    "source": "00_sources/deliveries/2026-10-09/img9-foto 14.jpg",
+    "original": "foto 14.jpg",
+    "slug": "2026-09-23-aporophobia-14",
+    "date": "2026-09-23",
+    "group": "aporophobia-symposium",
+    "alt": {
+      "es": "Otra imagen de la intervención de la Relatora en el diálogo sobre protección frente a la aporofobia.",
+      "en": "Another view of the Rapporteur’s contribution to the dialogue on protection against aporophobia.",
+      "fr": "Autre image de l’intervention de la Rapporteuse dans le dialogue sur la protection contre l’aporophobie."
+    },
+    "width": 1600,
+    "height": 1068,
+    "sha256": "0cbbd5a47cfa0c00462ac1835fe8f5d86ac79db522987e843fcde0ed33342eb4",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "15": {
+    "source": "00_sources/deliveries/2026-10-09/img10-15.jpeg",
+    "original": "15.jpeg",
+    "slug": "2026-09-23-aporophobia-15",
+    "date": "2026-09-23",
+    "group": "aporophobia-symposium",
+    "alt": {
+      "es": "Mesa del II Simposio Europeo sobre Aporofobia en la Universidade de Santiago de Compostela.",
+      "en": "Panel at the Second European Symposium on Aporophobia at the University of Santiago de Compostela.",
+      "fr": "Table ronde du IIe Symposium européen sur l’aporophobie à l’Université de Saint-Jacques-de-Compostelle."
+    },
+    "width": 1600,
+    "height": 1068,
+    "sha256": "dffce69e3d247dd8c05effbabc7e0f706f1e7c81923426e6815e85d9299bd1ec",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "16": {
+    "source": "00_sources/deliveries/2026-10-09/img11-foto 16.jpg",
+    "original": "foto 16.jpg",
+    "slug": "2026-09-25-ilo-16",
+    "date": "2026-09-25",
+    "group": "ilo-social-protection",
+    "alt": {
+      "es": "La Relatora con el equipo de protección social de la Organización Internacional del Trabajo en Ginebra.",
+      "en": "The Rapporteur with the International Labour Organization’s social protection team in Geneva.",
+      "fr": "La Rapporteuse avec l’équipe de protection sociale de l’Organisation internationale du Travail à Genève."
+    },
+    "width": 2000,
+    "height": 1126,
+    "sha256": "875cb0622afd47e2194798a3fb60609b49a3a3ae729341ed7a408fc73f8f11c6",
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "17": {
+    "source": "00_sources/deliveries/2026-10-09/img12-foto 17.png",
+    "original": "foto 17.png",
+    "slug": "2026-09-25-afriw-17",
+    "date": "2026-09-25",
+    "group": "afriw-hrc63",
+    "alt": {
+      "es": "Intervención durante el evento paralelo sobre derechos humanos y aplicación de los ODS en la 63.ª sesión del Consejo de Derechos Humanos.",
+      "en": "Contribution to the side event on human rights and implementation of the SDGs at the 63rd Human Rights Council session.",
+      "fr": "Intervention à l’événement parallèle sur les droits humains et la mise en œuvre des ODD lors de la 63e session du Conseil des droits de l’homme."
+    },
+    "width": 640,
+    "height": 484,
+    "sha256": "90b2f59a50e958569d602feb724b970a30384e0d8d06b641c95b7f764532b623",
+    "widths": [
+      480
+    ]
+  },
+  "18": {
+    "source": "00_sources/deliveries/2026-10-09/img13-foto 18.jpg",
+    "original": "foto 18.jpg",
+    "slug": "2026-09-25-afriw-18",
+    "date": "2026-09-25",
+    "group": "afriw-hrc63",
+    "alt": {
+      "es": "Participantes en el encuentro de Ginebra junto a la entrada de la sala XII.",
+      "en": "Participants in the Geneva event outside Room XII.",
+      "fr": "Participants à la rencontre de Genève devant la salle XII."
+    },
+    "width": 1126,
+    "height": 2000,
+    "sha256": "45ffd66b1cfe5ac3e4614e101f75380aa1c1401903ed37cac7c0a561aa965cf6",
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "19": {
+    "source": "00_sources/deliveries/2026-10-09/img14-foto 19.jpg",
+    "original": "foto 19.jpg",
+    "slug": "2026-09-25-afriw-19",
+    "date": "2026-09-25",
+    "group": "afriw-hrc63",
+    "alt": {
+      "es": "Fotografía de grupo de participantes en el evento paralelo en Ginebra.",
+      "en": "Group photograph of participants in the Geneva side event.",
+      "fr": "Photographie de groupe des participants à l’événement parallèle de Genève."
+    },
+    "width": 1126,
+    "height": 2000,
+    "sha256": "90966b5bb90a9ab347efb88d716743e74b02c3e01d2a4dd972c0e69955d6d5ac",
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "20": {
+    "source": "00_sources/deliveries/2026-10-09/img15-foto 20.jpg",
+    "original": "foto 20.jpg",
+    "slug": "2026-09-28-brussels-20",
+    "date": "2026-09-28",
+    "group": "brussels-academic",
+    "alt": {
+      "es": "Reunión durante el viaje académico a las instituciones europeas en Bruselas.",
+      "en": "Meeting during the academic visit to the European institutions in Brussels.",
+      "fr": "Réunion pendant le voyage universitaire auprès des institutions européennes à Bruxelles."
+    },
+    "width": 1600,
+    "height": 1200,
+    "sha256": "3f5832788aaf6f6c54f010363f2677192ad32d5290a978cdd17ec6f78144607c",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "21": {
+    "source": "00_sources/deliveries/2026-10-09/img16-foto 21.jpg",
+    "original": "foto 21.jpg",
+    "slug": "2026-09-28-brussels-21",
+    "date": "2026-09-28",
+    "group": "brussels-academic",
+    "alt": {
+      "es": "Sesión de intercambio con participantes en la visita académica a Bruselas.",
+      "en": "Discussion with participants in the academic visit to Brussels.",
+      "fr": "Échanges avec les participants au voyage universitaire à Bruxelles."
+    },
+    "width": 1536,
+    "height": 2048,
+    "sha256": "389af6efede875981363ce3d500a584bf1e189a1ff81c25fce1701c575746a66",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "22": {
+    "source": "00_sources/deliveries/2026-10-09/img17-foto 22.jpg",
+    "original": "foto 22.jpg",
+    "slug": "2026-09-28-brussels-22",
+    "date": "2026-09-28",
+    "group": "brussels-academic",
+    "alt": {
+      "es": "Fotografía de grupo ante la bandera europea durante el viaje académico a Bruselas.",
+      "en": "Group photograph in front of the European flag during the academic visit to Brussels.",
+      "fr": "Photographie de groupe devant le drapeau européen lors du voyage universitaire à Bruxelles."
+    },
+    "width": 1600,
+    "height": 1167,
+    "sha256": "87412de62981a057e4db32e8769abab61d7fd794b831ef853b146c2e62a3f63c",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "23": {
+    "source": "00_sources/deliveries/2026-10-09/img19-23.png",
+    "original": "23.png",
+    "slug": "2026-10-02-sdg16-poster",
+    "date": "2026-10-02",
+    "group": "sdg16-urjc",
+    "alt": {
+      "es": "Cartel de la jornada El ODS 16 de la Agenda 2030 y el actual contexto internacional, Universidad Rey Juan Carlos, 2 de octubre de 2026.",
+      "en": "Poster for the SDG 16 and the current international context conference, Rey Juan Carlos University, 2 October 2026.",
+      "fr": "Affiche de la journée sur l’ODD 16 et le contexte international actuel, Université Rey Juan Carlos, 2 octobre 2026."
+    },
+    "width": 1024,
+    "height": 1536,
+    "sha256": "d86140c51fee845c3a5a78a10b513fec5279537c91a13c040bd31642b3484aec",
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "24": {
+    "source": "00_sources/deliveries/2026-10-09/img18-FOTO 24.jpeg",
+    "original": "FOTO 24.jpeg",
+    "slug": "2026-10-02-sdg16-24",
+    "date": "2026-10-02",
+    "group": "sdg16-urjc",
+    "alt": {
+      "es": "Intervención durante la jornada sobre el ODS 16 en la Universidad Rey Juan Carlos.",
+      "en": "A speaker at the SDG 16 conference at Rey Juan Carlos University.",
+      "fr": "Intervention lors de la journée sur l’ODD 16 à l’Université Rey Juan Carlos."
+    },
+    "acquisition": "Original Gmail attachment, downloaded through native viewer; MIME part 0.23",
+    "width": 1512,
+    "height": 2016,
+    "sha256": "7d1d57bd40bc4257c86058c0e84fcb55df19241fbe75edc44235ee76bf055e5d",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "25": {
+    "source": "00_sources/deliveries/2026-10-09/img21-FOTO 25.jpeg",
+    "original": "FOTO 25.jpeg",
+    "slug": "2026-10-02-sdg16-25",
+    "date": "2026-10-02",
+    "group": "sdg16-urjc",
+    "alt": {
+      "es": "Asistentes a la jornada sobre paz, justicia e instituciones sólidas en la Universidad Rey Juan Carlos.",
+      "en": "Attendees at the Rey Juan Carlos University conference on peace, justice and strong institutions.",
+      "fr": "Participants à la journée sur la paix, la justice et les institutions efficaces à l’Université Rey Juan Carlos."
+    },
+    "width": 2016,
+    "height": 1512,
+    "sha256": "fb7cd0ff89cfa1128a63b304dc9221443e59e87571062090b1d920eb97047104",
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "26": {
+    "source": "00_sources/deliveries/2026-10-09/img22-foto 26.jpeg",
+    "original": "foto 26.jpeg",
+    "slug": "2026-10-05-habitat-26",
+    "date": "2026-10-05",
+    "group": "world-habitat-day",
+    "alt": {
+      "es": "Elena Díaz Galán participa en el diálogo Vivienda adecuada para todas las personas durante el Día Mundial del Hábitat en Mascate.",
+      "en": "Elena Díaz Galán takes part in the Adequate Housing for All dialogue at World Habitat Day in Muscat.",
+      "fr": "Elena Díaz Galán participe au dialogue Un logement convenable pour tous lors de la Journée mondiale de l’habitat à Mascate."
+    },
+    "width": 2016,
+    "height": 1512,
+    "sha256": "f5de404da1383f558f0945b700c836dfeb0db8734b57c1bb632a5b72a5464e2f",
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "27": {
+    "source": "00_sources/deliveries/2026-10-09/img23-foto 27.jpeg",
+    "original": "foto 27.jpeg",
+    "slug": "2026-10-05-habitat-27",
+    "date": "2026-10-05",
+    "group": "world-habitat-day",
+    "alt": {
+      "es": "Vista general del diálogo del Día Mundial del Hábitat en Mascate, Omán.",
+      "en": "Overview of the World Habitat Day dialogue in Muscat, Oman.",
+      "fr": "Vue d’ensemble du dialogue de la Journée mondiale de l’habitat à Mascate, Oman."
+    },
+    "width": 2016,
+    "height": 1512,
+    "sha256": "681188668b1f55e1662f3d2b500a2da5dbd102fd6e21d46b97de0fa218fa27cd",
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "28": {
+    "source": "00_sources/deliveries/2026-10-09/drive0-foto 28.jpeg",
+    "original": "foto 28.jpeg",
+    "slug": "2026-10-05-habitat-28",
+    "date": "2026-10-05",
+    "group": "world-habitat-day",
+    "alt": {
+      "es": "La Relatora interviene en el panel sobre vivienda adecuada para todas las personas.",
+      "en": "The Rapporteur speaks on the panel on adequate housing for all.",
+      "fr": "La Rapporteuse intervient dans la table ronde sur un logement convenable pour tous."
+    },
+    "acquisition": "Google Drive link in email; original file",
+    "width": 1512,
+    "height": 2016,
+    "sha256": "35784af07664c2dac89dbfc0372dadba7891cfea56ccb09642857e4bea922c45",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "29": {
+    "source": "00_sources/deliveries/2026-10-09/drive1-foto 29.jpeg",
+    "original": "foto 29.jpeg",
+    "slug": "2026-10-05-habitat-29",
+    "date": "2026-10-05",
+    "group": "world-habitat-day",
+    "alt": {
+      "es": "Fotografía de participantes ante el cartel del Día Mundial del Hábitat 2026 en Mascate.",
+      "en": "Participants in front of the World Habitat Day 2026 backdrop in Muscat.",
+      "fr": "Participants devant le panneau de la Journée mondiale de l’habitat 2026 à Mascate."
+    },
+    "acquisition": "Google Drive link in email; original file",
+    "width": 2016,
+    "height": 1512,
+    "sha256": "91ea735f9127b4410c06af5f0f0f94a814cf574aa88cc0dbfa711b1eff736ecd",
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "30": {
+    "source": "00_sources/deliveries/2026-10-09/drive2-foto 30.jpeg",
+    "original": "foto 30.jpeg",
+    "slug": "2026-10-05-habitat-30",
+    "date": "2026-10-05",
+    "group": "world-habitat-day",
+    "alt": {
+      "es": "Elena Díaz Galán junto al espacio de ONU-Hábitat durante el encuentro en Omán.",
+      "en": "Elena Díaz Galán by the UN-Habitat stand during the event in Oman.",
+      "fr": "Elena Díaz Galán près de l’espace ONU-Habitat lors de la rencontre à Oman."
+    },
+    "acquisition": "Google Drive link in email; original file",
+    "width": 2142,
+    "height": 2856,
+    "sha256": "d983bf2b097077ec40fdc532794165c1931dfba8f81f36a095841c8f268165e2",
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "report-fr": {
+    "source": "00_sources/deliveries/2026-10-13/doc1-INFORME FRENCH.pdf",
+    "original": "INFORME FRENCH.pdf",
+    "slug": "2026-07-22-cities-poverty-report-fr",
+    "date": "2026-07-22",
+    "group": "cities-poverty",
+    "alt": {
+      "es": "Portada de la versión francesa del informe A/81/261, Las ciudades y la pobreza.",
+      "en": "Cover of the French version of report A/81/261, Cities and poverty.",
+      "fr": "Couverture du rapport A/81/261, Les villes et la pauvreté, en français."
+    },
+    "width": 1855,
+    "height": 2400,
+    "sha256": "f83ed807f48dc64a87b378b20874f119a65340a52f4a360732914f2261556a51",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "celios-rtf": {
+    "source": "00_sources/deliveries/2026-10-09/celios-captura-rtf.png",
+    "original": "Captura de CELIOS incrustada en actualización 9 octubre.rtf",
+    "slug": "2026-09-16-celios-website",
+    "date": "2026-09-16",
+    "group": "celios-meeting",
+    "alt": {
+      "es": "Captura de la web de CELIOS incluida en la documentación facilitada por la Relatoría.",
+      "en": "Screenshot of the CELIOS website included in the information supplied by the Rapporteur’s office.",
+      "fr": "Capture du site de CELIOS incluse dans la documentation fournie par le bureau de la Rapporteuse."
+    },
+    "acquisition": "PNG embedded in the RTF attached to email 1a120583a587d85e; WMF alternative is the same illustration",
+    "width": 1651,
+    "height": 571,
+    "sha256": "8121bcec6b4c71ea835e020fd8ff130a5dfeb5eedf8a5c0fe106ea0d8dd645d5",
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  }
+}
